@@ -69,8 +69,8 @@ Done early, or want to push it? Try any of these:
 
 - **Prove the ADR guardrail works.** Ask Claude to make a change that quietly contradicts the decision you just captured. With the `architecture.md` rule in place it should *push back* and cite the ADR rather than just doing it. That pushback is the whole point.
 - **Try an emphatic rule.** Rewrite one rule as a `YOU MUST …` / `NEVER …` line and watch how much harder Claude leans on it than a softly-worded version. Save the strong phrasing for the rules that really matter.
-- **Compare against `/init`.** Run `/init` and see the `CLAUDE.md` Claude generates on its own, then diff it against your hand-tuned thin one — notice what it over-includes and why yours routes instead of restating.
-- **See the before/after budget.** Run `/context` before and after this exercise (or against your old CLAUDE.md) and watch the always-on token count drop.
+- **Compare against `/init`.** Run `/init` and see the `CLAUDE.md` Claude generates on its own, then diff it against your hand-tuned thin one. Or even change the prompt above to tell claude to make use of the `init` skill in the first place.
+- **See the before/after budget.** Run `/context` before and after this exercise and watch the always-on token count drop. Also note that as your session goes on the context window fills up. 
 
 ---
 
