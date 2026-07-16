@@ -41,9 +41,10 @@ features, help me stand up the project and its context harness.
 Interview me first — one question at a time, wait for each answer — but only about what
 you need to stand up the right skeleton and record why. Cover: what this is in a sentence
 or two; the rough MVP shape (what's in, what's explicitly out — keep it small, it's a
-1.5-day build); and the stack (language, framework, package manager, does it need
-storage). Don't lead with a default — make me commit first, then tell me if you'd have
-chosen differently. When I don't know something, teach me the trade-off (2–3 options,
+1.5-day build); the stack (language, framework, package manager, does it need storage);
+and any coding preferences, styles, or architecture conventions I want followed (these
+seed .claude/rules/conventions.md). Don't lead with a default — make me commit first,
+then tell me if you'd have chosen differently. When I don't know something, teach me the trade-off (2–3 options,
 what each costs for a build this size) and make me pick. Do not get into detailed
 features or acceptance criteria — we'll do that properly next.
 
