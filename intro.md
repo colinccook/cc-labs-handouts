@@ -21,10 +21,10 @@ Over the next day and a half you'll take the individual moves you learned and st
 
 There are two ways to work with a model like this.
 
-- **Vibe coding** — prompt until something looks like it works, ship it, hope. It's fast and fun for a weekend hack, and it produces code no one can trust or maintain. Fine for a throwaway; a liability in production.
+- **Vibe coding** — prompt until something looks like it works and move on. It's fast, and it's genuinely great for a prototype or spike where you're exploring an idea. The catch is that the code tends to be hard to trust or maintain once you have to live with it.
 - **Agentic engineering** — you give Claude the *context, specs, tests, and guardrails* to do real work, then you review and steer. The output is production-grade: reviewable, tested, consistent with your conventions, safe to hand to the next person.
 
-Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. Hooks so quality is automatic. Worktrees and subagents so you scale past one conversation. That's the difference between *trying* Claude and *engineering* with it — and it's what turns "700 devs have access" into "700 devs ship better, faster."
+Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. Hooks so quality is automatic. Worktrees and subagents so you scale past one conversation. That's the difference between *trying* Claude and *engineering* with it.
 
 ## Pick your starting point — and switch to it now
 
@@ -37,13 +37,17 @@ The exercises come in two tracks. **Choose one and stay on it.**
 
 **No code of your own on the day?** Use the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — every technique works there too.
 
+> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. And **use source control**: initialise git if you haven't, and commit regularly as you go, so you can always see what Claude changed and roll back a step you don't like. You can even ask Claude to commit for you.
+
 ## How the day flows
 
-1. A short talk (~10 min) introduces each technique.
-2. You run the matching exercise (~30 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
+1. A short talk (~5–10 min) introduces each technique.
+2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
 3. Finished early? Every exercise has a **🎁 Bonus** to push further.
 
 The exercises **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track.
+
+> **The setup is the start, not the whole thing.** Each exercise gets Claude *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Claude produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
 
 ---
 
