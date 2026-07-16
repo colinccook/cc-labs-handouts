@@ -31,11 +31,11 @@ You don't have a repo yet, so this exercise does double duty: you'll use Claude 
 
 ## The prompt
 
-Copy this in as-is:
+**👇 Prompt — paste this to Claude as-is** (everything inside the quoted block):
 
 > I'm starting a new project from an empty folder and want to work with you agentically over the next day and a half. I have an idea but nothing set up. Before we build any features, help me stand up the project and its context harness.
 >
-> **Interview me first — one question at a time, wait for each answer — but only about what you need to stand up the right skeleton and record *why*.** Cover: what this is in a sentence or two; the rough MVP shape (what's in, what's explicitly *out* — keep it small, it's a 1.5-day build); and the stack (language, framework, package manager, does it need storage). **Don't lead with a default — make me commit first, then tell me if you'd have chosen differently.** I code only occasionally, so when I don't know, **teach me the trade-off** (2–3 options, what each costs for a build this size) and make me pick. **Do not get into detailed features or acceptance criteria — we'll do that properly next.**
+> **Interview me first — one question at a time, wait for each answer — but only about what you need to stand up the right skeleton and record *why*.** Cover: what this is in a sentence or two; the rough MVP shape (what's in, what's explicitly *out* — keep it small, it's a 1.5-day build); and the stack (language, framework, package manager, does it need storage). **Don't lead with a default — make me commit first, then tell me if you'd have chosen differently.** When I don't know something, **teach me the trade-off** (2–3 options, what each costs for a build this size) and make me pick. **Do not get into detailed features or acceptance criteria — we'll do that properly next.**
 >
 > When you've got enough — and not before — propose, and **STOP for approval before creating anything:**
 > 1. `docs/brief.md` — a short product brief: the idea in a paragraph, MVP bullets, out-of-scope. *(The north star — not a feature spec.)*
@@ -67,13 +67,8 @@ By the end you should have, and be able to point at:
 Done early, or want to push it? Try any of these:
 
 - **Prove the guardrail works.** Ask Claude to make a change that quietly contradicts your ADR-0001 decision (e.g. "swap the datastore" or "restructure the entry point"). With the `architecture.md` rule in place it should *push back* and point at the ADR instead of just doing it. That pushback is the whole payoff — see it fire.
-- **See the context budget.** Run `/context` and look at how little your thin CLAUDE.md costs. Then imagine that number if you'd pasted your whole brief into it — that's *why* it points instead of restates.
 - **Generate your README from the brief.** Ask Claude to write a first `README.md` (what this is, how to run it) *from* `docs/brief.md`, without duplicating it. Notice CLAUDE.md now has real docs to point at.
 - **Add a personal preference.** Put a one-line style preference into `~/.claude/CLAUDE.md` (your *personal* file, loaded everywhere) — e.g. "explain your plan before large refactors." Team rules stay in the project; personal taste stays here.
-
-## If you get stuck
-
-If the skeleton won't come up cleanly and you're burning time, switch to the sample app (`cc-labs-exercise`) you set up in the prerequisites and follow the **brownfield** version of this exercise instead — you'll learn the same technique on code that's already running.
 
 ---
 

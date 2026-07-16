@@ -24,16 +24,17 @@ Claude is only as good as the context it carries into each message — your comm
 
 1. Paste the prompt below. Claude will inventory your existing docs and **propose** a modular context setup — a thin `CLAUDE.md` plus rules — and **stop for your approval**.
 2. Read the proposal. Trim anything bloated, fix anything wrong, then let it create the files.
-3. Then do the highest-value move by hand: find a **decision buried in your code or a long CLAUDE.md** (a "don't do X, it breaks Y" kind of thing) and ask Claude to extract it into `docs/adr/0001-*.md` with a one-line pointer left behind.
+3. Then do the highest-value move by hand: find an **architecture decision or pattern** already baked into your code or a long CLAUDE.md (a "we do X, not Y, because Z" kind of thing) and ask Claude to capture it as an ADR — **add a new one to your existing `docs/adr/`, or if you don't have any yet, make it your solution's first ADR** (`docs/adr/0001-*.md`) — with a one-line pointer left behind.
 
 ## The prompt
 
-Copy this in as-is:
+**👇 Prompt — paste this to Claude as-is** (everything inside the quoted block):
 
 > Analyse this repo — config, layout, a few source files. **First inventory the docs I already have** (`README.md`, `docs/`, ADRs, `CONTRIBUTING.md`) because CLAUDE.md should *point at* those, not duplicate them. Then propose a **modular context setup**:
 > 1. A **thin** root `CLAUDE.md` (<40 lines): commands, ~5 always-true rules, and a 'where the detail lives' section linking my existing docs by path.
 > 2. `.claude/rules/*.md` splitting concerns — `conventions.md` + `testing.md` (always-on), plus **one `paths:`-scoped lazy rule per major code area** (api, ui, db) with the right glob.
 > 3. If I have ADRs, a tiny always-on `architecture.md` rule pointing at `docs/adr/`. Don't duplicate docs I already have.
+> 4. If this is a large repo or monorepo, tell me whether a **nested `.claude/` (or `CLAUDE.md`) inside a subproject** would help — context that loads only when I'm working in that area — and where you'd put it.
 >
 > Show me the file tree and each file's contents, and **STOP for approval before creating anything.**
 
@@ -49,7 +50,7 @@ By the end you should have, and be able to point at:
 
 - **Don't over-split.** 3–4 rule files beat 15. If a rule is short and universal, leave it in `CLAUDE.md`.
 - **`paths:` globs are the skill.** Too broad (`src/**`) and it's eager-in-disguise; too narrow and it never fires.
-- **The ADR is the payoff.** A captured "why" is what stops Claude from helpfully undoing a deliberate decision later.
+- **The captured *why* is the payoff.** Your rules *and* ADRs together — not any one file — are what stop Claude from helpfully undoing a deliberate decision later.
 - **Read before you approve.** Catch a wrong assumption while it's still free to fix.
 
 ## 🎁 Bonus — go further
@@ -57,12 +58,9 @@ By the end you should have, and be able to point at:
 Done early, or want to push it? Try any of these:
 
 - **Prove the ADR guardrail works.** Ask Claude to make a change that quietly contradicts the decision you just captured. With the `architecture.md` rule in place it should *push back* and cite the ADR rather than just doing it. That pushback is the whole point.
-- **Lock a dangerous command.** If you have a `.claude/commands/` script that does something you'd never want Claude to auto-run (reset a branch, drop data), convert it to a skill with `disable-model-invocation: true` — it still runs when *you* type it, but Claude can't fire it.
+- **Try an emphatic rule.** Rewrite one rule as a `YOU MUST …` / `NEVER …` line and watch how much harder Claude leans on it than a softly-worded version. Save the strong phrasing for the rules that really matter.
+- **Compare against `/init`.** Run `/init` and see the `CLAUDE.md` Claude generates on its own, then diff it against your hand-tuned thin one — notice what it over-includes and why yours routes instead of restating.
 - **See the before/after budget.** Run `/context` before and after this exercise (or against your old CLAUDE.md) and watch the always-on token count drop.
-
-## If you get stuck
-
-If your repo won't build or run cleanly on the day, switch to the sample app (`cc-labs-exercise`) you set up in the prerequisites and run this exercise there instead — the technique is identical.
 
 ---
 
