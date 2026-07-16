@@ -26,9 +26,20 @@ Your brief says *what the product is*. A spec says *how one feature behaves* —
 
 ## The prompt
 
-> Read `docs/brief.md` and `docs/adr/0001-initial-stack.md`. Pick the **single smallest slice of the MVP that's genuinely useful on its own** — the first real feature. **Don't build it yet.** Draft a spec for just that slice into `specs/<feature>.md` using `specs/_template.md` (create the template if it doesn't exist). Fill every section; make the acceptance criteria concrete and testable, and keep the scope to *one* slice — respect the out-of-scope list in the brief. **STOP for my review — I'll edit it before any code.**
->
-> Once I've edited and approved it: enter Plan Mode, produce an implementation plan **against the approved spec** and the stack in ADR-0001, and only implement after I approve the plan.
+Copy this into Claude as-is:
+
+```text
+Read docs/brief.md and docs/adr/0001-initial-stack.md. Pick the single smallest slice
+of the MVP that's genuinely useful on its own — the first real feature. Don't build it
+yet. Draft a spec for just that slice into specs/<feature>.md using specs/_template.md
+(create the template if it doesn't exist). Fill every section; make the acceptance
+criteria concrete and testable, and keep the scope to one slice — respect the
+out-of-scope list in the brief. STOP for my review — I'll edit it before any code.
+
+Once I've edited and approved it: enter Plan Mode, produce an implementation plan
+against the approved spec and the stack in ADR-0001, and only implement after I approve
+the plan.
+```
 
 ## What good looks like
 
@@ -48,10 +59,6 @@ Your brief says *what the product is*. A spec says *how one feature behaves* —
 - **Spec a second, independent slice** now — you'll want two independent pieces for the parallel-Claude exercise (5).
 - **Wire the workflow as a rule.** Add `.claude/rules/workflow.md`: "for any non-trivial feature, propose a spec and STOP for approval before writing code."
 - **Try the anti-demo.** On a scratch branch, ask Claude to build the slice with no spec, and compare to your spec'd version.
-
-## If you get stuck
-
-If your skeleton isn't running yet, finish Exercise 0 first — this exercise needs something to build *on*. If you've fallen back to the sample app, use the brownfield version of this exercise.
 
 ---
 

@@ -31,20 +31,34 @@ You don't have a repo yet, so this exercise does double duty: you'll use Claude 
 
 ## The prompt
 
-**👇 Prompt — paste this to Claude as-is** (everything inside the quoted block):
+Copy this into Claude as-is:
 
-> I'm starting a new project from an empty folder and want to work with you agentically over the next day and a half. I have an idea but nothing set up. Before we build any features, help me stand up the project and its context harness.
->
-> **Interview me first — one question at a time, wait for each answer — but only about what you need to stand up the right skeleton and record *why*.** Cover: what this is in a sentence or two; the rough MVP shape (what's in, what's explicitly *out* — keep it small, it's a 1.5-day build); and the stack (language, framework, package manager, does it need storage). **Don't lead with a default — make me commit first, then tell me if you'd have chosen differently.** When I don't know something, **teach me the trade-off** (2–3 options, what each costs for a build this size) and make me pick. **Do not get into detailed features or acceptance criteria — we'll do that properly next.**
->
-> When you've got enough — and not before — propose, and **STOP for approval before creating anything:**
-> 1. `docs/brief.md` — a short product brief: the idea in a paragraph, MVP bullets, out-of-scope. *(The north star — not a feature spec.)*
-> 2. A **running skeleton** for the stack we chose — hello-world that boots. **No tests yet.**
-> 3. A **thin** root `CLAUDE.md`: how to run it, ~5 rules, and a 'where the detail lives' section pointing at `docs/brief.md`.
-> 4. `.claude/rules/conventions.md` — only this for now.
-> 5. `docs/adr/0001-initial-stack.md` capturing the stack decision **and the why I gave you**, plus a tiny always-on `architecture.md` rule pointing at `docs/adr/`.
->
-> Show me the file tree and each file's contents, then stop.
+```text
+I'm starting a new project from an empty folder and want to work with you agentically
+over the next day and a half. I have an idea but nothing set up. Before we build any
+features, help me stand up the project and its context harness.
+
+Interview me first — one question at a time, wait for each answer — but only about what
+you need to stand up the right skeleton and record why. Cover: what this is in a sentence
+or two; the rough MVP shape (what's in, what's explicitly out — keep it small, it's a
+1.5-day build); and the stack (language, framework, package manager, does it need
+storage). Don't lead with a default — make me commit first, then tell me if you'd have
+chosen differently. When I don't know something, teach me the trade-off (2–3 options,
+what each costs for a build this size) and make me pick. Do not get into detailed
+features or acceptance criteria — we'll do that properly next.
+
+When you've got enough — and not before — propose, and STOP for approval before creating anything:
+1. docs/brief.md — a short product brief: the idea in a paragraph, MVP bullets,
+   out-of-scope. (The north star — not a feature spec.)
+2. A running skeleton for the stack we chose — hello-world that boots. No tests yet.
+3. A thin root CLAUDE.md: how to run it, ~5 rules, and a "where the detail lives"
+   section pointing at docs/brief.md.
+4. .claude/rules/conventions.md — only this for now.
+5. docs/adr/0001-initial-stack.md capturing the stack decision and the why I gave you,
+   plus a tiny always-on architecture.md rule pointing at docs/adr/.
+
+Show me the file tree and each file's contents, then stop.
+```
 
 ## What good looks like
 

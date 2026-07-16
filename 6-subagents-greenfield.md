@@ -26,7 +26,11 @@ You'll turn the conventions and decisions you set on day one into a subagent tha
 
 ## The prompt
 
-> Create a specialised subagent in `.claude/agents/` that enforces the conventions I've established for this new project — read `.claude/rules/conventions.md` and `docs/adr/` and turn them into a code-reviewer's checklist, or a test-writer that follows my Exercise-3 testing loop. Give it a tight system prompt and the minimal toolset. Then run it against my last feature and show me what it catches that keeps the young codebase consistent.
+Copy this into Claude as-is:
+
+```text
+Create a specialised subagent in .claude/agents/ that enforces the conventions I've established for this new project — read .claude/rules/conventions.md and docs/adr/ and turn them into a code-reviewer's checklist, or a test-writer that follows my Exercise-3 testing loop. Give it a tight system prompt and the minimal toolset. Then run it against my last feature and show me what it catches that keeps the young codebase consistent.
+```
 
 ## What good looks like
 
@@ -45,10 +49,6 @@ You'll turn the conventions and decisions you set on day one into a subagent tha
 - **Add a test-writer subagent** that turns a spec's acceptance criteria into failing tests.
 - **Chain it:** `/specify` → build test-first → subagent review.
 - **Share it** as your project's review convention from the start.
-
-## If you get stuck
-
-Fallen back to the sample app? It ships `code-reviewer`, `security-auditor`, and `vue-expert` — sharpen one of those.
 
 ---
 

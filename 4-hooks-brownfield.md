@@ -28,9 +28,13 @@ You'll wire **one** real hook into your repo: auto-format the files Claude edits
 
 ## The prompt
 
-> Add one `PostToolUse` hook to `.claude/settings.json` that runs my formatter on files you edit (e.g. prettier / ruff / gofmt). **First tell me the exact command to confirm in my terminal**, then wire it scoped to the file types it applies to. Explain that hooks run arbitrary shell with my permissions.
->
-> Bonus: add a `Stop` hook that runs my test command (the one from Exercise 3) so "done" is machine-checked, not vibes.
+Copy this into Claude as-is:
+
+```text
+Add one PostToolUse hook to .claude/settings.json that runs my formatter on files you edit (e.g. prettier / ruff / gofmt). First tell me the exact command to confirm in my terminal, then wire it scoped to the file types it applies to. Explain that hooks run arbitrary shell with my permissions.
+
+Bonus: add a Stop hook that runs my test command (the one from Exercise 3) so "done" is machine-checked, not vibes.
+```
 
 ## What good looks like
 
@@ -50,10 +54,6 @@ You'll wire **one** real hook into your repo: auto-format the files Claude edits
 - **Protect a path.** Add a `PreToolUse` hook that blocks edits to a sensitive file/dir (secrets, generated code) — a guardrail Claude *can't* talk its way past.
 - **Get notified.** Add a completion notification (desktop/Slack) so you know when a long run finishes.
 - **Browse `/hooks`** to see every lifecycle event (PreToolUse, PostToolUse, UserPromptSubmit, SessionStart, Stop…).
-
-## If you get stuck
-
-Hook not firing? Restart Claude, then double-check the matcher and that the command runs standalone. On the sample app? Same exercise with its prettier/ruff setup.
 
 ---
 

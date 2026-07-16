@@ -26,9 +26,13 @@ You'll pick two **independent** slices from your brief, set up a worktree for on
 
 ## The prompt
 
-> Look at `docs/brief.md` and find two remaining MVP slices that don't depend on each other. I want to build them in parallel with two Claude sessions via git worktrees: create a worktree + branch for one of them (`git worktree add ../<repo>-<branch> -b <branch>`), and remind me each worktree needs its own deps (`node_modules` / venv), its own `.env`, and a distinct dev-server port. Give me small `scripts/wt-new.sh` and `scripts/wt-clean.sh` to standardise it.
->
-> Then I'll open the worktree in a second terminal, run `claude`, and build both slices in parallel before merging.
+Copy this into Claude as-is:
+
+```text
+Look at docs/brief.md and find two remaining MVP slices that don't depend on each other. I want to build them in parallel with two Claude sessions via git worktrees: create a worktree + branch for one of them (git worktree add ../<repo>-<branch> -b <branch>), and remind me each worktree needs its own deps (node_modules / venv), its own .env, and a distinct dev-server port. Give me small scripts/wt-new.sh and scripts/wt-clean.sh to standardise it.
+
+Then I'll open the worktree in a second terminal, run claude, and build both slices in parallel before merging.
+```
 
 ## What good looks like
 
@@ -47,10 +51,6 @@ You'll pick two **independent** slices from your brief, set up a worktree for on
 - **Teach Claude the convention** in `CLAUDE.md` so it can manage worktrees on request.
 - **Pod it:** split three independent slices across three worktrees — a great thing to demo.
 - **Automate cleanup** with `wt-clean.sh` + `git worktree prune`.
-
-## If you get stuck
-
-Conflicts on merge = the slices weren't independent. Re-split. Fallen back to the sample app? Use the brownfield version.
 
 ---
 

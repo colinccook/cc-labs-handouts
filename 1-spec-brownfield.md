@@ -26,9 +26,18 @@ You're going to resist the urge to say "build X" and instead have Claude write a
 
 ## The prompt
 
-> Take one of the tasks I brought. **Don't build it yet.** First read the code it touches so the spec reflects reality, and read `docs/adr/` so it respects decisions already made. Then draft a spec into `specs/<feature>.md` using `specs/_template.md` (create the template if it doesn't exist). Fill every section; make the acceptance criteria concrete and testable. **STOP for my review — I'll edit it before any code.**
->
-> Once I've edited and approved it: enter Plan Mode, produce an implementation plan **against the approved spec**, and only implement after I approve the plan.
+Copy this into Claude as-is:
+
+```text
+Take one of the tasks I brought. Don't build it yet. First read the code it touches
+so the spec reflects reality, and read docs/adr/ so it respects decisions already made.
+Then draft a spec into specs/<feature>.md using specs/_template.md (create the template
+if it doesn't exist). Fill every section; make the acceptance criteria concrete and
+testable. STOP for my review — I'll edit it before any code.
+
+Once I've edited and approved it: enter Plan Mode, produce an implementation plan
+against the approved spec, and only implement after I approve the plan.
+```
 
 ## What good looks like
 
@@ -48,10 +57,6 @@ You're going to resist the urge to say "build X" and instead have Claude write a
 - **Try the anti-demo.** On a scratch branch, ask Claude to build the feature with *no* spec. Compare what it invents to what your spec pinned down — the gap is the value, made visible.
 - **Spec a second, independent task** now. You'll want two independent slices for the parallel-Claude exercise (5).
 - **Wire the workflow as a rule.** Add a tiny `.claude/rules/workflow.md`: "for any non-trivial feature, propose a spec and STOP for approval before writing code." Now the habit is enforced, not remembered.
-
-## If you get stuck
-
-No good candidate task? Use the sample app and spec a small feature there (e.g. low-stock reorder suggestions) — the loop is the same.
 
 ---
 

@@ -26,9 +26,13 @@ You'll add a short TDD rule to your context, then drive one change **test-first*
 
 ## The prompt
 
-> Add this loop to `.claude/rules/testing.md` (always-on): 1) write a failing test that captures the desired behaviour — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) write the minimum code to pass; 4) run it and the full suite (GREEN); 5) refactor green. **IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.**
->
-> Now pick one small, testable unit in my task. If I'm changing existing behaviour, **first write a characterization test** that locks in what it does today, then extend test-first. Show me the RED before you implement.
+Copy this into Claude as-is:
+
+```text
+Add this loop to .claude/rules/testing.md (always-on): 1) write a failing test that captures the desired behaviour — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) write the minimum code to pass; 4) run it and the full suite (GREEN); 5) refactor green. IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.
+
+Now pick one small, testable unit in my task. If I'm changing existing behaviour, first write a characterization test that locks in what it does today, then extend test-first. Show me the RED before you implement.
+```
 
 ## What good looks like
 
@@ -47,10 +51,6 @@ You'll add a short TDD rule to your context, then drive one change **test-first*
 - **Backfill a test for a past bug.** Reproduce it as a failing test first, then confirm the fix keeps it green — that bug can never silently return.
 - **Machine-check "done."** Foreshadowing Exercise 4: imagine a hook that runs this suite automatically so green isn't a matter of trust.
 - **Raise coverage on a risky module** by characterization-testing it before your next change there.
-
-## If you get stuck
-
-No test framework yet? Ask Claude to set up the idiomatic runner for your stack first (that's legitimately part of this exercise) — then continue. On the sample app? Same exercise.
 
 ---
 

@@ -26,9 +26,13 @@ You'll set up a worktree for a **second, independent** task, open a second Claud
 
 ## The prompt
 
-> I want to run two Claude sessions in parallel on independent work without them stepping on each other. Set up git worktrees for it: create a worktree + branch for a second, independent task I brought (`git worktree add ../<repo>-<branch> -b <branch>`), and remind me each worktree needs its own deps (`node_modules` / venv) and its own `.env` / port. Give me a small `scripts/wt-new.sh` and `scripts/wt-clean.sh` to standardise it.
->
-> Then I'll open the worktree in a second terminal, run `claude` there, and have both work in parallel before merging.
+Copy this into Claude as-is:
+
+```text
+I want to run two Claude sessions in parallel on independent work without them stepping on each other. Set up git worktrees for it: create a worktree + branch for a second, independent task I brought (git worktree add ../<repo>-<branch> -b <branch>), and remind me each worktree needs its own deps (node_modules / venv) and its own .env / port. Give me a small scripts/wt-new.sh and scripts/wt-clean.sh to standardise it.
+
+Then I'll open the worktree in a second terminal, run claude there, and have both work in parallel before merging.
+```
 
 ## What good looks like
 
@@ -47,10 +51,6 @@ You'll set up a worktree for a **second, independent** task, open a second Claud
 - **Teach Claude the convention.** Document worktrees in `CLAUDE.md` so Claude can spin one up / tear it down on request.
 - **Three-way it.** If you're in a pod, split one member's task three ways across worktrees — a natural piece to demo.
 - **Automate cleanup** with the `wt-clean.sh` script and `git worktree prune`.
-
-## If you get stuck
-
-Merge conflicts mean the tasks weren't independent — pick a cleaner split. On the sample app? Same exercise; mind the frontend/backend ports.
 
 ---
 

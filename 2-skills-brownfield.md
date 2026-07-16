@@ -28,11 +28,23 @@ You'll build two skills. First `/specify` — turning last exercise's repetitive
 
 **Part A — capture the spec-drafting prompt:**
 
-> In Exercise 1 I typed a paragraph to make you draft a spec, and I'll retype it every feature. Capture it once as a skill at `.claude/skills/specify/SKILL.md`: frontmatter (`name`, `description`, `argument-hint`) plus the spec-drafting steps — read the touched code and `docs/adr/` first, fill `specs/_template.md`, write to `specs/<kebab-feature>.md`, and STOP for review without writing implementation. Then let me run `/specify <a feature>` to test it.
+```text
+In Exercise 1 I typed a paragraph to make you draft a spec, and I'll retype it every
+feature. Capture it once as a skill at .claude/skills/specify/SKILL.md: frontmatter
+(name, description, argument-hint) plus the spec-drafting steps — read the touched code
+and docs/adr/ first, fill specs/_template.md, write to specs/<kebab-feature>.md, and
+STOP for review without writing implementation. Then let me run /specify <a feature> to
+test it.
+```
 
 **Part B — a skill for something you repeat:**
 
-> Think of a task in this repo you do identically each time — scaffolding a component, a migration, a PR description, a test file. Create `.claude/skills/<name>/SKILL.md` capturing my exact steps and conventions. Then I'll trigger it **naturally** (without naming the skill) to check the `description` fires it.
+```text
+Think of a task in this repo you do identically each time — scaffolding a component, a
+migration, a PR description, a test file. Create .claude/skills/<name>/SKILL.md
+capturing my exact steps and conventions. Then I'll trigger it naturally (without naming
+the skill) to check the description fires it.
+```
 
 ## What good looks like
 
@@ -51,10 +63,6 @@ You'll build two skills. First `/specify` — turning last exercise's repetitive
 - **Install one, don't reinvent it.** Add the official marketplace and try `simplify` (the cleanup skill Anthropic's own team uses): `/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install simplify@claude-plugins-official` → `/reload-plugins`. Run it on some messy code.
 - **Run `/security-review`** (built in, no install) on your working changes.
 - **Add an `argument-hint`** to `/specify` so it shows usage as you type it.
-
-## If you get stuck
-
-If a skill won't trigger, the `description` is too vague — rewrite it with the exact phrases you'd naturally say. On the sample app? Same exercise, same skills.
 
 ---
 

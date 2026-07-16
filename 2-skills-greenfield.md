@@ -28,11 +28,24 @@ You'll build two skills. First `/specify` — last exercise's spec-drafting prom
 
 **Part A — capture the spec-drafting prompt:**
 
-> In Exercise 1 I typed a paragraph to make you draft a spec, and I'll retype it for every slice of my MVP. Capture it once as a skill at `.claude/skills/specify/SKILL.md`: frontmatter (`name`, `description`, `argument-hint`) plus the spec-drafting steps — read `docs/brief.md`, `docs/adr/`, and any code the slice touches first, fill `specs/_template.md`, write to `specs/<kebab-feature>.md`, and STOP for review without writing implementation. Then let me run `/specify <next slice>` to test it.
+```text
+In Exercise 1 I typed a paragraph to make you draft a spec, and I'll retype it for every
+slice of my MVP. Capture it once as a skill at .claude/skills/specify/SKILL.md:
+frontmatter (name, description, argument-hint) plus the spec-drafting steps — read
+docs/brief.md, docs/adr/, and any code the slice touches first, fill specs/_template.md,
+write to specs/<kebab-feature>.md, and STOP for review without writing implementation.
+Then let me run /specify <next slice> to test it.
+```
 
 **Part B — capture your project's repetitive scaffold:**
 
-> A new project means I'll create the same kind of thing over and over — a new component / endpoint / module following the conventions in `.claude/rules/conventions.md`. Create `.claude/skills/<name>/SKILL.md` that scaffolds one to my conventions (right folder, naming, boilerplate). Then I'll trigger it **naturally** (without naming the skill) to check it fires.
+```text
+A new project means I'll create the same kind of thing over and over — a new component /
+endpoint / module following the conventions in .claude/rules/conventions.md. Create
+.claude/skills/<name>/SKILL.md that scaffolds one to my conventions (right folder,
+naming, boilerplate). Then I'll trigger it naturally (without naming the skill) to check
+it fires.
+```
 
 ## What good looks like
 
@@ -51,10 +64,6 @@ You'll build two skills. First `/specify` — last exercise's spec-drafting prom
 - **Install one, don't reinvent it.** `/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install simplify@claude-plugins-official` → `/reload-plugins`, then run `simplify` on code you've written.
 - **Run `/security-review`** on your new code (built in, no install).
 - Give `/specify` an `argument-hint` so it self-documents.
-
-## If you get stuck
-
-If a skill won't fire, tighten its `description` with the exact phrases you'd say. On the sample app? Use the brownfield version.
 
 ---
 

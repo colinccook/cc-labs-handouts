@@ -28,13 +28,21 @@ Two steps: first stand up a test framework (your skeleton has none yet — that 
 
 **Step 1 — stand up the harness:**
 
-> My project has no test framework yet. Set up the idiomatic test runner for my stack (ADR-0001), add the command to `CLAUDE.md`, and write one trivial passing test to prove it runs. Keep it minimal.
+Copy this into Claude as-is:
+
+```text
+My project has no test framework yet. Set up the idiomatic test runner for my stack (ADR-0001), add the command to CLAUDE.md, and write one trivial passing test to prove it runs. Keep it minimal.
+```
 
 **Step 2 — add the rule and build test-first:**
 
-> Add this loop to `.claude/rules/testing.md` (always-on): 1) write a failing test — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) minimum code to pass; 4) run it + full suite (GREEN); 5) refactor green. **IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.**
->
-> Now take the next slice from `docs/brief.md`, turn its spec's acceptance criteria into failing tests, and build it RED→GREEN. Show me the RED first.
+Copy this into Claude as-is:
+
+```text
+Add this loop to .claude/rules/testing.md (always-on): 1) write a failing test — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) minimum code to pass; 4) run it + full suite (GREEN); 5) refactor green. IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.
+
+Now take the next slice from docs/brief.md, turn its spec's acceptance criteria into failing tests, and build it RED→GREEN. Show me the RED first.
+```
 
 ## What good looks like
 
@@ -53,10 +61,6 @@ Two steps: first stand up a test framework (your skeleton has none yet — that 
 - **Retro-test Exercise 1's feature.** Write a characterization test that locks in what you built earlier, so future changes can't silently break it.
 - **Machine-check "done"** — next exercise wires a hook to run this suite automatically.
 - **Add a coverage command** to `CLAUDE.md` so you can see what's protected as the MVP grows.
-
-## If you get stuck
-
-If the harness fights you, keep it minimal — one trivial passing test is enough to unblock Step 2. Fallen back to the sample app? Use the brownfield version (it already has tests).
 
 ---
 

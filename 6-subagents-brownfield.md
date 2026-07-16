@@ -26,7 +26,11 @@ You'll build a subagent for a job you want done the same way every time — a **
 
 ## The prompt
 
-> Create a specialised subagent in `.claude/agents/` for a review lens I care about in this repo — e.g. a code-reviewer that knows my conventions and ADRs, or a test-writer. Give it a tight system prompt (what to check, what to ignore, my standards from `.claude/rules/`) and the minimal toolset it needs. Then run it against a recent change and show me how its focused context beats asking the main session.
+Copy this into Claude as-is:
+
+```text
+Create a specialised subagent in .claude/agents/ for a review lens I care about in this repo — e.g. a code-reviewer that knows my conventions and ADRs, or a test-writer. Give it a tight system prompt (what to check, what to ignore, my standards from .claude/rules/) and the minimal toolset it needs. Then run it against a recent change and show me how its focused context beats asking the main session.
+```
 
 ## What good looks like
 
@@ -45,10 +49,6 @@ You'll build a subagent for a job you want done the same way every time — a **
 - **Build a second lens.** A security-focused reviewer alongside the correctness one.
 - **Chain it after a feature** — spec → build test-first → subagent review, as a mini pipeline.
 - **Share it** with your team as a repo convention.
-
-## If you get stuck
-
-On the sample app, `cc-labs-exercise` already ships `code-reviewer`, `security-auditor`, and `vue-expert` agents — sharpen one of those instead of starting from scratch.
 
 ---
 

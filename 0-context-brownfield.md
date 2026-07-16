@@ -28,15 +28,25 @@ Claude is only as good as the context it carries into each message — your comm
 
 ## The prompt
 
-**👇 Prompt — paste this to Claude as-is** (everything inside the quoted block):
+Copy this into Claude as-is:
 
-> Analyse this repo — config, layout, a few source files. **First inventory the docs I already have** (`README.md`, `docs/`, ADRs, `CONTRIBUTING.md`) because CLAUDE.md should *point at* those, not duplicate them. Then propose a **modular context setup**:
-> 1. A **thin** root `CLAUDE.md` (<40 lines): commands, ~5 always-true rules, and a 'where the detail lives' section linking my existing docs by path.
-> 2. `.claude/rules/*.md` splitting concerns — `conventions.md` + `testing.md` (always-on), plus **one `paths:`-scoped lazy rule per major code area** (api, ui, db) with the right glob.
-> 3. If I have ADRs, a tiny always-on `architecture.md` rule pointing at `docs/adr/`. Don't duplicate docs I already have.
-> 4. If this is a large repo or monorepo, tell me whether a **nested `.claude/` (or `CLAUDE.md`) inside a subproject** would help — context that loads only when I'm working in that area — and where you'd put it.
->
-> Show me the file tree and each file's contents, and **STOP for approval before creating anything.**
+```text
+Analyse this repo — config, layout, a few source files. First inventory the docs I
+already have (README.md, docs/, ADRs, CONTRIBUTING.md) because CLAUDE.md should point
+at those, not duplicate them. Then propose a modular context setup:
+
+1. A thin root CLAUDE.md (<40 lines): commands, ~5 always-true rules, and a "where the
+   detail lives" section linking my existing docs by path.
+2. .claude/rules/*.md splitting concerns — conventions.md + testing.md (always-on),
+   plus one paths:-scoped lazy rule per major code area (api, ui, db) with the right glob.
+3. If I have ADRs, a tiny always-on architecture.md rule pointing at docs/adr/.
+   Don't duplicate docs I already have.
+4. If this is a large repo or monorepo, tell me whether a nested .claude/ (or CLAUDE.md)
+   inside a subproject would help — context that loads only when I'm working in that
+   area — and where you'd put it.
+
+Show me the file tree and each file's contents, and STOP for approval before creating anything.
+```
 
 ## What good looks like
 

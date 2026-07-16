@@ -28,7 +28,11 @@ This is aspirational and guided — a genuinely useful server rarely fits a work
 
 ## The prompt
 
-> Install `mcp-builder` (`/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install mcp-builder@claude-plugins-official` → `/reload-plugins`). Then scaffold a **read-only** MCP server exposing one of my internal systems — start with two tools (e.g. `search_<thing>` and `get_<thing>`), auth via a bearer token from an env var. Generate the server, the tool definitions, and the `.mcp.json` wiring. Then let me run `/mcp` to confirm it connects and ask one real question that forces a tool to fire.
+Copy this into Claude as-is:
+
+```text
+Install mcp-builder (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-builder@claude-plugins-official → /reload-plugins). Then scaffold a read-only MCP server exposing one of my internal systems — start with two tools (e.g. search_<thing> and get_<thing>), auth via a bearer token from an env var. Generate the server, the tool definitions, and the .mcp.json wiring. Then let me run /mcp to confirm it connects and ask one real question that forces a tool to fire.
+```
 
 ## What good looks like
 
@@ -47,10 +51,6 @@ This is aspirational and guided — a genuinely useful server rarely fits a work
 
 - **CLI already exists?** If your system has a clean CLI, Claude can just drive it — no server needed, no context overhead. Compare the two approaches.
 - **Add a third tool** only if it earns its context cost.
-
-## If you get stuck
-
-No safe internal system to hand? Scaffold against a **public** read-only API instead — the mechanics are identical.
 
 ---
 

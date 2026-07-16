@@ -28,9 +28,13 @@ You'll wire **one** real hook: auto-format the files Claude edits. If your scaff
 
 ## The prompt
 
-> Add a `PostToolUse` hook to `.claude/settings.json` that runs my formatter on files you edit. If my scaffold didn't set a formatter up, pick the idiomatic one for my stack (ADR-0001), install it, and record the choice. **First tell me the exact command to confirm in my terminal**, then wire it scoped to the right file types. Note that hooks run arbitrary shell with my permissions.
->
-> Bonus: add a `Stop` hook that runs the test command from Exercise 3, so every stopping point is green.
+Copy this into Claude as-is:
+
+```text
+Add a PostToolUse hook to .claude/settings.json that runs my formatter on files you edit. If my scaffold didn't set a formatter up, pick the idiomatic one for my stack (ADR-0001), install it, and record the choice. First tell me the exact command to confirm in my terminal, then wire it scoped to the right file types. Note that hooks run arbitrary shell with my permissions.
+
+Bonus: add a Stop hook that runs the test command from Exercise 3, so every stopping point is green.
+```
 
 ## What good looks like
 
@@ -49,10 +53,6 @@ You'll wire **one** real hook: auto-format the files Claude edits. If your scaff
 - **Protect a path** with a `PreToolUse` hook (e.g. your `.env` or generated files).
 - **Add a completion notification** so you know when a long build step finishes.
 - **Explore `/hooks`** to see all lifecycle events.
-
-## If you get stuck
-
-Hook not firing? Restart, then check the matcher and that the command runs standalone. On the sample app? Use the brownfield version.
 
 ---
 

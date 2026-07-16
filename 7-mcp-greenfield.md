@@ -28,7 +28,11 @@ Aspirational and guided. **Only do this if your prototype genuinely consumes an 
 
 ## The prompt
 
-> If my prototype needs data from an external or public API, install `mcp-builder` (`/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install mcp-builder@claude-plugins-official` → `/reload-plugins`) and scaffold a **read-only** MCP server for that source — two tools to start, auth via an env var if needed. Generate the server, tool definitions, and `.mcp.json`. Then `/mcp` to confirm it connects, and ask one real question that forces a tool to fire.
+Copy this into Claude as-is:
+
+```text
+If my prototype needs data from an external or public API, install mcp-builder (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-builder@claude-plugins-official → /reload-plugins) and scaffold a read-only MCP server for that source — two tools to start, auth via an env var if needed. Generate the server, tool definitions, and .mcp.json. Then /mcp to confirm it connects, and ask one real question that forces a tool to fire.
+```
 
 ## What good looks like
 
@@ -46,10 +50,6 @@ Aspirational and guided. **Only do this if your prototype genuinely consumes an 
 
 - **Prefer a CLI** if your source has one — Claude can drive it directly, cheaper than a server.
 - **Feed it into a feature** — have your app actually use the data you can now query.
-
-## If you get stuck
-
-No external source? Skip straight to the finale — this one's genuinely optional for greenfield.
 
 ---
 
