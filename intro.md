@@ -33,8 +33,6 @@ The exercises come in two tracks. **Choose one and stay on it.**
 - **Brownfield — bring your own repo.** Work in a solution you already have. *This is where Claude Code earns its keep* — real constraints, real legacy, real conventions. If you brought code, this is your track. **Open that repo now.**
 - **Greenfield — start something new.** No repo, or want a clean slate? You'll stand up a fresh project from an idea and grow it. **Open an empty folder now.**
 
-> **The scope in one line:** take everything from Part 1 and drive it into a solution that matters to you — existing or new — and come out the other side delivering value *at quality*.
-
 **No code of your own on the day?** Use the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — every technique works there too.
 
 > **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. And **use source control**: initialise git if you haven't, and commit regularly as you go, so you can always see what Claude changed and roll back a step you don't like. You can even ask Claude to commit for you.
