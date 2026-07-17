@@ -1,45 +1,53 @@
-# Hands-on with Claude Code — Exercises
+`Hands-on with Claude Code · Part 2`
 
-> **New here? Read the [intro](./intro.md) first** — what Part 2 is, what you'll leave with, and how to pick your track.
+# Welcome to Part 2 — put it all together on *your* code
 
-Welcome. These exercises are the hands-on half of the workshop. They're not a tour of Claude Code's features — they're a **build**. Each one leaves a real artifact in your project, and they stack: by the end of day 2 you'll have a running thing **you** built, plus a repeatable spec → build → test loop you can keep using on Monday. The goal isn't "I tried Claude" — it's "I ship faster with Claude."
+**Part 1** gave you the pieces: what Claude Code is, how to prompt it, the tools it can reach, where it fits in your day. **Part 2 is where those pieces become a workflow** — and where you stop practising on toy examples and start applying everything to a real solution you care about.
 
-## Pick your track
+Over the next day and a half you'll take the individual moves you learned and stack them into one repeatable loop: **set up context → spec → build → test → automate → scale.** By the time you leave, that loop won't be a slide — it'll be running in your own repo, and you'll know how to keep using it on Monday.
 
-Each exercise comes in two versions — do the one that matches the code you brought:
+> **This is a build, not a demo.** Each exercise leaves a real artifact in your project. Nothing here is throwaway — you're doing the actual work, just faster, and learning the technique by shipping with it.
 
-- **Brownfield** (`N-brownfield.md`) — you're working in a repo you already have. *This is where Claude Code shines.*
-- **Greenfield** (`N-greenfield.md`) — you're starting something new from an idea.
+---
 
-Same technique in both; only the starting point differs. **Stay on one track** — each page links to the next in the same track.
+## What you'll walk away with
 
-> **No repo of your own on the day?** Fall back to the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — everything works there too.
+- **A running thing *you* built** — on the code you brought, or on a new idea you started here.
+- **A repeatable spec → build → test loop** you can point at any feature, any repo.
+- **Guardrails that travel with the code** — context files, tests, hooks, and subagents that keep quality high without you babysitting every prompt.
+- **Enough fluency to keep going alone** — the whole point of day 2 is that you leave *enabled*, not dependent on the room. Monday you open your repo and the flow is already there.
 
-## How each exercise works
+## The through-line: agentic engineering, not vibe coding
 
-1. A ~10-minute talk introduces the technique.
-2. You run the exercise (~30 min) — read the intro, paste the prompt, review what Claude proposes, and make it yours.
-3. Finished early? Every exercise has a **🎁 Bonus** section to push further.
+There are two ways to work with a model like this.
 
-Each page tells you up front what it *adds to your build*, and ends with a "what good looks like" check so you know you've got it.
+- **Vibe coding** — prompt until something looks like it works and move on. It's fast, and it's genuinely great for a prototype or spike where you're exploring an idea. The catch is that the code tends to be hard to trust or maintain once you have to live with it.
+- **Agentic engineering** — you give Claude the *context, specs, tests, and guardrails* to do real work, then you review and steer. The output is production-grade: reviewable, tested, consistent with your conventions, safe to hand to the next person.
 
-## The exercises
+Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. Hooks so quality is automatic. Worktrees and subagents so you scale past one conversation. That's the difference between *trying* Claude and *engineering* with it.
 
-| # | Exercise | Brownfield | Greenfield |
-|---|----------|-----------|-----------|
-| 0 | Set up your context | [→](./0-context-brownfield.md) | [→](./0-context-greenfield.md) |
-| 1 | Write the spec before you build | [→](./1-spec-brownfield.md) | [→](./1-spec-greenfield.md) |
-| 2 | Turn your workflow into a skill | [→](./2-skills-brownfield.md) | [→](./2-skills-greenfield.md) |
-| 3 | Build it test-first (RED → GREEN) | [→](./3-tdd-brownfield.md) | [→](./3-tdd-greenfield.md) |
-| 4 | Make your guardrails automatic (hooks) | [→](./4-hooks-brownfield.md) | [→](./4-hooks-greenfield.md) |
-| 5 | Run two Claudes at once (worktrees) | [→](./5-worktrees-brownfield.md) | [→](./5-worktrees-greenfield.md) |
-| 6 | Build a specialist subagent *(optional)* | [→](./6-subagents-brownfield.md) | [→](./6-subagents-greenfield.md) |
-| 7 | Connect Claude to your systems *(optional)* | [→](./7-mcp-brownfield.md) | [→](./7-mcp-greenfield.md) |
-| 8 | Let it run without you *(showcase)* | [→](./8-ci-brownfield.md) | [→](./8-ci-greenfield.md) |
+## Pick your starting point — and switch to it now
 
-**Start with [Exercise 0](./0-context-brownfield.md) (brownfield) or [Exercise 0](./0-context-greenfield.md) (greenfield).**
+The exercises come in two tracks. **Choose one and stay on it.**
 
-## A couple of conventions you'll notice
+- **Brownfield — bring your own repo.** Work in a solution you already have. *This is where Claude Code earns its keep* — real constraints, real legacy, real conventions. If you brought code, this is your track. **Open that repo now.**
+- **Greenfield — start something new.** No repo, or want a clean slate? You'll stand up a fresh project from an idea and grow it. **Open an empty folder now.**
 
-- Greenfield starts by writing a **`docs/brief.md`** — the product at a glance. The word **"spec"** (and the `specs/` folder) shows up in Exercise 1, for a single *feature*. Two different levels, two different files.
-- **Tests arrive in Exercise 3**, not before — the early skeleton runs but is untested on purpose.
+**No code of your own on the day?** Use the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — every technique works there too.
+
+> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. And **use source control**: initialise git if you haven't, and commit regularly as you go, so you can always see what Claude changed and roll back a step you don't like. You can even ask Claude to commit for you.
+
+## How the day flows
+
+1. A short talk (~5–10 min) introduces each technique.
+2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
+3. Finished early? Every exercise has a **🎁 Bonus** to push further.
+
+The exercises **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track.
+
+> **The setup is the start, not the whole thing.** Each exercise gets Claude *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Claude produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
+
+---
+
+**Ready?** Open your repo (or an empty folder), then start with **Exercise 0**:
+[Brownfield →](./0-context-brownfield.md)  ·  [Greenfield →](./0-context-greenfield.md)
