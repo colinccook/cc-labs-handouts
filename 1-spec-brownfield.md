@@ -3,15 +3,15 @@
 # Exercise 1 — Write the spec before you build (brownfield)
 
 **Track:** Brownfield · **Time:** ~30 min
-**Builds on:** the context files from Exercise 0. · **Adds to your build:** your first written spec, and a real task implemented from it.
+**Builds on:** the context files from Exercise 0. · **Adds to your build:** a reusable spec template, your first written spec, and a real task implemented from it.
 
-> **Why it matters:** the classic failure of agentic coding is *"Claude built the wrong thing, fast."* A short spec, agreed **before** any code, is the cheapest fix there is — it moves the thinking upstream where changes are free. The spec is the contract; the code is just one implementation of it.
+> **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to keep Claude aimed at what you actually meant: it moves the thinking upstream, where changing your mind is still free. The spec is the contract; the code is just one implementation of it.
 
 ---
 
 ## Why this exercise
 
-You're going to resist the urge to say "build X" and instead have Claude write a **short spec** first — then you edit it until it's actually right, and only then implement. The magic isn't Claude writing the spec; it's *you* editing it. Ten minutes shaping a spec saves an hour of rework on code that missed the point.
+You're going to resist the urge to say "build X" and instead pin the *what* down first — a reusable template, then a spec for one real task — and only then implement. The magic isn't Claude writing the spec; it's the interview that draws the detail out of you, and *you* editing the result. Ten minutes shaping a spec saves an hour of rework on code that missed the point.
 
 ## Before you start
 
@@ -20,23 +20,38 @@ You're going to resist the urge to say "build X" and instead have Claude write a
 
 ## What you'll do
 
-1. Paste the prompt below to have Claude draft a spec into `specs/` — reading the relevant code and your ADRs first, so it reflects reality.
-2. **Edit the spec.** Pin down the behaviour, the edge cases, and the acceptance criteria. This is the whole exercise.
-3. Enter **Plan Mode** (`shift+tab`), have Claude plan against the approved spec, approve, and let it implement.
+1. **Build a reusable spec template** (Step 1). Paste the prompt, check the sections make sense for how your team works, and save it.
+2. **Spec one real task** (Step 2). Tell Claude which task; it reads the code and your ADRs, then **interviews you one question at a time** to fill every section of the template, and stops.
+3. **Edit the spec.** Pin down the behaviour, the edge cases, and the acceptance criteria. This is where the value is.
+4. **Then implement it yourself** — once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
 
-## The prompt
+## Step 1 — Build a reusable spec template
 
 Copy this into Claude as-is:
 
 ```text
-Take one of the tasks I brought. Don't build it yet. First read the code it touches
-so the spec reflects reality, and read docs/adr/ so it respects decisions already made.
-Then draft a spec into specs/<feature>.md using specs/_template.md (create the template
-if it doesn't exist). Fill every section; make the acceptance criteria concrete and
-testable. STOP for my review — I'll edit it before any code.
+Before we write any spec, let's set up a reusable template. Look at how this repo already
+describes work — issues, tickets, PR descriptions, any existing docs — and propose a
+specs/_template.md: a short, reusable spec skeleton with clear sections for context, the
+behaviour/requirements, edge cases, out-of-scope, and acceptance criteria that are concrete
+and testable. Keep it lean — a page, not a form nobody fills in. Show it to me and STOP;
+I'll check it makes sense before we save it.
+```
 
-Once I've edited and approved it: enter Plan Mode, produce an implementation plan
-against the approved spec, and only implement after I approve the plan.
+Read it, trim anything you'd never fill in, then let Claude save it.
+
+## Step 2 — Spec one real task
+
+Copy this into Claude as-is:
+
+```text
+Now let's spec one real task. I'll tell you which one. First read the code it touches so
+the spec reflects reality, and read docs/adr/ so it respects decisions already made. Then
+interview me one question at a time — wait for each answer — to fill every section of
+specs/_template.md: the behaviour I want, the edge cases, what's explicitly out of scope,
+and acceptance criteria concrete enough to test. Don't assume and don't fill gaps yourself;
+ask me. When you've got enough, draft specs/<feature>.md from my answers and STOP for my
+review — I'll edit it before any code.
 ```
 
 ## What good looks like
@@ -48,15 +63,15 @@ against the approved spec, and only implement after I approve the plan.
 ## Tips & watch-outs
 
 - **The value is your editing.** If you approve the first draft unchanged, you've just laundered a guess into a document.
-- **Keep specs to a page.** A spec that takes longer than the code defeats the purpose.
+- **Keep specs concise.** Capture the detail that matters — but if a spec gets long or complicated, that's the signal to split it into smaller slices.
 - **Keep acceptance criteria testable** — you'll turn them into real tests in Exercise 3.
 - **Don't over-spec** a one-line fix. Spec the risky, ambiguous work.
 
 ## 🎁 Bonus — go further
 
 - **Try the anti-demo.** On a scratch branch, ask Claude to build the feature with *no* spec. Compare what it invents to what your spec pinned down — the gap is the value, made visible.
-- **Spec a second, independent task** now. You'll want two independent slices for the parallel-Claude exercise (5).
 - **Wire the workflow as a rule.** Add a tiny `.claude/rules/workflow.md`: "for any non-trivial feature, propose a spec and STOP for approval before writing code." Now the habit is enforced, not remembered.
+- **Spec a second, independent task** now, using the same two-step flow.
 
 ---
 

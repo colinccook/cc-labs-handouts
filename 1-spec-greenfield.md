@@ -3,42 +3,55 @@
 # Exercise 1 — Write the spec before you build (greenfield)
 
 **Track:** Greenfield · **Time:** ~30 min
-**Builds on:** your `docs/brief.md` and running skeleton from Exercise 0. · **Adds to your build:** your first feature spec, and the first real feature on top of the skeleton.
+**Builds on:** your `docs/brief.md` and running skeleton from Exercise 0. · **Adds to your build:** a reusable spec template, your first feature spec, and the first real feature on top of the skeleton.
 
-> **Why it matters:** the classic failure of agentic coding is *"Claude built the wrong thing, fast."* A short spec, agreed **before** any code, is the cheapest fix there is. On day one you wrote a *brief* — the whole product at a glance. Now you'll **spec a single slice of it** properly and build that slice.
+> **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to stay aimed at what you meant. On day one you wrote a *brief* — the whole product at a glance. Now you'll **spec a single slice of it** properly and build that slice.
 
 ---
 
 ## Why this exercise
 
-Your brief says *what the product is*. A spec says *how one feature behaves* — concretely enough to build and check. You'll pick the smallest genuinely-useful slice of your MVP, have Claude draft a spec, edit it until it's right, then implement. The magic is *you* editing the spec, not Claude writing it.
+Your brief says *what the product is*. A spec says *how one feature behaves* — concretely enough to build and check. You'll set up a reusable template, let Claude help you pick the first slice and interview you to spec it, edit it until it's right, then build it. The magic is the interview drawing the detail out of you, and *you* editing the result — not Claude writing the first draft.
 
 ## Before you start
 
 - Exercise 0 done: `docs/brief.md`, a running skeleton, and `docs/adr/0001-initial-stack.md` in place.
-- A sense of which single slice of your MVP is the most sensible first thing to build.
+- A rough sense of which slices of your MVP might be the first thing to build (Claude will help you choose).
 
 ## What you'll do
 
-1. Paste the prompt below. Claude reads your brief and ADR, picks (with you) the first slice, and drafts a spec into `specs/` — then stops.
-2. **Edit the spec.** Pin the behaviour, edge cases, and testable acceptance criteria. Hold it to *one* slice.
-3. Enter **Plan Mode** (`shift+tab`), plan against the spec, approve, implement.
+1. **Build a reusable spec template** (Step 1). Paste the prompt, check the sections make sense, and save it.
+2. **Pick a slice and spec it** (Step 2). Claude suggests a few candidate first features, you pick one, and it **interviews you one question at a time** to fill every section of the template, then stops.
+3. **Edit the spec.** Pin the behaviour, edge cases, and testable acceptance criteria. Hold it to *one* slice. This is where the value is.
+4. **Then implement it yourself** — once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
 
-## The prompt
+## Step 1 — Build a reusable spec template
 
 Copy this into Claude as-is:
 
 ```text
-Read docs/brief.md and docs/adr/0001-initial-stack.md. Pick the single smallest slice
-of the MVP that's genuinely useful on its own — the first real feature. Don't build it
-yet. Draft a spec for just that slice into specs/<feature>.md using specs/_template.md
-(create the template if it doesn't exist). Fill every section; make the acceptance
-criteria concrete and testable, and keep the scope to one slice — respect the
-out-of-scope list in the brief. STOP for my review — I'll edit it before any code.
+Before we spec anything, let's set up a reusable template. Propose a specs/_template.md:
+a short, reusable spec skeleton with clear sections for context, the behaviour/requirements,
+edge cases, out-of-scope, and acceptance criteria that are concrete and testable. Keep it
+lean — a page, not a form nobody fills in. Show it to me and STOP; I'll check it makes sense
+before we save it.
+```
 
-Once I've edited and approved it: enter Plan Mode, produce an implementation plan
-against the approved spec and the stack in ADR-0001, and only implement after I approve
-the plan.
+Read it, trim anything you'd never fill in, then let Claude save it.
+
+## Step 2 — Pick a slice and spec it
+
+Copy this into Claude as-is:
+
+```text
+Read docs/brief.md and docs/adr/0001-initial-stack.md. Suggest a few candidate first
+features — the smallest slices of the MVP that are genuinely useful on their own — and
+recommend one, with a sentence on why. Once I pick, interview me one question at a time —
+wait for each answer — to fill every section of specs/_template.md for just that slice:
+the behaviour, the edge cases, what's explicitly out of scope, and testable acceptance
+criteria. Respect the out-of-scope list in the brief and hold it to one slice. Don't assume;
+ask me. When you've got enough, draft specs/<feature>.md from my answers and STOP for my
+review — I'll edit it before any code.
 ```
 
 ## What good looks like
@@ -56,9 +69,11 @@ the plan.
 
 ## 🎁 Bonus — go further
 
-- **Spec a second, independent slice** now — you'll want two independent pieces for the parallel-Claude exercise (5).
+- **Try the anti-demo.** On a scratch branch, ask Claude to build the slice with no spec, and compare to your spec'd version — the gap is the value, made visible.
 - **Wire the workflow as a rule.** Add `.claude/rules/workflow.md`: "for any non-trivial feature, propose a spec and STOP for approval before writing code."
-- **Try the anti-demo.** On a scratch branch, ask Claude to build the slice with no spec, and compare to your spec'd version.
+- **Break your brief into a feature backlog.** Ask Claude to create a `docs/features/` folder and help you break the brief down into `[xx]-[feature].md` files — a running list of slices you can spec and implement later, one at a time.
+
+> **Tip:** in a real project your backlog usually lives in **GitHub Issues, Jira, or similar** — and Claude can work with it there too, via the `gh` CLI or a Jira MCP server. The `docs/features/` folder is just a lightweight stand-in for the workshop.
 
 ---
 
