@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 1 of 8` — [Overview & index](./README.md)
+`Brownfield track · Exercise 1 of 8` — [Welcome](./README.md)
 
 # Exercise 1 — Write the spec before you build (brownfield)
 

@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 4 of 8` — [Overview & index](./README.md)
+`Brownfield track · Exercise 4 of 8` — [Welcome](./README.md)
 
 # Exercise 4 — Make your guardrails automatic (brownfield)
 

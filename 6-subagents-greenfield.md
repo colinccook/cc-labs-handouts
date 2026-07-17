@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 6 of 8 · optional` — [Overview & index](./README.md)
+`Greenfield track · Exercise 6 of 8 · optional` — [Welcome](./README.md)
 
 # Exercise 6 — Build a specialist subagent (greenfield)
 

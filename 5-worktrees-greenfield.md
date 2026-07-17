@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 5 of 8` — [Overview & index](./README.md)
+`Greenfield track · Exercise 5 of 8` — [Welcome](./README.md)
 
 # Exercise 5 — Run two Claudes at once (greenfield)
 

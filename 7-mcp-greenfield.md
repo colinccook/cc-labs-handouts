@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 7 of 8 · optional` — [Overview & index](./README.md)
+`Greenfield track · Exercise 7 of 8 · optional` — [Welcome](./README.md)
 
 # Exercise 7 — Connect Claude to your own systems (greenfield)
 

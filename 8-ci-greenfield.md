@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 8 of 8 · showcase` — [Overview & index](./README.md)
+`Greenfield track · Exercise 8 of 8 · showcase` — [Welcome](./README.md)
 
 # Exercise 8 — Let it run without you (greenfield)
 
@@ -46,4 +46,4 @@ That's headless Claude: `-p` runs the full agent loop once and prints the result
 
 ---
 
-← Previous: [Exercise 7 — MCP](./7-mcp-greenfield.md)  ·  [Back to Overview & index →](./README.md)
+← Previous: [Exercise 7 — MCP](./7-mcp-greenfield.md)  ·  [Back to Welcome →](./README.md)
