@@ -7,6 +7,8 @@
 
 > **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to stay aimed at what you meant. On day one you wrote a *brief* — the whole product at a glance. Now you'll **spec a single slice of it** properly and build that slice.
 
+> **Note — this isn't a spec-driven-development (SDD) lab.** We're not following a formal SDD framework here; the goal is just to *feel* the value of a spec agreed before code. If you want to go deeper, there are mature AI-native SDD toolkits — e.g. [spec-kit](https://github.com/github/spec-kit) and [specs.md](https://specs.md/) — that wrap this into a full framework of skills and agents, usually agnostic to the model or coding tool. We're keeping it simple on purpose.
+
 ---
 
 ## Why this exercise
@@ -18,16 +20,9 @@ Your brief says *what the product is*. A spec says *how one feature behaves* —
 - Exercise 0 done: `docs/brief.md`, a running skeleton, and `docs/adr/0001-initial-stack.md` in place.
 - A rough sense of which slices of your MVP might be the first thing to build (Claude will help you choose).
 
-## What you'll do
+## Steps
 
-1. **Build a reusable spec template** (Step 1). Paste the prompt, check the sections make sense, and save it.
-2. **Pick a slice and spec it** (Step 2). Claude suggests a few candidate first features, you pick one, and it **interviews you one question at a time** to fill every section of the template, then stops.
-3. **Edit the spec.** Pin the behaviour, edge cases, and testable acceptance criteria. Hold it to *one* slice. This is where the value is.
-4. **Then implement it yourself** — once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
-
-## Step 1 — Build a reusable spec template
-
-Copy this into Claude as-is:
+**1. Build a reusable spec template.** Paste this, check the sections make sense, trim anything you'd never fill in, then let Claude save it.
 
 ```text
 Before we spec anything, let's set up a reusable template. Propose a specs/_template.md:
@@ -37,11 +32,7 @@ lean — a page, not a form nobody fills in. Show it to me and STOP; I'll check 
 before we save it.
 ```
 
-Read it, trim anything you'd never fill in, then let Claude save it.
-
-## Step 2 — Pick a slice and spec it
-
-Copy this into Claude as-is:
+**2. Pick a slice and spec it.** Claude suggests a few candidate first features, you pick one, and it **interviews you one question at a time** to fill every section of the template — then stops.
 
 ```text
 Read docs/brief.md and docs/adr/0001-initial-stack.md. Suggest a few candidate first
@@ -53,6 +44,10 @@ criteria. Respect the out-of-scope list in the brief and hold it to one slice. D
 ask me. When you've got enough, draft specs/<feature>.md from my answers and STOP for my
 review — I'll edit it before any code.
 ```
+
+**3. Edit the spec.** Pin the behaviour, edge cases, and testable acceptance criteria. Hold it to *one* slice. This is where the value is.
+
+**4. Then implement it yourself.** Once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
 
 ## What good looks like
 

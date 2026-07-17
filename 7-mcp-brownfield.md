@@ -20,19 +20,15 @@ This is aspirational and guided — a genuinely useful server rarely fits a work
 - A system with an API you can hit read-only (an OpenAPI spec or a read-only view).
 - A **test credential** ready (auth is the #1 thing that stalls this).
 
-## What you'll do
+## Steps
 
-1. Install the `mcp-builder` skill.
-2. Scaffold a read-only server with two tools (`search_*`, `get_*`).
-3. Connect it (`/mcp`) and ask a question that forces a tool to fire.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Install `mcp-builder` and scaffold a read-only server.** Paste this to install the skill and scaffold a server for one internal system with two read-only tools (`search_*`, `get_*`):
 
 ```text
 Install mcp-builder (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-builder@claude-plugins-official → /reload-plugins). Then scaffold a read-only MCP server exposing one of my internal systems — start with two tools (e.g. search_<thing> and get_<thing>), auth via a bearer token from an env var. Generate the server, the tool definitions, and the .mcp.json wiring. Then let me run /mcp to confirm it connects and ask one real question that forces a tool to fire.
 ```
+
+**2. Connect it and ask a real question.** Run `/mcp` to confirm it connects, then ask a question that forces a tool to fire — the payoff moment.
 
 ## What good looks like
 

@@ -18,21 +18,17 @@ You'll add a short TDD rule to your context, then drive one change **test-first*
 - A working test command (if you have none, that becomes step one — see the greenfield version's harness step for the pattern).
 - One small, testable unit from your task — ideally with logic worth protecting.
 
-## What you'll do
+## Steps
 
-1. Add the RED-GREEN loop as an always-on rule.
-2. Pick one unit. If you're changing existing behaviour, characterization-test it first.
-3. Watch Claude show you the **RED** before it implements — that's the bit that makes it real.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Add the RED-GREEN rule and drive the first change test-first.** Paste this. It adds the loop as an always-on rule, then takes one small unit test-first — characterization-testing existing behaviour first if you're changing it:
 
 ```text
 Add this loop to .claude/rules/testing.md (always-on): 1) write a failing test that captures the desired behaviour — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) write the minimum code to pass; 4) run it and the full suite (GREEN); 5) refactor green. IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.
 
 Now pick one small, testable unit in my task. If I'm changing existing behaviour, first write a characterization test that locks in what it does today, then extend test-first. Show me the RED before you implement.
 ```
+
+**2. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Claude jumps straight to green, make it back up.
 
 ## What good looks like
 

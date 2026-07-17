@@ -19,22 +19,19 @@ You'll wire **one** real hook into your repo: auto-format the files Claude edits
 
 - Your formatter command (prettier / ruff / gofmt / …) and your test command, both confirmed working in a plain terminal.
 
-## What you'll do
+## Steps
 
-1. Confirm the exact command in your terminal first (this prevents 90% of hook pain).
-2. Wire a `PostToolUse` format hook.
-3. Optionally add a `Stop` hook that runs your tests.
-4. Restart Claude (hook changes need it), then edit a file and watch the hook fire.
+**1. Confirm the command first.** Run your exact formatter command in a plain terminal to confirm it works — this prevents 90% of hook pain.
 
-## The prompt
-
-Copy this into Claude as-is:
+**2. Wire the format hook (and, optionally, a test hook).** Paste this to add a `PostToolUse` format hook — and optionally a `Stop` hook that runs your tests so "done" is machine-checked:
 
 ```text
 Add one PostToolUse hook to .claude/settings.json that runs my formatter on files you edit (e.g. prettier / ruff / gofmt). First tell me the exact command to confirm in my terminal, then wire it scoped to the file types it applies to. Explain that hooks run arbitrary shell with my permissions.
 
 Bonus: add a Stop hook that runs my test command (the one from Exercise 3) so "done" is machine-checked, not vibes.
 ```
+
+**3. Restart and watch it fire.** Hook changes need a restart to take effect. Then edit a file and watch the hook run automatically.
 
 ## What good looks like
 

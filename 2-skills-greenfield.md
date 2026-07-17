@@ -15,42 +15,43 @@ You'll build two skills. First `/specify` — last exercise's spec-drafting prom
 
 ## Before you start
 
-- Exercise 1 done — the spec-drafting prompt is fresh.
+- Exercise 1 done — you've got a `specs/_template.md` and a spec-drafting flow fresh in mind.
 - `.claude/rules/conventions.md` from Exercise 0 (your scaffold skill will follow it).
 
-## What you'll do
+## Steps
 
-1. **Part A** — build `/specify` from your Exercise-1 prompt.
-2. **Part B** — build a scaffold skill for the kind of thing you keep creating.
-3. Trigger each **naturally** (describe the task; don't name the skill) and confirm it fires.
-
-## The prompts
-
-**Part A — capture the spec-drafting prompt:**
+**1. Build the `/specify` skill.** Capture your spec-drafting workflow as a reusable, self-contained skill — the prompt spells out every step so it works even in a fresh session with no prior context. When it's created, test it with `/specify <next slice>`.
 
 ```text
-In Exercise 1 I typed a paragraph to make you draft a spec, and I'll retype it for every
-slice of my MVP. Capture it once as a skill at .claude/skills/specify/SKILL.md:
-frontmatter (name, description, argument-hint) plus the spec-drafting steps — read
-docs/brief.md, docs/adr/, and any code the slice touches first, fill specs/_template.md,
-write to specs/<kebab-feature>.md, and STOP for review without writing implementation.
-Then let me run /specify <next slice> to test it.
+Create a skill at .claude/skills/specify/SKILL.md that drafts a feature spec for this
+project. It must be self-contained — assume a fresh session with no prior conversation.
+Frontmatter: name; a specific description listing trigger phrases ("write a spec", "spec
+this slice", "specify ..."); and argument-hint: <feature>. Body — the steps to run when
+invoked: (1) read docs/brief.md, docs/adr/, and any code the slice touches; (2) open
+specs/_template.md, creating a lean one if it's missing; (3) fill every section — holding
+scope to one slice and respecting the brief's out-of-scope list — asking me one question at
+a time for anything you can't infer; (4) write to specs/<kebab-feature>.md; (5) STOP for
+review — do NOT write implementation. Show me the finished SKILL.md and stop.
 ```
 
-**Part B — capture your project's repetitive scaffold:**
+**2. Capture a scaffold skill.** First decide what you'll keep creating as the MVP grows — a component, an endpoint, a module. Then paste this, naming that thing:
 
 ```text
-A new project means I'll create the same kind of thing over and over — a new component /
-endpoint / module following the conventions in .claude/rules/conventions.md. Create
-.claude/skills/<name>/SKILL.md that scaffolds one to my conventions (right folder,
-naming, boilerplate). Then I'll trigger it naturally (without naming the skill) to check
-it fires.
+I'll create the same kind of thing over and over in this project — a new
+<component / endpoint / module> — and I want a skill that scaffolds one to my conventions.
+Read .claude/rules/conventions.md, then create .claude/skills/<name>/SKILL.md that stamps
+out a new one in the right folder, with the right naming and boilerplate. Frontmatter:
+name; a specific description listing the phrases that should trigger it; and an
+argument-hint for the name of the thing. Keep SKILL.md tight — put any long detail in a
+references/ file it reads on demand. Show me the file and stop.
 ```
+
+**3. Trigger each skill two ways.** Run it explicitly by its `/command`, and also **describe the task in plain language** — without naming the skill — to confirm its `description` fires it on its own.
 
 ## What good looks like
 
 - **`/specify <slice>`** drafts a spec in one keystroke.
-- **A scaffold skill** that produces a new project piece matching your conventions — try it and see a correctly-shaped file appear.
+- **A scaffold skill** that produces a new project piece matching your conventions — try it and see a correctly-shaped file appear when you *describe* the task, not just when you directly invoke it.
 - Both live in `.claude/skills/` and will speed up the rest of your build.
 
 ## Tips & watch-outs
@@ -58,6 +59,7 @@ it fires.
 - **The `description` is the trigger** — specific and slightly pushy. The model under-triggers by default.
 - **The scaffold skill is the high-value one here** — it compounds every time your project grows a new piece.
 - **Keep `SKILL.md` tight**; push detail to a `references/` file it reads on demand.
+- **You don't have to build these from scratch.** Whole AI-native SDD kits already exist — e.g. [spec-kit](https://github.com/github/spec-kit) and [specs.md](https://specs.md/) — collections of ready-made skills and agents, usually agnostic to the model or coding tool. We're hand-rolling one here to see how it works; in real life you'd often start from one of those.
 
 ## 🎁 Bonus — go further
 

@@ -23,15 +23,9 @@ You don't have a repo yet, so this exercise does double duty: you'll use Claude 
 - The idea you brought — it doesn't need to be fully formed. Claude will interview you to sharpen it just enough to get started.
 - If your idea needs a language/runtime you haven't installed, have it ready (you already proved Node/uv/git during setup).
 
-## What you'll do
+## Steps
 
-1. Paste the prompt below. Claude will **interview you one question at a time** — what you're building, the smallest useful version of it, and your stack.
-2. Answer honestly. When you don't know something, say so — Claude will lay out the trade-offs and let you choose. **Make the calls yourself**; those choices are what get recorded.
-3. Claude will then propose a set of starter files and **stop for your approval**. Read them. Fix anything that's wrong. Only then let it create them.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Start the interview.** Paste this — Claude will **interview you one question at a time**: what you're building, the smallest useful version of it, and your stack.
 
 ```text
 I'm starting a new project from an empty folder and want to work with you agentically
@@ -60,6 +54,10 @@ When you've got enough — and not before — propose, and STOP for approval bef
 
 Show me the file tree and each file's contents, then stop.
 ```
+
+**2. Answer honestly, and make the calls yourself.** When you don't know something, say so — Claude will lay out the trade-offs and let you choose. Those choices are what get recorded.
+
+**3. Review the starter files before they're created.** Claude proposes a set of starter files and **stops for your approval**. Read them. Fix anything that's wrong. Only then let it create them.
 
 ## What good looks like
 

@@ -18,19 +18,15 @@ You'll turn the conventions and decisions you set on day one into a subagent tha
 - `.claude/rules/conventions.md` and `docs/adr/` from Exercise 0.
 - A recent feature to review.
 
-## What you'll do
+## Steps
 
-1. Have Claude create a subagent in `.claude/agents/` that encodes your conventions.
-2. Run it against your last feature.
-3. See what it catches that keeps the codebase consistent.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Create the subagent and run it.** Paste this to have Claude build a subagent in `.claude/agents/` that encodes your conventions, then run it against your last feature:
 
 ```text
 Create a specialised subagent in .claude/agents/ that enforces the conventions I've established for this new project — read .claude/rules/conventions.md and docs/adr/ and turn them into a code-reviewer's checklist, or a test-writer that follows my Exercise-3 testing loop. Give it a tight system prompt and the minimal toolset. Then run it against my last feature and show me what it catches that keeps the young codebase consistent.
 ```
+
+**2. See what it catches.** Look at what the subagent flags — the drift it catches now is what keeps the codebase consistent as the MVP grows.
 
 ## What good looks like
 

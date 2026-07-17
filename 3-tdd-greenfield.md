@@ -18,31 +18,23 @@ Two steps: first stand up a test framework (your skeleton has none yet — that 
 - Exercise 1 done (a working first feature) and, ideally, a spec for the *next* slice.
 - Know your stack from `docs/adr/0001-initial-stack.md` — it picks your test runner.
 
-## What you'll do
+## Steps
 
-1. **Step 1** — have Claude set up the idiomatic test runner and prove it runs.
-2. **Step 2** — add the RED-GREEN rule, then build the next slice test-first.
-3. Watch the **RED** appear before any implementation.
-
-## The prompts
-
-**Step 1 — stand up the harness:**
-
-Copy this into Claude as-is:
+**1. Stand up the test harness.** Your skeleton has none yet — on purpose. Paste this to set up the idiomatic runner for your stack and prove it runs:
 
 ```text
 My project has no test framework yet. Set up the idiomatic test runner for my stack (ADR-0001), add the command to CLAUDE.md, and write one trivial passing test to prove it runs. Keep it minimal.
 ```
 
-**Step 2 — add the rule and build test-first:**
-
-Copy this into Claude as-is:
+**2. Add the rule and build the next slice test-first.** Paste this to add the RED-GREEN loop as an always-on rule, then build your next slice with failing tests written before any code:
 
 ```text
 Add this loop to .claude/rules/testing.md (always-on): 1) write a failing test — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) minimum code to pass; 4) run it + full suite (GREEN); 5) refactor green. IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.
 
 Now take the next slice from docs/brief.md, turn its spec's acceptance criteria into failing tests, and build it RED→GREEN. Show me the RED first.
 ```
+
+**3. Watch the RED before the GREEN.** The tests must fail for the right reason before any implementation. If Claude jumps straight to green, make it back up.
 
 ## What good looks like
 

@@ -20,15 +20,9 @@ Claude is only as good as the context it carries into each message — your comm
 - Your repo open, building and running, with `claude` running inside it.
 - A rough sense of your commands (run, test, lint) and where your docs live.
 
-## What you'll do
+## Steps
 
-1. Paste the prompt below. Claude will inventory your existing docs and **propose** a modular context setup — a thin `CLAUDE.md` plus rules — and **stop for your approval**.
-2. Read the proposal. Trim anything bloated, fix anything wrong, then let it create the files.
-3. Then do the highest-value move by hand: find an **architecture decision or pattern** already baked into your code or a long CLAUDE.md (a "we do X, not Y, because Z" kind of thing) and ask Claude to capture it as an ADR — **add a new one to your existing `docs/adr/`, or if you don't have any yet, make it your solution's first ADR** (`docs/adr/0001-*.md`) — with a one-line pointer left behind.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Propose the context setup.** Paste this — Claude inventories your existing docs and proposes a modular setup (a thin `CLAUDE.md` plus rules), then stops for your approval:
 
 ```text
 Analyse this repo — config, layout, a few source files. First inventory the docs I
@@ -47,6 +41,10 @@ at those, not duplicate them. Then propose a modular context setup:
 
 Show me the file tree and each file's contents, and STOP for approval before creating anything.
 ```
+
+**2. Review and create.** Read the proposal. Trim anything bloated, fix anything wrong, then let it create the files.
+
+**3. Capture a decision as an ADR — by hand.** Find an **architecture decision or pattern** already baked into your code or a long CLAUDE.md (a "we do X, not Y, because Z" kind of thing) and ask Claude to capture it as an ADR — **add a new one to your existing `docs/adr/`, or if you don't have any yet, make it your solution's first ADR** (`docs/adr/0001-*.md`) — with a one-line pointer left behind.
 
 ## What good looks like
 

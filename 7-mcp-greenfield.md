@@ -20,19 +20,15 @@ Aspirational and guided. **Only do this if your prototype genuinely consumes an 
 - A data source your app uses (an external or public API), ideally with an OpenAPI spec.
 - A test credential if the API needs auth (or pick one that doesn't).
 
-## What you'll do
+## Steps
 
-1. Install the `mcp-builder` skill.
-2. Scaffold a read-only server with one or two tools for your source.
-3. Connect it (`/mcp`) and ask a question that forces a tool to fire.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Install `mcp-builder` and scaffold a read-only server.** Paste this to install the skill and scaffold a server for the external/public data source your prototype uses, with one or two read-only tools:
 
 ```text
 If my prototype needs data from an external or public API, install mcp-builder (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-builder@claude-plugins-official → /reload-plugins) and scaffold a read-only MCP server for that source — two tools to start, auth via an env var if needed. Generate the server, tool definitions, and .mcp.json. Then /mcp to confirm it connects, and ask one real question that forces a tool to fire.
 ```
+
+**2. Connect it and ask a real question.** Run `/mcp` to confirm it connects, then ask a question that forces a tool to fire.
 
 ## What good looks like
 

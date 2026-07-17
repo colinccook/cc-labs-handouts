@@ -18,19 +18,15 @@ You'll build a subagent for a job you want done the same way every time — a **
 - `.claude/rules/` and `docs/adr/` from Exercise 0 (your subagent's standards come from these).
 - A recent change to point it at.
 
-## What you'll do
+## Steps
 
-1. Have Claude create a subagent in `.claude/agents/` with a tight system prompt and a minimal toolset.
-2. Run it against a recent diff.
-3. Compare its focused output to just asking your main session.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Create the subagent and run it.** Paste this to have Claude build a single-purpose subagent in `.claude/agents/` with a tight system prompt and minimal toolset, then run it against a recent change:
 
 ```text
 Create a specialised subagent in .claude/agents/ for a review lens I care about in this repo — e.g. a code-reviewer that knows my conventions and ADRs, or a test-writer. Give it a tight system prompt (what to check, what to ignore, my standards from .claude/rules/) and the minimal toolset it needs. Then run it against a recent change and show me how its focused context beats asking the main session.
 ```
+
+**2. Compare it to the main session.** Ask your main session the same thing and compare — the point is to feel the difference focused context makes, and to know *when* you'd reach for a subagent.
 
 ## What good looks like
 

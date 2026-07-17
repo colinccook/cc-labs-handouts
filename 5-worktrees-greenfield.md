@@ -18,21 +18,19 @@ You'll pick two **independent** slices from your brief, set up a worktree for on
 - Your brief with at least two remaining slices that genuinely don't depend on each other.
 - A running skeleton (Exercise 0) so a second dev server can come up on its own port.
 
-## What you'll do
+## Steps
 
-1. Find two independent slices in the brief.
-2. Have Claude set up a worktree + branch for one, with helper scripts.
-3. Open it in a second terminal, run `claude`, build both in parallel, merge.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Find two independent slices and set up the worktree.** Paste this to pick two non-overlapping MVP slices from your brief and have Claude create a worktree + branch for one, with helper scripts:
 
 ```text
 Look at docs/brief.md and find two remaining MVP slices that don't depend on each other. I want to build them in parallel with two Claude sessions via git worktrees: create a worktree + branch for one of them (git worktree add ../<repo>-<branch> -b <branch>), and remind me each worktree needs its own deps (node_modules / venv), its own .env, and a distinct dev-server port. Give me small scripts/wt-new.sh and scripts/wt-clean.sh to standardise it.
 
 Then I'll open the worktree in a second terminal, run claude, and build both slices in parallel before merging.
 ```
+
+**2. Open a second Claude in the worktree.** Open the new worktree folder in a second terminal and run `claude` there.
+
+**3. Build both in parallel, then merge.** Let both sessions build their slice at once, then merge the branches back.
 
 ## What good looks like
 

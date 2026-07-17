@@ -7,6 +7,8 @@
 
 > **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to keep Claude aimed at what you actually meant: it moves the thinking upstream, where changing your mind is still free. The spec is the contract; the code is just one implementation of it.
 
+> **Note — this isn't a spec-driven-development (SDD) lab.** We're not following a formal SDD framework here; the goal is just to *feel* the value of a spec agreed before code. If you want to go deeper, there are mature AI-native SDD toolkits — e.g. [spec-kit](https://github.com/github/spec-kit) and [specs.md](https://specs.md/) — that wrap this into a full framework of skills and agents, usually agnostic to the model or coding tool. We're keeping it simple on purpose.
+
 ---
 
 ## Why this exercise
@@ -18,16 +20,9 @@ You're going to resist the urge to say "build X" and instead pin the *what* down
 - Exercise 0 done (Claude has your context and can read your ADRs).
 - One of the real tasks you brought — a feature, a bug, or a focused change.
 
-## What you'll do
+## Steps
 
-1. **Build a reusable spec template** (Step 1). Paste the prompt, check the sections make sense for how your team works, and save it.
-2. **Spec one real task** (Step 2). Tell Claude which task; it reads the code and your ADRs, then **interviews you one question at a time** to fill every section of the template, and stops.
-3. **Edit the spec.** Pin down the behaviour, the edge cases, and the acceptance criteria. This is where the value is.
-4. **Then implement it yourself** — once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
-
-## Step 1 — Build a reusable spec template
-
-Copy this into Claude as-is:
+**1. Build a reusable spec template.** Paste this, check the sections fit how your team works, trim anything you'd never fill in, then let Claude save it.
 
 ```text
 Before we write any spec, let's set up a reusable template. Look at how this repo already
@@ -38,11 +33,7 @@ and testable. Keep it lean — a page, not a form nobody fills in. Show it to me
 I'll check it makes sense before we save it.
 ```
 
-Read it, trim anything you'd never fill in, then let Claude save it.
-
-## Step 2 — Spec one real task
-
-Copy this into Claude as-is:
+**2. Spec one real task.** Tell Claude which task; it reads the code and your ADRs, then **interviews you one question at a time** to fill every section of the template, and stops.
 
 ```text
 Now let's spec one real task. I'll tell you which one. First read the code it touches so
@@ -53,6 +44,10 @@ and acceptance criteria concrete enough to test. Don't assume and don't fill gap
 ask me. When you've got enough, draft specs/<feature>.md from my answers and STOP for my
 review — I'll edit it before any code.
 ```
+
+**3. Edit the spec.** Pin down the behaviour, the edge cases, and the acceptance criteria. This is where the value is.
+
+**4. Then implement it yourself.** Once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
 
 ## What good looks like
 

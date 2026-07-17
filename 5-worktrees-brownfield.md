@@ -18,21 +18,19 @@ You'll set up a worktree for a **second, independent** task, open a second Claud
 - Two genuinely independent tasks (the second one from Exercise 1's bonus is ideal).
 - Comfort creating a branch.
 
-## What you'll do
+## Steps
 
-1. Have Claude set up a worktree + branch for the second task, with helper scripts.
-2. Open the new worktree folder in a second terminal/window; run `claude` there.
-3. Let both sessions work in parallel; merge when done.
-
-## The prompt
-
-Copy this into Claude as-is:
+**1. Set up the worktree.** Paste this to have Claude create a worktree + branch for your second, independent task, with helper scripts:
 
 ```text
 I want to run two Claude sessions in parallel on independent work without them stepping on each other. Set up git worktrees for it: create a worktree + branch for a second, independent task I brought (git worktree add ../<repo>-<branch> -b <branch>), and remind me each worktree needs its own deps (node_modules / venv) and its own .env / port. Give me a small scripts/wt-new.sh and scripts/wt-clean.sh to standardise it.
 
 Then I'll open the worktree in a second terminal, run claude there, and have both work in parallel before merging.
 ```
+
+**2. Open a second Claude in the worktree.** Open the new worktree folder in a second terminal/window and run `claude` there.
+
+**3. Work in parallel, then merge.** Let both sessions make progress at once, then bring the branches together when done.
 
 ## What good looks like
 

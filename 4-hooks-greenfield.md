@@ -19,22 +19,19 @@ You'll wire **one** real hook: auto-format the files Claude edits. If your scaff
 
 - Exercise 3 done (you have a test command). A formatter for your stack — or let Claude pick and install the idiomatic one.
 
-## What you'll do
+## Steps
 
-1. Confirm the exact command in your terminal first.
-2. Wire a `PostToolUse` format hook (installing the formatter if needed).
-3. Optionally add a `Stop` hook running your tests.
-4. Restart Claude, edit a file, watch it fire.
+**1. Confirm the command first.** Run your exact formatter command in a plain terminal to confirm it works before wiring anything.
 
-## The prompt
-
-Copy this into Claude as-is:
+**2. Wire the format hook (and, optionally, a test hook).** Paste this to add a `PostToolUse` format hook — installing the formatter if your scaffold skipped it — and optionally a `Stop` hook that runs your tests:
 
 ```text
 Add a PostToolUse hook to .claude/settings.json that runs my formatter on files you edit. If my scaffold didn't set a formatter up, pick the idiomatic one for my stack (ADR-0001), install it, and record the choice. First tell me the exact command to confirm in my terminal, then wire it scoped to the right file types. Note that hooks run arbitrary shell with my permissions.
 
 Bonus: add a Stop hook that runs the test command from Exercise 3, so every stopping point is green.
 ```
+
+**3. Restart and watch it fire.** Hook changes need a restart. Then edit a file and watch the hook run automatically.
 
 ## What good looks like
 
