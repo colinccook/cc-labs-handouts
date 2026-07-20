@@ -14,6 +14,7 @@ Over the next day and a half you'll take the individual moves you learned and st
 
 - **A running thing *you* built** — on the code you brought, or on a new idea you started here.
 - **A repeatable spec → build → test → review → PR loop** you can point at any feature, any repo.
+- **A loop that's *yours*** — tuned to how you work and written down, not a copied checklist you'll abandon.
 - **Guardrails that travel with the code** — context files, a spec skill, tests, and a reviewer agent that keep quality high without you babysitting every prompt.
 - **Enough fluency to keep going alone** — the whole point of day 2 is that you leave *enabled*, not dependent on the room. Monday you open your repo and the flow is already there.
 

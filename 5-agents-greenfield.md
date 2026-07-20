@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 5 of 5` — [Welcome](./README.md)
+`Greenfield track · Exercise 5 of 6` — [Welcome](./README.md)
 
 # Exercise 5 — Capture your reviewer as an agent (greenfield)
 
@@ -54,4 +54,4 @@ Create a subagent at .claude/agents/reviewer.md that reviews my current change a
 
 ---
 
-← Previous: [Exercise 4 — Review](./4-review-greenfield.md)  ·  [You've built the loop — back to Welcome →](./README.md)
+← Previous: [Exercise 4 — Review](./4-review-greenfield.md)  ·  Next: [Exercise 6 — Make it yours →](./6-loop-greenfield.md)

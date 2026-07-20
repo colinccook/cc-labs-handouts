@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 4 of 5` — [Welcome](./README.md)
+`Brownfield track · Exercise 4 of 6` — [Welcome](./README.md)
 
 # Exercise 4 — Review the diff in a fresh context (brownfield)
 

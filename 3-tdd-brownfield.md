@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 3 of 5` — [Welcome](./README.md)
+`Brownfield track · Exercise 3 of 6` — [Welcome](./README.md)
 
 # Exercise 3 — Build it test-first (brownfield)
 
