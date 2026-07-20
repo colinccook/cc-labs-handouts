@@ -57,6 +57,8 @@ review — I'll edit it before any code.
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** the cheapest tokens you'll spend all day are the ones *before* the code — ten minutes shaping a spec saves an hour of build-it-wrong-then-fix-it rework.
+
 - **The value is your editing.** If you approve the first draft unchanged, you've just laundered a guess into a document.
 - **Keep specs concise.** Capture the detail that matters — but if a spec gets long or complicated, that's the signal to split it into smaller slices.
 - **Keep acceptance criteria testable** — you'll turn them into real tests in Exercise 3.

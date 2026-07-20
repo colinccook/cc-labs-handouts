@@ -56,6 +56,8 @@ references/ file it reads on demand. Show me the file and stop.
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** skills load *progressively* — a skill's description sits in context every turn so Claude knows it's there, but the full instructions load only when it fires. Install what you'll use, not everything: `/plugin`'s details pane shows a **context-cost estimate** (tokens added per turn) *before* you install. A skill you'll only ever trigger yourself? `disable-model-invocation: true` keeps its cost at zero until you call it.
+
 - **The `description` is the trigger** — specific and slightly pushy. The model under-triggers by default.
 - **The scaffold skill is the high-value one here** — it compounds every time your project grows a new piece.
 - **Keep `SKILL.md` tight**; push detail to a `references/` file it reads on demand.

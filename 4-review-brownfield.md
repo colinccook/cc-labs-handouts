@@ -55,6 +55,8 @@ Create a subagent at .claude/agents/reviewer.md that reviews my current change a
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** the reviewer runs on Haiku, diff-scoped and read-only — a few hundred tokens — and hands back a summary instead of dumping a whole review transcript into your session. `/clear` between tasks is the same instinct: shed context you no longer need.
+
 - **Report gaps, not style.** A reviewer told to "find problems" over-reports and nudges you toward over-engineering. Scope it to unmet criteria + real risks.
 - **Don't let AI-written tests be the only gate.** A model can write tests that match its own code rather than the spec — the independent reviewer is a second, differently-biased check (that's why TDD *and* review both earn their place).
 - **Read-only, always.** Leaving Write/Edit out of `tools:` is what stops it "helpfully" rewriting your code mid-review. (`Bash` is there for `git diff`.)

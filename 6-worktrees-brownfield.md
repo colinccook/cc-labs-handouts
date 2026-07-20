@@ -40,6 +40,8 @@ Then I'll open the worktree in a second terminal, run claude there, and have bot
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** each worktree runs its own Claude with its own clean context — parallel work never bloats one shared session.
+
 - **Each worktree needs its own `node_modules`/venv and `.env`** — the #1 surprise. That's why the setup script installs deps.
 - **Watch ports** — two dev servers on `:3000` collide. Assign per-worktree ports.
 - **Only parallelise genuinely independent work** — coupled changes just create merge pain.

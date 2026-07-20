@@ -38,6 +38,8 @@ If my prototype needs data from an external or public API, install mcp-server-de
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** a server's tool *names* load every turn (full schemas stay deferred until a tool is used), so a sprawling server still adds up — keep the toolset tiny and check `/context`.
+
 - **Skip this if your prototype has no external data source** — don't force it; the finale is the better use of time.
 - **Read-only, tiny toolset**, test credential ready.
 - Aspirational — finishing isn't the point; seeing how it wires up is.

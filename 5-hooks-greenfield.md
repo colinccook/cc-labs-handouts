@@ -41,6 +41,8 @@ Bonus: add a Stop hook that runs the test command from Exercise 3, so every stop
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** scope the test hook to changed files — running the full suite on every edit is time and tokens you rarely need to spend.
+
 - **Setting up the formatter is fair game** here if your scaffold skipped it.
 - **Test the command in a terminal first.** Hook config reloads automatically — no restart needed.
 - **Keep it fast** — scope the test hook to changed files if needed.

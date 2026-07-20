@@ -57,6 +57,8 @@ review — I'll edit it before any code.
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** the cheapest tokens you'll spend all day are the ones *before* the code — ten minutes shaping a spec saves an hour of build-it-wrong-then-fix-it rework.
+
 - **Guard against over-scoping.** Greenfield energy wants to spec the whole app — hold it to one slice from the brief.
 - **The value is your editing**, not the draft. Don't rubber-stamp.
 - **Keep acceptance criteria testable** — they become real tests in Exercise 3.

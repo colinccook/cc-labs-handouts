@@ -56,6 +56,8 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia, and run `/context` before and after to watch the always-on cost drop.
+
 - **Don't over-split.** 3–4 rule files beat 15. If a rule is short and universal, leave it in `CLAUDE.md`.
 - **`paths:` globs are the skill.** Too broad (`src/**`) and it's eager-in-disguise; too narrow and it never fires.
 - **The captured *why* is the payoff.** Your rules *and* ADRs together — not any one file — are what stop Claude from helpfully undoing a deliberate decision later.

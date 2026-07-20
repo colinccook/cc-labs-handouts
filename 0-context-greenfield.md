@@ -70,6 +70,8 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia, and run `/context` before and after to watch the always-on cost drop.
+
 - **Keep the MVP ruthlessly small.** A day and a half goes fast. The most valuable thing Claude can do in the interview is help you cut scope — let it.
 - **Don't skip the "why."** When Claude asks why you chose something, give a real answer. That reasoning is what makes ADR-0001 worth having.
 - **No tests yet — that's deliberate.** You'll stand up testing properly in the TDD exercise. A skeleton that just boots is exactly right for now.

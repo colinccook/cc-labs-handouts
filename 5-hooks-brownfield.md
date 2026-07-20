@@ -41,6 +41,8 @@ Bonus: add a Stop hook that runs my test command (the one from Exercise 3) so "d
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** scope the test hook to changed files — running the full suite on every edit is time and tokens you rarely need to spend.
+
 - **Test the command in a plain terminal first** — a wrong command string is the #1 cause of hook pain.
 - **Hook changes reload automatically** (file watcher) — no restart needed. If one doesn't fire, check `/hooks`.
 - **Heavy hooks slow the loop** — scope the test hook to changed files if your suite is slow.

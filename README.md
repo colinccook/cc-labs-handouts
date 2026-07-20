@@ -26,6 +26,8 @@ There are two ways to work with a model like this.
 
 Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. A fresh-context review so quality is checked, not assumed. Hooks so quality is automatic. Worktrees so you scale past one conversation. That's the difference between *trying* Claude and *engineering* with it.
 
+> **💰 Token-smart throughout.** Every message re-sends your context, so *how* you work is what drives what you spend. The structured loop is the cheapest habit of all: a spec stops Claude building the wrong thing and burning tokens on rework, and a runnable check ends the guess-and-retry churn. Keep an eye on `/context`, `/clear` between unrelated tasks, and watch for the **💰 Token-smart** notes in each exercise — small levers that add up.
+
 ## Pick your starting point — and switch to it now
 
 The exercises come in two tracks. **Choose one and stay on it.**

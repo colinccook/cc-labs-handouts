@@ -44,6 +44,8 @@ Now take the next slice from docs/brief.md, turn its spec's acceptance criteria 
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
+
 - **Standing up the harness takes time** — budget for it; that's expected on a fresh project.
 - **The classic cheat is weakening the test to pass** — the "never modify the test" line prevents it.
 - **"Show me the RED"** is the discipline. If Claude jumps to green, make it back up.

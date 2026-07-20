@@ -40,6 +40,8 @@ Then I'll open the worktree in a second terminal, run claude, and build both sli
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** each worktree runs its own Claude with its own clean context — parallel work never bloats one shared session.
+
 - **Pick truly independent slices** — on a new codebase this is the hard part; if they share files, don't parallelise them.
 - **Each worktree needs its own deps and a distinct port** — two skeletons on `:3000` collide.
 - **Merge early** to avoid drift between the two young branches.

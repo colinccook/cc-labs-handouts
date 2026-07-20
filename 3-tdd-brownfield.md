@@ -38,6 +38,8 @@ Now pick one small, testable unit in my task. If I'm changing existing behaviour
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
+
 - **The classic cheat is Claude weakening the test to pass.** The "never modify the test" line is what prevents it — call it out if you see it happen.
 - **Characterization tests before refactor** are the brownfield superpower: lock current behaviour, *then* change with confidence.
 - **"Show me the RED"** is the whole discipline. If it jumps to green, make it back up.
