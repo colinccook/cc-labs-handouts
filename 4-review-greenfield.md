@@ -46,6 +46,14 @@ Create a subagent at .claude/agents/reviewer.md that reviews my current change a
 
 **5. Run it, and keep working.** Trigger the reviewer — by name, or just *"review this diff against the spec."* Read its report. It ran in its own context on Haiku, read-only and diff-scoped, so it cost a fraction of a full review — and your main session is untouched.
 
+**6. Close the loop — commit, push, open a PR.** A pass isn't done until the reviewed change is a clean, single-purpose commit with a PR open for the next reviewer — a teammate, or Claude itself. (Small diffs are cheaper to review and easy to roll back.)
+
+```text
+Commit this reviewed change with a clear, focused message (what changed and why; keep the diff to this one change). Then push and open a PR summarising the change, how to test it, and any risks the review flagged.
+```
+
+That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean. *(The `commit-commands` plugin from Exercise 2 or `gh pr create` writes the PR; `/install-github-app` lets Claude review it right there — Exercise 8.)*
+
 ## What good looks like
 
 - **A committed diff** and the spec to check it against.
@@ -68,7 +76,7 @@ Create a subagent at .claude/agents/reviewer.md that reviews my current change a
 - **Compare with the built-in.** Run `/code-review low` — Claude's bundled reviewer, zero setup; low effort keeps it fast and high-confidence. Compare its findings to your agent's. Rule of thumb: the built-in for a quick pass, *your* agent when you want it spec-aware and tuned to your project's conventions.
 - **Add the security lens for free.** Run the built-in `/security-review` on the same change — a ready-made security pass that complements your correctness reviewer, nothing to build.
 - **Wire it into "done."** Foreshadowing Exercise 5: a `Stop` hook that reminds you to run the reviewer before a task is called finished, or have your main session auto-delegate to it.
-- **Run the whole loop end to end.** On a second task: spec (1) → build test-first (3) → **commit** → reviewer agent (4) → fix what it flags → **commit again**. That commit → review → fix → commit rhythm *is* the loop — feel how much faster the second pass goes.
+- **Run the whole loop end to end.** On a second task: spec (1) → build test-first (3) → **commit** → reviewer agent (4) → fix what it flags → **commit** → **open a PR**. That spec → build → review → commit → PR rhythm *is* the loop — feel how much faster the second pass goes.
 
 ---
 

@@ -13,7 +13,7 @@ Over the next day and a half you'll take the individual moves you learned and st
 ## What you'll walk away with
 
 - **A running thing *you* built** — on the code you brought, or on a new idea you started here.
-- **A repeatable spec → build → test loop** you can point at any feature, any repo.
+- **A repeatable spec → build → test → review → PR loop** you can point at any feature, any repo.
 - **Guardrails that travel with the code** — context files, tests, a reviewer agent, and hooks that keep quality high without you babysitting every prompt.
 - **Enough fluency to keep going alone** — the whole point of day 2 is that you leave *enabled*, not dependent on the room. Monday you open your repo and the flow is already there.
 
@@ -37,7 +37,7 @@ The exercises come in two tracks. **Choose one and stay on it.**
 
 **No code of your own on the day?** Use the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — every technique works there too.
 
-> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. And **use source control**: initialise git if you haven't, and commit regularly as you go, so you can always see what Claude changed and roll back a step you don't like. You can even ask Claude to commit for you.
+> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. **Set up source control *with a remote*:** initialise git if you haven't, and make sure you have a remote you can push to — if your work repo isn't suitable, **create a personal repo (GitHub/GitLab) for the day**. Commit regularly as you go (you can ask Claude to commit for you) so you can always see what changed and roll back a step you don't like — and so you can push and open a PR, because the loop ends in one.
 
 ## How the day flows
 
