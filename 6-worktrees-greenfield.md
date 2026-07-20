@@ -1,6 +1,6 @@
-`Greenfield track · Exercise 5 of 8` — [Welcome](./README.md)
+`Greenfield track · Exercise 6 of 8` — [Welcome](./README.md)
 
-# Exercise 5 — Run two Claudes at once (greenfield)
+# Exercise 6 — Run two Claudes at once (greenfield)
 
 **Track:** Greenfield · **Time:** ~30 min
 **Builds on:** the MVP slices listed in `docs/brief.md`. · **Adds to your build:** two slices built in parallel, cleanly merged.
@@ -52,4 +52,4 @@ Then I'll open the worktree in a second terminal, run claude, and build both sli
 
 ---
 
-← Previous: [Exercise 4 — Hooks](./4-hooks-greenfield.md)  ·  Next: [Exercise 6 — Subagents (optional) →](./6-subagents-greenfield.md)
+← Previous: [Exercise 5 — Hooks](./5-hooks-greenfield.md)  ·  Next: [Exercise 7 — MCP (optional) →](./7-mcp-greenfield.md)

@@ -56,4 +56,4 @@ Now take the next slice from docs/brief.md, turn its spec's acceptance criteria 
 
 ---
 
-← Previous: [Exercise 2 — Skills](./2-skills-greenfield.md)  ·  Next: [Exercise 4 — Hooks →](./4-hooks-greenfield.md)
+← Previous: [Exercise 2 — Skills](./2-skills-greenfield.md)  ·  Next: [Exercise 4 — Review →](./4-review-greenfield.md)

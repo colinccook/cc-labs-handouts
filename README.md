@@ -4,7 +4,7 @@
 
 **Part 1** gave you the pieces: what Claude Code is, how to prompt it, the tools it can reach, where it fits in your day. **Part 2 is where those pieces become a workflow** — and where you stop practising on toy examples and start applying everything to a real solution you care about.
 
-Over the next day and a half you'll take the individual moves you learned and stack them into one repeatable loop: **set up context → spec → build → test → automate → scale.** By the time you leave, that loop won't be a slide — it'll be running in your own repo, and you'll know how to keep using it on Monday.
+Over the next day and a half you'll take the individual moves you learned and stack them into one repeatable loop: **set up context → spec → build → test → review → automate → scale.** By the time you leave, that loop won't be a slide — it'll be running in your own repo, and you'll know how to keep using it on Monday.
 
 > **This is a build, not a demo.** Each exercise leaves a real artifact in your project. Nothing here is throwaway — you're doing the actual work, just faster, and learning the technique by shipping with it.
 
@@ -14,7 +14,7 @@ Over the next day and a half you'll take the individual moves you learned and st
 
 - **A running thing *you* built** — on the code you brought, or on a new idea you started here.
 - **A repeatable spec → build → test loop** you can point at any feature, any repo.
-- **Guardrails that travel with the code** — context files, tests, hooks, and subagents that keep quality high without you babysitting every prompt.
+- **Guardrails that travel with the code** — context files, tests, a reviewer agent, and hooks that keep quality high without you babysitting every prompt.
 - **Enough fluency to keep going alone** — the whole point of day 2 is that you leave *enabled*, not dependent on the room. Monday you open your repo and the flow is already there.
 
 ## The through-line: agentic engineering, not vibe coding
@@ -24,7 +24,7 @@ There are two ways to work with a model like this.
 - **Vibe coding** — prompt until something looks like it works and move on. It's fast, and it's genuinely great for a prototype or spike where you're exploring an idea. The catch is that the code tends to be hard to trust or maintain once you have to live with it.
 - **Agentic engineering** — you give Claude the *context, specs, tests, and guardrails* to do real work, then you review and steer. The output is production-grade: reviewable, tested, consistent with your conventions, safe to hand to the next person.
 
-Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. Hooks so quality is automatic. Worktrees and subagents so you scale past one conversation. That's the difference between *trying* Claude and *engineering* with it.
+Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. A fresh-context review so quality is checked, not assumed. Hooks so quality is automatic. Worktrees so you scale past one conversation. That's the difference between *trying* Claude and *engineering* with it.
 
 ## Pick your starting point — and switch to it now
 

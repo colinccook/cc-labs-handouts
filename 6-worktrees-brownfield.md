@@ -1,6 +1,6 @@
-`Brownfield track · Exercise 5 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 6 of 8` — [Welcome](./README.md)
 
-# Exercise 5 — Run two Claudes at once (brownfield)
+# Exercise 6 — Run two Claudes at once (brownfield)
 
 **Track:** Brownfield · **Time:** ~30 min
 **Builds on:** the independent second task you spec'd in Exercise 1's bonus. · **Adds to your build:** two features progressed in parallel, cleanly merged.
@@ -52,4 +52,4 @@ Then I'll open the worktree in a second terminal, run claude there, and have bot
 
 ---
 
-← Previous: [Exercise 4 — Hooks](./4-hooks-brownfield.md)  ·  Next: [Exercise 6 — Subagents (optional) →](./6-subagents-brownfield.md)
+← Previous: [Exercise 5 — Hooks](./5-hooks-brownfield.md)  ·  Next: [Exercise 7 — MCP (optional) →](./7-mcp-brownfield.md)

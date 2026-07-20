@@ -50,4 +50,4 @@ Install mcp-server-dev (/plugin marketplace add anthropics/claude-plugins-offici
 
 ---
 
-← Previous: [Exercise 6 — Subagents](./6-subagents-brownfield.md)  ·  Next: [Exercise 8 — Headless CI →](./8-ci-brownfield.md)
+← Previous: [Exercise 6 — Worktrees](./6-worktrees-brownfield.md)  ·  Next: [Exercise 8 — Headless CI →](./8-ci-brownfield.md)

@@ -1,6 +1,6 @@
-`Greenfield track · Exercise 4 of 8` — [Welcome](./README.md)
+`Greenfield track · Exercise 5 of 8` — [Welcome](./README.md)
 
-# Exercise 4 — Make your guardrails automatic (greenfield)
+# Exercise 5 — Make your guardrails automatic (greenfield)
 
 **Track:** Greenfield · **Time:** ~20–30 min
 **Builds on:** the test harness from Exercise 3. · **Adds to your build:** a hook that keeps your young codebase formatted and green automatically.
@@ -53,4 +53,4 @@ Bonus: add a Stop hook that runs the test command from Exercise 3, so every stop
 
 ---
 
-← Previous: [Exercise 3 — TDD](./3-tdd-greenfield.md)  ·  Next: [Exercise 5 — Worktrees →](./5-worktrees-greenfield.md)
+← Previous: [Exercise 4 — Review](./4-review-greenfield.md)  ·  Next: [Exercise 6 — Worktrees →](./6-worktrees-greenfield.md)

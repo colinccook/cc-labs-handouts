@@ -1,6 +1,6 @@
-`Brownfield track · Exercise 4 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 5 of 8` — [Welcome](./README.md)
 
-# Exercise 4 — Make your guardrails automatic (brownfield)
+# Exercise 5 — Make your guardrails automatic (brownfield)
 
 **Track:** Brownfield · **Time:** ~20–30 min
 **Builds on:** the formatter/tests already in your repo, and the suite from Exercise 3. · **Adds to your build:** a hook that enforces quality without anyone remembering to.
@@ -54,4 +54,4 @@ Bonus: add a Stop hook that runs my test command (the one from Exercise 3) so "d
 
 ---
 
-← Previous: [Exercise 3 — TDD](./3-tdd-brownfield.md)  ·  Next: [Exercise 5 — Worktrees →](./5-worktrees-brownfield.md)
+← Previous: [Exercise 4 — Review](./4-review-brownfield.md)  ·  Next: [Exercise 6 — Worktrees →](./6-worktrees-brownfield.md)

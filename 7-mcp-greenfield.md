@@ -49,4 +49,4 @@ If my prototype needs data from an external or public API, install mcp-server-de
 
 ---
 
-← Previous: [Exercise 6 — Subagents](./6-subagents-greenfield.md)  ·  Next: [Exercise 8 — Headless CI →](./8-ci-greenfield.md)
+← Previous: [Exercise 6 — Worktrees](./6-worktrees-greenfield.md)  ·  Next: [Exercise 8 — Headless CI →](./8-ci-greenfield.md)

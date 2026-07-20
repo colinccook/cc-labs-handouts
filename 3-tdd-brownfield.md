@@ -45,9 +45,9 @@ Now pick one small, testable unit in my task. If I'm changing existing behaviour
 ## 🎁 Bonus — go further
 
 - **Backfill a test for a past bug.** Reproduce it as a failing test first, then confirm the fix keeps it green — that bug can never silently return.
-- **Machine-check "done."** Foreshadowing Exercise 4: imagine a hook that runs this suite automatically so green isn't a matter of trust.
+- **Machine-check "done."** Foreshadowing Exercise 5: imagine a hook that runs this suite automatically so green isn't a matter of trust.
 - **Raise coverage on a risky module** by characterization-testing it before your next change there.
 
 ---
 
-← Previous: [Exercise 2 — Skills](./2-skills-brownfield.md)  ·  Next: [Exercise 4 — Hooks →](./4-hooks-brownfield.md)
+← Previous: [Exercise 2 — Skills](./2-skills-brownfield.md)  ·  Next: [Exercise 4 — Review →](./4-review-brownfield.md)
