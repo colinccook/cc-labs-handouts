@@ -5,7 +5,7 @@
 **Track:** Brownfield — you brought a repo you already work in.
 **Time:** ~30 min · **You'll leave with:** a thin `CLAUDE.md`, a set of `.claude/rules/`, and at least one decision captured as an ADR.
 
-> **The bigger picture:** these exercises aren't about *trying out* Claude Code — they're about turning it into a permanent part of how you ship. Each one leaves a real improvement in your repo, and by the end of day 2 you'll have a repeatable spec → build → test loop running on your own code, making you measurably faster. This first exercise gives Claude the context to stop guessing about your project.
+> **The bigger picture:** these exercises aren't about *trying out* Claude Code — they're about turning it into a permanent part of how you ship. Each one leaves a real improvement in your repo, and by the end of day 2 you'll have a repeatable spec → build → test → review loop running on your own code, making you measurably faster. This first exercise gives Claude the context to stop guessing about your project.
 
 ---
 
@@ -22,42 +22,68 @@ Claude is only as good as the context it carries into each message — your comm
 
 ## Steps
 
-**1. Propose the context setup.** Paste this — Claude inventories your existing docs and proposes a modular setup (a thin `CLAUDE.md` plus rules), then stops for your approval:
+**1. Start with `/init`.** Run it — Claude scans the repo and generates a starter `CLAUDE.md` (build/test commands, structure, conventions it can infer). This is the recommended starting point; don't hand-write from a blank page.
 
 ```text
-Analyse this repo — config, layout, a few source files. First inventory the docs I
-already have (README.md, docs/, ADRs, CONTRIBUTING.md) because CLAUDE.md should point
-at those, not duplicate them. Then propose a modular context setup:
-
-1. A thin root CLAUDE.md (<40 lines): commands, ~5 always-true rules, and a "where the
-   detail lives" section linking my existing docs by path.
-2. .claude/rules/*.md splitting concerns — conventions.md + testing.md (always-on),
-   plus one paths:-scoped lazy rule per major code area (api, ui, db) with the right glob.
-3. If I have ADRs, a tiny always-on architecture.md rule pointing at docs/adr/.
-   Don't duplicate docs I already have.
-4. If this is a large repo or monorepo, tell me whether a nested .claude/ (or CLAUDE.md)
-   inside a subproject would help — context that loads only when I'm working in that
-   area — and where you'd put it.
-
-Show me the file tree and each file's contents, and STOP for approval before creating anything.
+/init
 ```
 
-**2. Review and create.** Read the proposal. Trim anything bloated, fix anything wrong, then let it create the files.
+**2. Take it to a proper, modular setup.** `/init` gives you one file — now make it best-practice. Paste this; Claude proposes the modular structure and stops for your approval:
 
-**3. Capture a decision as an ADR — by hand.** Find an **architecture decision or pattern** already baked into your code or a long CLAUDE.md (a "we do X, not Y, because Z" kind of thing) and ask Claude to capture it as an ADR — **add a new one to your existing `docs/adr/`, or if you don't have any yet, make it your solution's first ADR** (`docs/adr/0001-*.md`) — with a one-line pointer left behind.
+```text
+I've just run /init, so there's a starter CLAUDE.md in the repo. Take it to a proper,
+lean, modular setup — don't just leave one big file.
+
+First inventory the docs I already have (README, docs/, any ADRs, CONTRIBUTING) —
+CLAUDE.md should point at those, not duplicate them. Then propose:
+
+1. A thin root CLAUDE.md (aim under ~40 lines): the key commands, ~5 always-true
+   rules, and a "where the detail lives" section linking my existing docs by path.
+   Trim anything /init added that you could just read from the code.
+2. .claude/rules/ splitting concerns: a conventions.md that's always-on (eager),
+   plus one or more paths:-scoped rules (lazy — loaded only when I touch that area,
+   e.g. api, ui, db) with the right globs.
+3. If I have ADRs, a small always-on architecture.md rule pointing at docs/adr/.
+4. If this is a large repo or monorepo, tell me whether a nested CLAUDE.md inside a
+   subproject would help — context that loads only when I work in that area — and
+   where you'd put it.
+
+Show me the proposed file tree and each file's contents, and STOP for my approval
+before creating or changing anything.
+```
+
+**3. Review and create.** Read the proposal. Trim anything bloated, fix anything wrong, then let it create the files.
+
+**4. Capture architecture decisions as ADRs — Claude suggests, you approve.** The point is that Claude knows the *why* behind your architecture and can defend it later. Paste this:
+
+```text
+Help me capture architecture decisions as ADRs. First review the codebase (and any
+existing docs/adr/) and SUGGEST two or three decisions or conventions that aren't written
+down yet — e.g. the stack choice, a layering rule, a data-access pattern. Don't write
+anything yet: show me the candidates and wait for me to pick.
+
+Then, for the one(s) I approve, write each to docs/adr/NNNN-<slug>.md in a short standard
+ADR format (context, decision, consequences). Finally, create or update
+.claude/rules/architecture.md (always-on) so it points at docs/adr/ as the home for these
+decisions AND says when a new ADR is required — breaking changes, and decisions that are
+costly to reverse. Make sure CLAUDE.md references it. Show me everything and stop.
+```
+
+Review its suggestions before it writes anything — you're the one who knows which decisions actually matter.
 
 ## What good looks like
 
 By the end you should have, and be able to point at:
 
-- **A thin `CLAUDE.md`** that *routes* to your docs instead of restating them — run `/context` and see how little it costs.
+- **A thin `CLAUDE.md`** that *routes* to your docs instead of restating them.
 - **`.claude/rules/`** with a couple of always-on rules and at least one `paths:`-scoped rule that only loads when Claude touches that area.
 - **At least one ADR** (`docs/adr/`) capturing a real decision that used to live only in someone's head — plus the tiny `architecture.md` rule pointing at it.
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia, and run `/context` before and after to watch the always-on cost drop.
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. It's a balancing act: too little and Claude guesses, too much and the rules that matter get lost in the noise. Keep it a table of contents, not an encyclopedia. Run `/context` after your setup to see the always-on cost; trim CLAUDE.md, run `/context` again, and watch that number drop (no `/clear` needed — re-running `/context` is what refreshes it).
 
+- **Know your controls.** `/model` switches model, `/effort` sets reasoning effort (`low`→`max`), and adding `ultrathink` to a prompt forces a one-off deeper pass. You'll pick models per step as you go — a stronger model for specs, Haiku for the cheap review later.
 - **Don't over-split.** 3–4 rule files beat 15. If a rule is short and universal, leave it in `CLAUDE.md`.
 - **`paths:` globs are the skill.** Too broad (`src/**`) and it's eager-in-disguise; too narrow and it never fires.
 - **The captured *why* is the payoff.** Your rules *and* ADRs together — not any one file — are what stop Claude from helpfully undoing a deliberate decision later.
@@ -67,10 +93,7 @@ By the end you should have, and be able to point at:
 
 Done early, or want to push it? Try any of these:
 
-- **Prove the ADR guardrail works.** Ask Claude to make a change that quietly contradicts the decision you just captured. With the `architecture.md` rule in place it should *push back* and cite the ADR rather than just doing it. That pushback is the whole point.
-- **Try an emphatic rule.** Rewrite one rule as a `YOU MUST …` / `NEVER …` line and watch how much harder Claude leans on it than a softly-worded version. Save the strong phrasing for the rules that really matter.
-- **Compare against `/init`.** Run `/init` and see the `CLAUDE.md` Claude generates on its own, then diff it against your hand-tuned thin one. Or even change the prompt above to tell claude to make use of the `init` skill in the first place.
-- **See the before/after budget.** Run `/context` before and after this exercise and watch the always-on token count drop. Also note that as your session goes on the context window fills up. 
+- **Prove the ADR guardrail works.** Ask Claude to make a change that quietly contradicts the decision you just captured. With the `architecture.md` rule in place it should *push back* and cite the ADR rather than just doing it. If it doesn't, strengthen the rule with a `YOU MUST` / `IMPORTANT` directive and try again — watch how much harder Claude leans on the emphatic phrasing. That pushback is the whole point.
 
 ---
 

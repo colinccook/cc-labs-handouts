@@ -16,8 +16,9 @@ Everything you've built connects into a single repeatable cycle:
 1. **Thin context** — CLAUDE.md + rules point Claude at your `docs/brief.md` and ADRs *(Ex 1)*.
 2. **Spec** — `/specify` drafts it; you edit until the acceptance criteria are right *(Ex 2–3)*.
 3. **Build test-first** — RED → GREEN, so "done" is proven *(Ex 4)*.
-4. **Review** — the `reviewer` agent checks the diff against the spec in a fresh context *(Ex 5–6)*.
-5. **Commit / PR** — a clean, reviewed diff, ready for a human.
+4. **Review** — the `reviewer` agent checks the working diff against the spec in a fresh context *(Ex 5–6)*.
+5. **Fix** — apply what the review flagged.
+6. **Commit & open a PR** — a clean, reviewed diff, ready for a human.
 
 Then `/clear` and go again. Each pass should feel faster and cleaner than the last.
 

@@ -46,7 +46,7 @@ The exercises come in two tracks. **Choose one and stay on it.**
 2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
 3. Finished early? Every exercise has a **🎁 Bonus** to push further.
 
-There are **seven exercises (1–7)**, and they **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track.
+There are **seven exercises (1–7)**, and they **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track. The stated times are rough: a few exercises (2, 4, 6) fold in a real build step that can run long — that's *by design*. Exercise 7 is open-ended and soaks up whatever build time is left, so don't feel behind if the earlier ones overrun.
 
 > **The setup is the start, not the whole thing.** Each exercise gets Claude *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Claude produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
 
