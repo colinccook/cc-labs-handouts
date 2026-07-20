@@ -1,9 +1,9 @@
-`Greenfield track · Exercise 3 of 8` — [Welcome](./README.md)
+`Greenfield track · Exercise 4 of 7` — [Welcome](./README.md)
 
-# Exercise 3 — Build it test-first (greenfield)
+# Exercise 4 — Build it test-first (greenfield)
 
 **Track:** Greenfield · **Time:** ~30 min
-**Builds on:** the running feature from Exercise 1. · **Adds to your build:** your first test harness, and a feature built entirely RED → GREEN.
+**Builds on:** the running feature from Exercise 2. · **Adds to your build:** your first test harness, and a feature built entirely RED → GREEN.
 
 > **Why it matters:** left alone, Claude writes the test and the code together — so the test can't catch a broken implementation. Forcing **RED → GREEN → REFACTOR** turns tests into a real safety net and gives Claude an objective "am I done" signal. Your project has had no tests until now — deliberately. This is where that changes.
 
@@ -15,7 +15,7 @@ Two steps: first stand up a test framework (your skeleton has none yet — that 
 
 ## Before you start
 
-- Exercise 1 done (a working first feature) and, ideally, a spec for the *next* slice.
+- Exercise 2 done (a working first feature) and, ideally, a spec for the *next* slice.
 - Know your stack from `docs/adr/0001-initial-stack.md` — it picks your test runner.
 
 ## Steps
@@ -44,16 +44,18 @@ Now take the next slice from docs/brief.md, turn its spec's acceptance criteria 
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
+
 - **Standing up the harness takes time** — budget for it; that's expected on a fresh project.
 - **The classic cheat is weakening the test to pass** — the "never modify the test" line prevents it.
 - **"Show me the RED"** is the discipline. If Claude jumps to green, make it back up.
 
 ## 🎁 Bonus — go further
 
-- **Retro-test Exercise 1's feature.** Write a characterization test that locks in what you built earlier, so future changes can't silently break it.
+- **Retro-test Exercise 2's feature.** Write a characterization test that locks in what you built earlier, so future changes can't silently break it.
 - **Machine-check "done"** — next exercise wires a hook to run this suite automatically.
 - **Add a coverage command** to `CLAUDE.md` so you can see what's protected as the MVP grows.
 
 ---
 
-← Previous: [Exercise 2 — Skills](./2-skills-greenfield.md)  ·  Next: [Exercise 4 — Hooks →](./4-hooks-greenfield.md)
+← Previous: [Exercise 3 — Skills](./3-skills-greenfield.md)  ·  Next: [Exercise 5 — Review →](./5-review-greenfield.md)

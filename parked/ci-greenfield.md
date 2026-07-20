@@ -35,6 +35,8 @@ That's headless Claude: `-p` runs the full agent loop once and prints the result
 - Try `/install-github-app` once your prototype is on a repo you own.
 - Useful one-liners: changelog from commits, flag tech-debt, auto-fix a failing test.
 
+> **💰 Token-smart:** `--max-turns`, `--allowedTools`, a cheaper `--model`, and piping only the diff (not the whole repo) are what keep an unattended run from quietly running up a bill.
+
 ## Guardrails (so nobody does something scary Monday)
 
 - **API key is always a CI secret** — never in the workflow file or logs.

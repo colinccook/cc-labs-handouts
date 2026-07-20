@@ -38,6 +38,8 @@ Install mcp-server-dev (/plugin marketplace add anthropics/claude-plugins-offici
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** a server's tool *names* load every turn (full schemas stay deferred until a tool is used), so a sprawling server still adds up — keep the toolset tiny and check `/context`.
+
 - **Read-only only** — reads, never writes.
 - **Have a test credential ready** or demo against a mock/sandbox API; auth stalls rooms.
 - **Keep the toolset tiny** — many tools eat context; check with `/context`.
@@ -50,4 +52,4 @@ Install mcp-server-dev (/plugin marketplace add anthropics/claude-plugins-offici
 
 ---
 
-← Previous: [Exercise 6 — Subagents](./6-subagents-brownfield.md)  ·  Next: [Exercise 8 — Headless CI →](./8-ci-brownfield.md)
+← Previous: [Exercise 6 — Worktrees](./6-worktrees-brownfield.md)  ·  Next: [Exercise 8 — Headless CI →](./8-ci-brownfield.md)

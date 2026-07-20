@@ -1,0 +1,57 @@
+`Brownfield track · Exercise 6 of 7` — [Welcome](./README.md)
+
+# Exercise 6 — Capture your reviewer as an agent (brownfield)
+
+**Track:** Brownfield · **Time:** ~30 min
+**Builds on:** the fresh-context review you ran by hand in Exercise 5. · **Adds to your build:** a reusable, read-only reviewer subagent — and the pattern for building agents for any repeatable job.
+
+> **Why it matters:** doing the fresh-context review by hand means `/clear`-ing every time — and losing the session you were working in. A **subagent** runs in its *own* isolated context, so it gives you the same fresh-context review *on demand*, without ending your session: it gathers the diff and spec itself, and hands back findings to act on. Same beat as the `/specify` skill in Exercise 3 — do it by hand, then capture it — except a review needs *isolation*, which is exactly what an agent gives you and a skill (running in your current session) can't.
+
+---
+
+## Why this exercise
+
+You'll turn the by-hand review into a `.claude/agents/reviewer.md` — cheap (Haiku), read-only, diff-scoped — and run it against a change. That teaches the pattern for agents in general: any time you want the *same specialist judgement, repeatably, in its own clean context*, you reach for one.
+
+## Before you start
+
+- Exercise 5 done — you've reviewed by hand and know what a good review looks like.
+- A committed change and its spec to point the agent at.
+
+## Steps
+
+**1. Capture the review as an agent.** Paste this to build a cheap, read-only reviewer that carries its own fresh context:
+
+```text
+Create a subagent at .claude/agents/reviewer.md that reviews my current change against its spec, without fixing. Frontmatter: name: reviewer; a description listing trigger phrases ("review the diff", "review against the spec"); model: haiku (keep it cheap); and tools: Read, Bash, Glob, Grep (no Write or Edit — it must review, not change code). Body — the steps to run: (1) run git diff against the base branch; (2) read the relevant specs/<feature>.md and my CLAUDE.md / .claude/rules for conventions; (3) map every acceptance criterion to the diff; (4) report unmet criteria, correctness/security risks with evidence, and any out-of-scope changes; (5) do NOT fix — report only, ending with a verdict: ship / needs-changes / discuss. Show me the file and stop.
+```
+
+**2. Run it, and keep working.** Trigger the reviewer — by name, or just *"review this diff against the spec."* Read its report. It ran in its own context on Haiku, read-only and diff-scoped, so it cost a fraction of a full review — and your main session is untouched.
+
+**3. Close the loop with it.** Now a pass ends without `/clear`-ing anything: build test-first → **reviewer agent** → fix → commit → PR. Run a full pass this way on a second change and feel how much faster the review step gets.
+
+## What good looks like
+
+- **`.claude/agents/reviewer.md`** — read-only (no Write/Edit), Haiku, single-purpose.
+- **A review produced in its own context**, with your main session untouched.
+- A clear sense of *when* you'd reach for an agent versus asking the main session.
+
+## Tips & watch-outs
+
+> **💰 Token-smart:** the reviewer runs on Haiku, diff-scoped and read-only — a few hundred tokens — and hands back a summary, not a whole transcript, so your session stays lean.
+
+- **Read-only, always.** Leaving Write/Edit out of `tools:` is what stops it "helpfully" rewriting your code mid-review. (`Bash` is there for `git diff`.)
+- **Sharp system prompt = sharp output.** Tell it what to *ignore* as well as what to check.
+- **Report gaps, not style** — same discipline as the by-hand review.
+- **Keep the toolset minimal** — a reviewer rarely needs more than read + git.
+
+## 🎁 Bonus — go further
+
+- **Compare with the built-in.** `/code-review low` is the bundled reviewer — no agent to build. Rule of thumb: the built-in for a quick pass, *your* agent when you want it spec-aware and tuned to your conventions.
+- **Build a second agent — the pattern is the point.** Capture any repeatable specialist job as its own `.claude/agents/*.md`: a test-writer that follows your RED-GREEN loop, a migration-checker, a docs-updater. Try one for your workflow.
+- **Run the whole loop end to end.** On a second task: spec (2) → build test-first (4) → **reviewer agent** → fix → **commit** → **open a PR**. That rhythm *is* the loop — feel how much faster the second pass goes.
+- **Automate it later.** You could have a hook run the reviewer automatically, or your main session auto-delegate to it before calling a task done — that's where automation goes next.
+
+---
+
+← Previous: [Exercise 5 — Review](./5-review-brownfield.md)  ·  Next: [Exercise 7 — Make it yours →](./7-loop-brownfield.md)

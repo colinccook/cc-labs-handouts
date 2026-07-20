@@ -1,11 +1,11 @@
-`Brownfield track · Exercise 2 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 3 of 7` — [Welcome](./README.md)
 
-# Exercise 2 — Turn your workflow into a skill (brownfield)
+# Exercise 3 — Turn your workflow into a skill (brownfield)
 
 **Track:** Brownfield · **Time:** ~30 min
-**Builds on:** the spec-drafting you did by hand in Exercise 1. · **Adds to your build:** a `/specify` skill, plus one skill for a task you repeat.
+**Builds on:** the spec-drafting you did by hand in Exercise 2. · **Adds to your build:** a `/specify` skill, plus one skill for a task you repeat.
 
-> **Why it matters:** a skill captures *the way you do X here* once, so it persists across sessions and teammates — and fires automatically when a task matches. In Exercise 1 you typed a paragraph to make Claude draft a spec. You'll type it again every feature… unless you capture it.
+> **Why it matters:** a skill captures *the way you do X here* once, so it persists across sessions and teammates — and fires automatically when a task matches. In Exercise 2 you typed a paragraph to make Claude draft a spec. You'll type it again every feature… unless you capture it.
 
 ---
 
@@ -15,7 +15,7 @@ You'll build two skills. First `/specify` — turning last exercise's repetitive
 
 ## Before you start
 
-- Exercise 1 done — you've got a `specs/_template.md` and a spec-drafting flow fresh in mind.
+- Exercise 2 done — you've got a `specs/_template.md` and a spec-drafting flow fresh in mind.
 - A task in your repo you do identically each time (a component, a migration, a PR write-up…).
 
 ## Steps
@@ -55,6 +55,8 @@ file the skill reads on demand. Show me the file and stop.
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** skills load *progressively* — a skill's description sits in context every turn so Claude knows it's there, but the full instructions load only when it fires. Install what you'll use, not everything: `/plugin`'s details pane shows a **context-cost estimate** (tokens added per turn) *before* you install. A skill you'll only ever trigger yourself? `disable-model-invocation: true` keeps its cost at zero until you call it.
+
 - **The `description` is the trigger.** Make it specific and slightly pushy — list the phrases that should fire it. The model tends to *under*-trigger skills.
 - **Keep `SKILL.md` under ~500 lines**; push detail into a `references/` file it reads only when needed.
 - **Best candidates:** anything with a fixed sequence of steps, org conventions, or "the boring bit."
@@ -68,4 +70,4 @@ file the skill reads on demand. Show me the file and stop.
 
 ---
 
-← Previous: [Exercise 1 — Spec-driven](./1-spec-brownfield.md)  ·  Next: [Exercise 3 — TDD →](./3-tdd-brownfield.md)
+← Previous: [Exercise 2 — Spec-driven](./2-spec-brownfield.md)  ·  Next: [Exercise 4 — TDD →](./4-tdd-brownfield.md)

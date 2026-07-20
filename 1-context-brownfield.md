@@ -1,6 +1,6 @@
-`Brownfield track · Exercise 0 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 1 of 7` — [Welcome](./README.md)
 
-# Exercise 0 — Set up your repo's context (brownfield)
+# Exercise 1 — Set up your repo's context (brownfield)
 
 **Track:** Brownfield — you brought a repo you already work in.
 **Time:** ~30 min · **You'll leave with:** a thin `CLAUDE.md`, a set of `.claude/rules/`, and at least one decision captured as an ADR.
@@ -56,6 +56,8 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia, and run `/context` before and after to watch the always-on cost drop.
+
 - **Don't over-split.** 3–4 rule files beat 15. If a rule is short and universal, leave it in `CLAUDE.md`.
 - **`paths:` globs are the skill.** Too broad (`src/**`) and it's eager-in-disguise; too narrow and it never fires.
 - **The captured *why* is the payoff.** Your rules *and* ADRs together — not any one file — are what stop Claude from helpfully undoing a deliberate decision later.
@@ -72,4 +74,4 @@ Done early, or want to push it? Try any of these:
 
 ---
 
-← Previous: [Welcome](./README.md)  ·  Next: [Exercise 1 — Spec-driven development →](./1-spec-brownfield.md)
+← Previous: [Welcome](./README.md)  ·  Next: [Exercise 2 — Spec-driven development →](./2-spec-brownfield.md)

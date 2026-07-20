@@ -1,9 +1,9 @@
-`Brownfield track · Exercise 1 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 2 of 7` — [Welcome](./README.md)
 
-# Exercise 1 — Write the spec before you build (brownfield)
+# Exercise 2 — Write the spec before you build (brownfield)
 
 **Track:** Brownfield · **Time:** ~30 min
-**Builds on:** the context files from Exercise 0. · **Adds to your build:** a reusable spec template, your first written spec, and a real task implemented from it.
+**Builds on:** the context files from Exercise 1. · **Adds to your build:** a reusable spec template, your first written spec, and a real task implemented from it.
 
 > **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to keep Claude aimed at what you actually meant: it moves the thinking upstream, where changing your mind is still free. The spec is the contract; the code is just one implementation of it.
 
@@ -17,7 +17,7 @@ You're going to resist the urge to say "build X" and instead pin the *what* down
 
 ## Before you start
 
-- Exercise 0 done (Claude has your context and can read your ADRs).
+- Exercise 1 done (Claude has your context and can read your ADRs).
 - One of the real tasks you brought — a feature, a bug, or a focused change.
 
 ## Steps
@@ -57,9 +57,11 @@ review — I'll edit it before any code.
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** the cheapest tokens you'll spend all day are the ones *before* the code — ten minutes shaping a spec saves an hour of build-it-wrong-then-fix-it rework.
+
 - **The value is your editing.** If you approve the first draft unchanged, you've just laundered a guess into a document.
 - **Keep specs concise.** Capture the detail that matters — but if a spec gets long or complicated, that's the signal to split it into smaller slices.
-- **Keep acceptance criteria testable** — you'll turn them into real tests in Exercise 3.
+- **Keep acceptance criteria testable** — you'll turn them into real tests in Exercise 4.
 - **Don't over-spec** a one-line fix. Spec the risky, ambiguous work.
 
 ## 🎁 Bonus — go further
@@ -70,4 +72,4 @@ review — I'll edit it before any code.
 
 ---
 
-← Previous: [Exercise 0 — Context setup](./0-context-brownfield.md)  ·  Next: [Exercise 2 — Skills →](./2-skills-brownfield.md)
+← Previous: [Exercise 1 — Context setup](./1-context-brownfield.md)  ·  Next: [Exercise 3 — Skills →](./3-skills-brownfield.md)

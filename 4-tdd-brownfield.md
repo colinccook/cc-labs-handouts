@@ -1,9 +1,9 @@
-`Brownfield track · Exercise 3 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 4 of 7` — [Welcome](./README.md)
 
-# Exercise 3 — Build it test-first (brownfield)
+# Exercise 4 — Build it test-first (brownfield)
 
 **Track:** Brownfield · **Time:** ~30 min
-**Builds on:** the testable acceptance criteria you wrote in Exercise 1. · **Adds to your build:** a RED-GREEN rule, and code change locked behind real tests.
+**Builds on:** the testable acceptance criteria you wrote in Exercise 2. · **Adds to your build:** a RED-GREEN rule, and code change locked behind real tests.
 
 > **Why it matters:** left alone, Claude writes the test and the implementation together — so the test can't actually catch a broken implementation. Forcing **RED → GREEN → REFACTOR** turns tests into a real safety net *and* gives the agent an objective "am I done" signal. Especially powerful on existing code you're scared to break.
 
@@ -38,6 +38,8 @@ Now pick one small, testable unit in my task. If I'm changing existing behaviour
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
+
 - **The classic cheat is Claude weakening the test to pass.** The "never modify the test" line is what prevents it — call it out if you see it happen.
 - **Characterization tests before refactor** are the brownfield superpower: lock current behaviour, *then* change with confidence.
 - **"Show me the RED"** is the whole discipline. If it jumps to green, make it back up.
@@ -45,9 +47,9 @@ Now pick one small, testable unit in my task. If I'm changing existing behaviour
 ## 🎁 Bonus — go further
 
 - **Backfill a test for a past bug.** Reproduce it as a failing test first, then confirm the fix keeps it green — that bug can never silently return.
-- **Machine-check "done."** Foreshadowing Exercise 4: imagine a hook that runs this suite automatically so green isn't a matter of trust.
+- **Machine-check "done."** Imagine a hook that runs this suite automatically so green isn't a matter of trust — the kind of automation you can layer on once the loop is solid.
 - **Raise coverage on a risky module** by characterization-testing it before your next change there.
 
 ---
 
-← Previous: [Exercise 2 — Skills](./2-skills-brownfield.md)  ·  Next: [Exercise 4 — Hooks →](./4-hooks-brownfield.md)
+← Previous: [Exercise 3 — Skills](./3-skills-brownfield.md)  ·  Next: [Exercise 5 — Review →](./5-review-brownfield.md)

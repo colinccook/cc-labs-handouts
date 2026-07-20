@@ -1,9 +1,9 @@
-`Greenfield track · Exercise 1 of 8` — [Welcome](./README.md)
+`Greenfield track · Exercise 2 of 7` — [Welcome](./README.md)
 
-# Exercise 1 — Write the spec before you build (greenfield)
+# Exercise 2 — Write the spec before you build (greenfield)
 
 **Track:** Greenfield · **Time:** ~30 min
-**Builds on:** your `docs/brief.md` and running skeleton from Exercise 0. · **Adds to your build:** a reusable spec template, your first feature spec, and the first real feature on top of the skeleton.
+**Builds on:** your `docs/brief.md` and running skeleton from Exercise 1. · **Adds to your build:** a reusable spec template, your first feature spec, and the first real feature on top of the skeleton.
 
 > **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to stay aimed at what you meant. On day one you wrote a *brief* — the whole product at a glance. Now you'll **spec a single slice of it** properly and build that slice.
 
@@ -17,7 +17,7 @@ Your brief says *what the product is*. A spec says *how one feature behaves* —
 
 ## Before you start
 
-- Exercise 0 done: `docs/brief.md`, a running skeleton, and `docs/adr/0001-initial-stack.md` in place.
+- Exercise 1 done: `docs/brief.md`, a running skeleton, and `docs/adr/0001-initial-stack.md` in place.
 - A rough sense of which slices of your MVP might be the first thing to build (Claude will help you choose).
 
 ## Steps
@@ -57,9 +57,11 @@ review — I'll edit it before any code.
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** the cheapest tokens you'll spend all day are the ones *before* the code — ten minutes shaping a spec saves an hour of build-it-wrong-then-fix-it rework.
+
 - **Guard against over-scoping.** Greenfield energy wants to spec the whole app — hold it to one slice from the brief.
 - **The value is your editing**, not the draft. Don't rubber-stamp.
-- **Keep acceptance criteria testable** — they become real tests in Exercise 3.
+- **Keep acceptance criteria testable** — they become real tests in Exercise 4.
 - **First appearance of `specs/`** — the word "spec" starts here; your day-one file stays the *brief*.
 
 ## 🎁 Bonus — go further
@@ -72,4 +74,4 @@ review — I'll edit it before any code.
 
 ---
 
-← Previous: [Exercise 0 — Project setup](./0-context-greenfield.md)  ·  Next: [Exercise 2 — Skills →](./2-skills-greenfield.md)
+← Previous: [Exercise 1 — Project setup](./1-context-greenfield.md)  ·  Next: [Exercise 3 — Skills →](./3-skills-greenfield.md)

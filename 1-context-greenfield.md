@@ -1,6 +1,6 @@
-`Greenfield track · Exercise 0 of 8` — [Welcome](./README.md)
+`Greenfield track · Exercise 1 of 7` — [Welcome](./README.md)
 
-# Exercise 0 — Set up your project and its context (greenfield)
+# Exercise 1 — Set up your project and its context (greenfield)
 
 **Track:** Greenfield — you're starting something new from an empty folder.
 **Time:** ~30 min · **You'll leave with:** a running skeleton, a short product brief, and a CLAUDE.md that keeps Claude on the rails from here on.
@@ -70,6 +70,8 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia, and run `/context` before and after to watch the always-on cost drop.
+
 - **Keep the MVP ruthlessly small.** A day and a half goes fast. The most valuable thing Claude can do in the interview is help you cut scope — let it.
 - **Don't skip the "why."** When Claude asks why you chose something, give a real answer. That reasoning is what makes ADR-0001 worth having.
 - **No tests yet — that's deliberate.** You'll stand up testing properly in the TDD exercise. A skeleton that just boots is exactly right for now.
@@ -85,4 +87,4 @@ Done early, or want to push it? Try any of these:
 
 ---
 
-← Previous: [Welcome](./README.md)  ·  Next: [Exercise 1 — Spec-driven development →](./1-spec-greenfield.md)
+← Previous: [Welcome](./README.md)  ·  Next: [Exercise 2 — Spec-driven development →](./2-spec-greenfield.md)
