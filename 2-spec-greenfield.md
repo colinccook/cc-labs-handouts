@@ -47,7 +47,7 @@ review — I'll edit it before any code.
 
 **3. Edit the spec.** Pin the behaviour, edge cases, and testable acceptance criteria. Hold it to *one* slice. This is where the value is.
 
-**4. Then implement it — in Plan Mode.** Once the spec is right, **switch to Plan Mode** (`shift`+`tab`) and tell Claude to implement the spec. Read the plan it proposes, approve it, then let it build. Driving that step is part of the exercise.
+**4. Then implement it — in Plan Mode.** Once the spec is right, **switch to Plan Mode** (`shift`+`tab`) and tell Claude to implement the spec. **Review the plan it proposes, edit it if needed, and approve it** — then let it build. Driving that step is part of the exercise.
 
 **5. Lock the spec-first workflow in as a rule.** So this isn't something you have to remember every time, capture it as an always-on rule:
 
@@ -76,7 +76,7 @@ Now every future feature starts spec-first by default — enforced, not remember
 
 - **Try the anti-demo.** On a scratch branch, ask Claude to build the slice with no spec, and compare to your spec'd version — the gap is the value, made visible.
 - **Tighten your spec prompt.** Before you spec the next slice, tweak the step-2 prompt so Claude asks sharper questions or produces a tighter, more testable spec.
-- **Break your brief into a backlog — ideally in GitHub Issues.** If you've authenticated `gh`, ask Claude to create an issue per slice of your brief (it can read, create, and update them via the `gh` CLI), then later: *"draft a spec from issue #12."* No `gh`? A `docs/features/` folder of `[xx]-[feature].md` files is a fine offline stand-in. (Jira/Atlassian MCP can do this too, but needs setup and permissions that are often locked down at work — reach for `gh` first, and leave yourself time to finish the whole loop.)
+- **Break your brief into a backlog — ideally in GitHub Issues.** If you've authenticated `gh`, ask Claude to create an issue per slice of your brief (it can read, create, and update them via the `gh` CLI), then later: *"draft a spec from issue #12."* No `gh`? A `docs/features/` folder of `[xx]-[feature].md` files is a fine offline stand-in. (Jira/Atlassian MCP can do this too, but it's heavier and more complex to set up — reach for `gh` first, and leave yourself time to finish the whole loop.)
 
 ---
 

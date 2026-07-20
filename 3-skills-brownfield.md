@@ -35,8 +35,6 @@ result to specs/<kebab-feature>.md; (5) STOP for review — do NOT write any imp
 Show me the finished SKILL.md and stop.
 ```
 
-*(If the per-skill model override doesn't take effect in your setup, just run `/model opus` before `/specify`.)*
-
 **2. Trigger it two ways.** Run it explicitly with `/specify <feature>`, and also **describe the task in plain language** — without naming the skill — to confirm its `description` fires it on its own.
 
 **3. Spec the task you'll build next.** Use your new `/specify` to draft a spec for a **small, testable task** you'll implement test-first in Exercise 4. Edit it until the acceptance criteria are concrete. You'll walk into the next exercise with a spec in hand.

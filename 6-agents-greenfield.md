@@ -23,7 +23,7 @@ You'll turn the by-hand review into a `.claude/agents/reviewer.md` — cheap (Ha
 **1. Capture the review as an agent.** Paste this to build a cheap, read-only reviewer that carries its own fresh context:
 
 ```text
-Create a subagent at .claude/agents/reviewer.md that reviews my current change against its spec, without fixing. Frontmatter: name: reviewer; a description listing trigger phrases ("review the diff", "review against the spec"); model: haiku (keep it cheap); and tools: Read, Bash, Glob, Grep (no Write or Edit — it must review, not change code). Body — the steps to run: (1) run git diff to see my current changes; (2) read the relevant specs/<feature>.md, docs/brief.md, and my .claude/rules/conventions.md for conventions; (3) map every acceptance criterion to the diff; (4) report unmet criteria, correctness risks with evidence, and any out-of-scope changes (leave security to /security-review); (5) do NOT fix — report only, ending with a verdict: ship / needs-changes / discuss. Show me the file and stop.
+Create a subagent at .claude/agents/reviewer.md that reviews my current change against its spec, without fixing. Frontmatter: name: reviewer; a description listing trigger phrases ("review the diff", "review against the spec"); model: haiku (keep it cheap); and tools: Read, Bash, Glob, Grep (no Write or Edit — it must review, not change code). Body — the steps to run: (1) run git diff to see my current changes; (2) read the relevant specs/<feature>.md, docs/brief.md, and my .claude/rules/conventions.md for conventions; (3) map every acceptance criterion to the diff; (4) report unmet criteria, correctness risks with evidence, and any out-of-scope changes; (5) do NOT fix — report only, ending with a verdict: ship / needs-changes / discuss. Show me the file and stop.
 ```
 
 **2. Run it, and keep working.** Invoke it with **`@reviewer`** (or just say *"use the reviewer subagent on my changes"*) — and because of the `description` you gave it, Claude will also reach for it on its own when you ask to review a diff. Read its report. It ran in its own context on Haiku, read-only and diff-scoped, so it cost a fraction of a full review — and your main session is untouched.
@@ -40,7 +40,7 @@ Create a subagent at .claude/agents/reviewer.md that reviews my current change a
 
 > **💰 Token-smart:** the reviewer runs on Haiku, diff-scoped and read-only — a few hundred tokens — and hands back a summary, not a whole transcript, so your session stays lean.
 
-- **Agent or skill?** A *skill* runs in your current session — good for capturing steps you invoke (like `/specify`). An *agent* runs in its own isolated context with its own model and toolset — reach for it when you need isolation, a different (cheaper or stronger) model, or a strict read-only lens, like this reviewer.
+- **Agent or skill?** A *skill* is a set of steps you invoke in your current session (like `/specify`). An *agent* is a whole task you **hand off** — it runs in its own isolated context with its own model and toolset, so reach for one when you want to delegate a self-contained job, run several in parallel, or enforce a specific lens (like this read-only reviewer).
 - **Read-only, always.** Leaving Write/Edit out of `tools:` is what stops it "helpfully" rewriting your code mid-review. (`Bash` is there for `git diff`.)
 - **Sharp system prompt = sharp output.** Tell it what to *ignore* as well as what to check.
 - **Report gaps, not style** — same discipline as the by-hand review.

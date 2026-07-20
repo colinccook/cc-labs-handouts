@@ -47,7 +47,7 @@ review — I'll edit it before any code.
 
 **3. Edit the spec.** Pin down the behaviour, the edge cases, and the acceptance criteria. This is where the value is.
 
-**4. Then implement it — in Plan Mode.** Once the spec is right, **switch to Plan Mode** (`shift`+`tab`) and tell Claude to implement the spec. Read the plan it proposes, approve it, then let it build. Driving that step is part of the exercise.
+**4. Then implement it — in Plan Mode.** Once the spec is right, **switch to Plan Mode** (`shift`+`tab`) and tell Claude to implement the spec. **Review the plan it proposes, edit it if needed, and approve it** — then let it build. Driving that step is part of the exercise.
 
 **5. Lock the spec-first workflow in as a rule.** So this isn't something you have to remember every time, capture it as an always-on rule:
 
@@ -76,7 +76,7 @@ Now every future feature starts spec-first by default — enforced, not remember
 
 - **Try the anti-demo.** On a scratch branch, ask Claude to build the feature with *no* spec. Compare what it invents to what your spec pinned down — the gap is the value, made visible.
 - **Tighten your spec prompt.** Spec a second task — but first tweak the step-2 prompt. What would make Claude ask sharper questions, or produce a tighter, more testable spec? The prompt is a tool you can sharpen.
-- **Spec from a GitHub issue.** If your backlog lives in GitHub Issues and you've authenticated `gh`, try: *"read issue #123 with gh and draft a spec from it."* Claude reads the description through the `gh` CLI — no extra setup. (Jira works too, but needs the Atlassian MCP server and the right permissions — heavier, and often locked down at work, so reach for `gh` first.)
+- **Spec from a GitHub issue.** If your backlog lives in GitHub Issues and you've authenticated `gh`, try: *"read issue #123 with gh and draft a spec from it."* Claude reads the description through the `gh` CLI — no extra setup. (Jira works too, via the Atlassian MCP server, but that's heavier and more complex to set up — reach for `gh` first.)
 
 ---
 

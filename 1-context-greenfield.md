@@ -50,7 +50,9 @@ When you've got enough — and not before — propose, and STOP for approval bef
    section pointing at docs/brief.md.
 4. .claude/rules/conventions.md — only this for now.
 5. docs/adr/0001-initial-stack.md capturing the stack decision and the why I gave you,
-   plus a tiny always-on architecture.md rule pointing at docs/adr/.
+   plus a tiny always-on architecture.md rule that points at docs/adr/ as the home for
+   decisions AND says when a new ADR is required — breaking changes and decisions costly
+   to reverse. Reference it from CLAUDE.md.
 
 Show me the file tree and each file's contents, then stop.
 ```
@@ -70,7 +72,7 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia. Run `/context` to see the always-on cost; if you trim CLAUDE.md, run `/context` again and watch that number drop (no `/clear` needed — re-running `/context` is what refreshes it).
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. It's a balancing act: too little and Claude guesses, too much and the rules that matter get lost in the noise. Keep it a table of contents, not an encyclopedia. Run `/context` to see the always-on cost; if you trim CLAUDE.md, run `/context` again and watch that number drop (no `/clear` needed — re-running `/context` is what refreshes it).
 
 - **Know your controls.** `/model` switches model, `/effort` sets reasoning effort (`low`→`max`), and adding `ultrathink` to a prompt forces a one-off deeper pass. You'll pick models per step as you go — a stronger model for specs, Haiku for the cheap review later.
 - **Keep the MVP ruthlessly small.** A day and a half goes fast. The most valuable thing Claude can do in the interview is help you cut scope — let it.

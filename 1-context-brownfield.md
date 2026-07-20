@@ -54,17 +54,22 @@ before creating or changing anything.
 
 **3. Review and create.** Read the proposal. Trim anything bloated, fix anything wrong, then let it create the files.
 
-**4. Capture a decision as an ADR.** Pin down one architecture decision that currently lives only in someone's head. Paste this (adjust the decision):
+**4. Capture architecture decisions as ADRs — Claude suggests, you approve.** The point is that Claude knows the *why* behind your architecture and can defend it later. Paste this:
 
 ```text
-Capture one architecture decision for this repo as an ADR. Start with our stack/framework
-choice: what we use, what we chose against, and why. Write it to docs/adr/0001-<slug>.md
-(create docs/adr/ if it doesn't exist) using a short standard ADR format — context,
-decision, consequences. Then add a one-line pointer to it from the architecture.md rule.
-Keep it to one page. Show me the file and stop.
+Help me capture architecture decisions as ADRs. First review the codebase (and any
+existing docs/adr/) and SUGGEST two or three decisions or conventions that aren't written
+down yet — e.g. the stack choice, a layering rule, a data-access pattern. Don't write
+anything yet: show me the candidates and wait for me to pick.
+
+Then, for the one(s) I approve, write each to docs/adr/NNNN-<slug>.md in a short standard
+ADR format (context, decision, consequences). Finally, create or update
+.claude/rules/architecture.md (always-on) so it points at docs/adr/ as the home for these
+decisions AND says when a new ADR is required — breaking changes, and decisions that are
+costly to reverse. Make sure CLAUDE.md references it. Show me everything and stop.
 ```
 
-If you already have `docs/adr/`, add a *new* one instead of `0001`.
+Review its suggestions before it writes anything — you're the one who knows which decisions actually matter.
 
 ## What good looks like
 
@@ -76,7 +81,7 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia. Run `/context` after your setup to see the always-on cost; trim CLAUDE.md, run `/context` again, and watch that number drop (no `/clear` needed — re-running `/context` is what refreshes it).
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. It's a balancing act: too little and Claude guesses, too much and the rules that matter get lost in the noise. Keep it a table of contents, not an encyclopedia. Run `/context` after your setup to see the always-on cost; trim CLAUDE.md, run `/context` again, and watch that number drop (no `/clear` needed — re-running `/context` is what refreshes it).
 
 - **Know your controls.** `/model` switches model, `/effort` sets reasoning effort (`low`→`max`), and adding `ultrathink` to a prompt forces a one-off deeper pass. You'll pick models per step as you go — a stronger model for specs, Haiku for the cheap review later.
 - **Don't over-split.** 3–4 rule files beat 15. If a rule is short and universal, leave it in `CLAUDE.md`.
@@ -89,7 +94,6 @@ By the end you should have, and be able to point at:
 Done early, or want to push it? Try any of these:
 
 - **Prove the ADR guardrail works.** Ask Claude to make a change that quietly contradicts the decision you just captured. With the `architecture.md` rule in place it should *push back* and cite the ADR rather than just doing it. If it doesn't, strengthen the rule with a `YOU MUST` / `IMPORTANT` directive and try again — watch how much harder Claude leans on the emphatic phrasing. That pushback is the whole point.
-- **Diff against a raw `/init`.** Look at what `/init` generated in step 1 versus your trimmed, modular result — the gap is the always-on tokens you just saved on every message.
 
 ---
 

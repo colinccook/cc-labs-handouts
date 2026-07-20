@@ -46,8 +46,6 @@ Commit these reviewed changes with a clear, focused message (what changed and wh
 
 That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean.
 
-> **In real life:** opening PRs from the terminal needs `gh` authenticated; and for Claude to review PRs *on* GitHub (via `@claude`), an admin runs `/install-github-app` — repo-permission territory that's often not yours to grant. Don't block on it today; a local commit plus `gh pr create` is plenty.
-
 ## What good looks like
 
 - **A reviewed change, committed once, with a PR open.**

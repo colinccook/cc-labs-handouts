@@ -36,8 +36,6 @@ brief's out-of-scope list — asking me one question at a time for anything you 
 Show me the finished SKILL.md and stop.
 ```
 
-*(If the per-skill model override doesn't take effect in your setup, just run `/model opus` before `/specify`.)*
-
 **2. Trigger it two ways.** Run it explicitly with `/specify <slice>`, and also **describe the task in plain language** — without naming the skill — to confirm its `description` fires it on its own.
 
 **3. Spec the slice you'll build next.** Use your new `/specify` to draft a spec for the **next small slice** of your brief — one you'll implement test-first in Exercise 4. Edit it until the acceptance criteria are concrete. You'll walk into the next exercise with a spec in hand.
