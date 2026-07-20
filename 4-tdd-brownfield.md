@@ -2,53 +2,56 @@
 
 # Exercise 4 — Build it test-first (brownfield)
 
-**Track:** Brownfield · **Time:** ~30 min
-**Builds on:** the testable acceptance criteria you wrote in Exercise 2. · **Adds to your build:** a RED-GREEN rule, and code change locked behind real tests.
+**Track:** Brownfield · **Time:** ~20–25 min
+**Builds on:** the spec you drafted with `/specify` at the end of Exercise 3. · **Adds to your build:** a RED-GREEN rule tied to your acceptance criteria, and that task implemented test-first.
 
-> **Why it matters:** left alone, Claude writes the test and the implementation together — so the test can't actually catch a broken implementation. Forcing **RED → GREEN → REFACTOR** turns tests into a real safety net *and* gives the agent an objective "am I done" signal. Especially powerful on existing code you're scared to break.
+> **Why it matters:** left to its own devices, Claude tends to write the implementation first and then tests shaped to fit the code it just wrote — so a test you never saw fail might already pass, or pass for the wrong reason, proving nothing about the new behaviour. Forcing **RED → GREEN** — watch the test fail against the acceptance criteria *before* any implementation exists — is what proves the test can actually catch a broken implementation instead of rubber-stamping whatever code happens to be there. It also gives the agent an objective "am I done" signal.
 
 ---
 
 ## Why this exercise
 
-You'll add a short TDD rule to your context, then drive one change **test-first**: a failing test that proves it fails for the right reason, *then* the minimum code to pass. For existing behaviour, you'll write a **characterization test** that locks in what the code does today before you touch it.
+You'll add a rule that makes Claude build **test-first against a spec's acceptance criteria**, then use it to implement the task you spec'd last exercise: a failing test that proves it fails for the right reason, *then* the minimum code to pass. This is how the spec you wrote becomes executable, not just prose.
 
 ## Before you start
 
-- A working test command (if you have none, that becomes step one — see the greenfield version's harness step for the pattern).
-- One small, testable unit from your task — ideally with logic worth protecting.
+- The **spec you drafted at the end of Exercise 3** (`specs/<feature>.md`), with concrete acceptance criteria.
+- A working test command. **No test setup yet?** Add a line to the step-2 prompt asking Claude to set up your preferred test runner first (name it) — flag the extra time.
 
 ## Steps
 
-**1. Add the RED-GREEN rule and drive the first change test-first.** Paste this. It adds the loop as an always-on rule, then takes one small unit test-first — characterization-testing existing behaviour first if you're changing it:
+**1. Add the RED-GREEN rule to your context.** Paste this — it makes test-first-against-the-spec the default, enforced way to build:
 
 ```text
-Add this loop to .claude/rules/testing.md (always-on): 1) write a failing test that captures the desired behaviour — no implementation yet; 2) run it and SHOW me it fails for the right reason (RED); 3) write the minimum code to pass; 4) run it and the full suite (GREEN); 5) refactor green. IMPORTANT: never modify a test to make it pass — if the test is wrong, stop and tell me.
-
-Now pick one small, testable unit in my task. If I'm changing existing behaviour, first write a characterization test that locks in what it does today, then extend test-first. Show me the RED before you implement.
+Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has a spec in specs/, work test-first against its acceptance criteria — (1) take the next acceptance criterion and write a test that captures it, no implementation yet; (2) run it and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass, then run that test and the full suite (GREEN, no regressions); (4) refactor if useful, keeping green, then move to the next criterion. NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file and stop.
 ```
 
-**2. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Claude jumps straight to green, make it back up.
+**2. Build your spec'd task, test-first.** Point Claude at the spec from Exercise 3:
+
+```text
+Implement specs/<your-feature>.md test-first, following the RED-GREEN rule. Go one acceptance criterion at a time, and show me the RED — the failing test, for the right reason — before you write any implementation for it.
+```
+
+**3. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Claude jumps straight to green, make it back up.
 
 ## What good looks like
 
-- **`.claude/rules/testing.md`** with the RED-GREEN loop, always on.
-- **A test that you saw fail first**, then pass — not one written alongside the code.
+- **`.claude/rules/testing.md`** with the RED-GREEN-against-acceptance-criteria rule, always on.
+- **A test you saw fail first**, mapped to an acceptance criterion — then pass. Not one written alongside the code.
 - **The full suite green**, so you know the change didn't regress anything.
 
 ## Tips & watch-outs
 
 > **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
 
-- **The classic cheat is Claude weakening the test to pass.** The "never modify the test" line is what prevents it — call it out if you see it happen.
-- **Characterization tests before refactor** are the brownfield superpower: lock current behaviour, *then* change with confidence.
+- **The classic cheat is Claude weakening the test to pass.** The "never modify the test" line in your rule is what prevents it — call it out if you see it happen.
 - **"Show me the RED"** is the whole discipline. If it jumps to green, make it back up.
+- **Anchor to the criteria, not vibes.** One test per acceptance criterion keeps "done" objective and traceable back to the spec.
 
 ## 🎁 Bonus — go further
 
 - **Backfill a test for a past bug.** Reproduce it as a failing test first, then confirm the fix keeps it green — that bug can never silently return.
 - **Machine-check "done."** Imagine a hook that runs this suite automatically so green isn't a matter of trust — the kind of automation you can layer on once the loop is solid.
-- **Raise coverage on a risky module** by characterization-testing it before your next change there.
 
 ---
 

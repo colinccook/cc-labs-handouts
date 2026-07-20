@@ -47,7 +47,15 @@ review — I'll edit it before any code.
 
 **3. Edit the spec.** Pin the behaviour, edge cases, and testable acceptance criteria. Hold it to *one* slice. This is where the value is.
 
-**4. Then implement it yourself.** Once the spec is right, tell Claude to build it (Plan Mode is your call). Driving that step is part of the exercise.
+**4. Then implement it — in Plan Mode.** Once the spec is right, **switch to Plan Mode** (`shift`+`tab`) and tell Claude to implement the spec. Read the plan it proposes, approve it, then let it build. Driving that step is part of the exercise.
+
+**5. Lock the spec-first workflow in as a rule.** So this isn't something you have to remember every time, capture it as an always-on rule:
+
+```text
+Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial feature, propose a spec in specs/ and STOP for my approval before writing any implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable. Show me both files and stop.
+```
+
+Now every future feature starts spec-first by default — enforced, not remembered.
 
 ## What good looks like
 
@@ -67,10 +75,8 @@ review — I'll edit it before any code.
 ## 🎁 Bonus — go further
 
 - **Try the anti-demo.** On a scratch branch, ask Claude to build the slice with no spec, and compare to your spec'd version — the gap is the value, made visible.
-- **Wire the workflow as a rule.** Add `.claude/rules/workflow.md`: "for any non-trivial feature, propose a spec and STOP for approval before writing code."
-- **Break your brief into a feature backlog.** Ask Claude to create a `docs/features/` folder and help you break the brief down into `[xx]-[feature].md` files — a running list of slices you can spec and implement later, one at a time.
-
-> **Tip:** in a real project your backlog usually lives in **GitHub Issues, Jira, or similar** — and Claude can work with it there too, via the `gh` CLI or a Jira MCP server. The `docs/features/` folder is just a lightweight stand-in for the workshop.
+- **Tighten your spec prompt.** Before you spec the next slice, tweak the step-2 prompt so Claude asks sharper questions or produces a tighter, more testable spec.
+- **Break your brief into a backlog — ideally in GitHub Issues.** If you've authenticated `gh`, ask Claude to create an issue per slice of your brief (it can read, create, and update them via the `gh` CLI), then later: *"draft a spec from issue #12."* No `gh`? A `docs/features/` folder of `[xx]-[feature].md` files is a fine offline stand-in. (Jira/Atlassian MCP can do this too, but needs setup and permissions that are often locked down at work — reach for `gh` first, and leave yourself time to finish the whole loop.)
 
 ---
 

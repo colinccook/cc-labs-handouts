@@ -70,8 +70,9 @@ By the end you should have, and be able to point at:
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia, and run `/context` before and after to watch the always-on cost drop.
+> **💰 Token-smart:** your `CLAUDE.md` and always-on rules reload on *every* message — bloat here is a tax you pay all day. Keep it a table of contents, not an encyclopedia. Run `/context` to see the always-on cost; if you trim CLAUDE.md, run `/context` again and watch that number drop (no `/clear` needed — re-running `/context` is what refreshes it).
 
+- **Know your controls.** `/model` switches model, `/effort` sets reasoning effort (`low`→`max`), and adding `ultrathink` to a prompt forces a one-off deeper pass. You'll pick models per step as you go — a stronger model for specs, Haiku for the cheap review later.
 - **Keep the MVP ruthlessly small.** A day and a half goes fast. The most valuable thing Claude can do in the interview is help you cut scope — let it.
 - **Don't skip the "why."** When Claude asks why you chose something, give a real answer. That reasoning is what makes ADR-0001 worth having.
 - **No tests yet — that's deliberate.** You'll stand up testing properly in the TDD exercise. A skeleton that just boots is exactly right for now.
@@ -81,7 +82,7 @@ By the end you should have, and be able to point at:
 
 Done early, or want to push it? Try any of these:
 
-- **Prove the guardrail works.** Ask Claude to make a change that quietly contradicts your ADR-0001 decision (e.g. "swap the datastore" or "restructure the entry point"). With the `architecture.md` rule in place it should *push back* and point at the ADR instead of just doing it. That pushback is the whole payoff — see it fire.
+- **Prove the guardrail works.** Ask Claude to make a change that quietly contradicts your ADR-0001 decision (e.g. "swap the datastore" or "restructure the entry point"). With the `architecture.md` rule in place it should *push back* and point at the ADR instead of just doing it. If it doesn't, strengthen the rule with a `YOU MUST` / `IMPORTANT` directive and try again — notice how much harder Claude leans on the emphatic phrasing. That pushback is the whole payoff.
 - **Generate your README from the brief.** Ask Claude to write a first `README.md` (what this is, how to run it) *from* `docs/brief.md`, without duplicating it. Notice CLAUDE.md now has real docs to point at.
 - **Add a personal preference.** Put a one-line style preference into `~/.claude/CLAUDE.md` (your *personal* file, loaded everywhere) — e.g. "explain your plan before large refactors." Team rules stay in the project; personal taste stays here.
 
