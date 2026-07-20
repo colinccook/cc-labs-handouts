@@ -31,7 +31,7 @@ Add a PostToolUse hook to .claude/settings.json that runs my formatter on files 
 Bonus: add a Stop hook that runs the test command from Exercise 3, so every stopping point is green.
 ```
 
-**3. Restart and watch it fire.** Hook changes need a restart. Then edit a file and watch the hook run automatically.
+**3. Watch it fire.** Hook config reloads automatically (file watcher — no restart). Edit a file and watch the hook run. If it doesn't fire, check `/hooks`.
 
 ## What good looks like
 
@@ -42,7 +42,7 @@ Bonus: add a Stop hook that runs the test command from Exercise 3, so every stop
 ## Tips & watch-outs
 
 - **Setting up the formatter is fair game** here if your scaffold skipped it.
-- **Test the command in a terminal first**; **restart** after wiring.
+- **Test the command in a terminal first.** Hook config reloads automatically — no restart needed.
 - **Keep it fast** — scope the test hook to changed files if needed.
 
 ## 🎁 Bonus — go further

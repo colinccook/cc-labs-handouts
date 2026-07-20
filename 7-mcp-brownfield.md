@@ -5,7 +5,7 @@
 **Track:** Brownfield · *Advanced / optional* · **Time:** ~30 min (guided)
 **Builds on:** everything — this is about extending Claude *outward*. · **Adds to your build:** a working read-only MCP server for one of your systems.
 
-> **Why it matters:** you've used MCP servers other people built. But your org has internal systems with no off-the-shelf server. The `mcp-builder` skill scaffolds one, so Claude can query *your* systems the same way it queried Playwright earlier. This is where "connect Claude to everything we run" starts.
+> **Why it matters:** you've used MCP servers other people built. But your org has internal systems with no off-the-shelf server. The official `mcp-server-dev` plugin scaffolds one, so Claude can query *your* systems the same way it queried Playwright earlier. This is where "connect Claude to everything we run" starts.
 
 ---
 
@@ -22,10 +22,10 @@ This is aspirational and guided — a genuinely useful server rarely fits a work
 
 ## Steps
 
-**1. Install `mcp-builder` and scaffold a read-only server.** Paste this to install the skill and scaffold a server for one internal system with two read-only tools (`search_*`, `get_*`):
+**1. Install `mcp-server-dev` and scaffold a read-only server.** Paste this to install the plugin and scaffold a server for one internal system with two read-only tools (`search_*`, `get_*`):
 
 ```text
-Install mcp-builder (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-builder@claude-plugins-official → /reload-plugins). Then scaffold a read-only MCP server exposing one of my internal systems — start with two tools (e.g. search_<thing> and get_<thing>), auth via a bearer token from an env var. Generate the server, the tool definitions, and the .mcp.json wiring. Then let me run /mcp to confirm it connects and ask one real question that forces a tool to fire.
+Install mcp-server-dev (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-server-dev@claude-plugins-official → /reload-plugins), then run /mcp-server-dev:build-mcp-server. Scaffold a read-only MCP server exposing one of my internal systems — start with two tools (e.g. search_<thing> and get_<thing>), auth via a bearer token from an env var. Generate the server, the tool definitions, and the .mcp.json wiring. Then let me run /mcp to confirm it connects and ask one real question that forces a tool to fire.
 ```
 
 **2. Connect it and ask a real question.** Run `/mcp` to confirm it connects, then ask a question that forces a tool to fire — the payoff moment.

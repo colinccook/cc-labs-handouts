@@ -31,7 +31,7 @@ Add one PostToolUse hook to .claude/settings.json that runs my formatter on file
 Bonus: add a Stop hook that runs my test command (the one from Exercise 3) so "done" is machine-checked, not vibes.
 ```
 
-**3. Restart and watch it fire.** Hook changes need a restart to take effect. Then edit a file and watch the hook run automatically.
+**3. Watch it fire.** Hook config is picked up automatically (a file watcher reloads it — no restart needed). Edit a file and watch the hook run. If it doesn't fire, check the matcher in `/hooks`.
 
 ## What good looks like
 
@@ -42,7 +42,7 @@ Bonus: add a Stop hook that runs my test command (the one from Exercise 3) so "d
 ## Tips & watch-outs
 
 - **Test the command in a plain terminal first** — a wrong command string is the #1 cause of hook pain.
-- **Hook changes need a restart** to take effect.
+- **Hook changes reload automatically** (file watcher) — no restart needed. If one doesn't fire, check `/hooks`.
 - **Heavy hooks slow the loop** — scope the test hook to changed files if your suite is slow.
 - **Re-read the security note** before wiring anything.
 

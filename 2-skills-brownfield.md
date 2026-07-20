@@ -62,8 +62,8 @@ file the skill reads on demand. Show me the file and stop.
 
 ## 🎁 Bonus — go further
 
-- **Install one, don't reinvent it.** Add the official marketplace and try `simplify` (the cleanup skill Anthropic's own team uses): `/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install simplify@claude-plugins-official` → `/reload-plugins`. Run it on some messy code.
-- **Run `/security-review`** (built in, no install) on your working changes.
+- **Try the built-in skills — no install.** `/simplify` does a focused cleanup pass over code you just wrote (removes duplication, flattens nested conditionals, clarifies logic) *without changing behaviour* — the pass Anthropic's own team uses. `/security-review` scans your working changes for vulnerabilities and suggests fixes. Both ship with Claude Code — run them on some messy code.
+- **Install one from the marketplace, don't reinvent it.** For what isn't built in, add the official marketplace and install a real plugin — e.g. `commit-commands` (git commit / PR workflows): `/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install commit-commands@claude-plugins-official` → `/reload-plugins`. Browse the rest with `/plugin` (Discover tab) — each lists its **context cost** before you install.
 - **Add an `argument-hint`** to `/specify` so it shows usage as you type it.
 
 ---

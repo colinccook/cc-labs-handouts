@@ -63,8 +63,8 @@ references/ file it reads on demand. Show me the file and stop.
 
 ## 🎁 Bonus — go further
 
-- **Install one, don't reinvent it.** `/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install simplify@claude-plugins-official` → `/reload-plugins`, then run `simplify` on code you've written.
-- **Run `/security-review`** on your new code (built in, no install).
+- **Try the built-in skills — no install.** `/simplify` cleans up code you just wrote without changing behaviour; `/security-review` scans your new code for vulnerabilities. Both ship with Claude Code.
+- **Install one from the marketplace, don't reinvent it.** For what isn't built in: `/plugin marketplace add anthropics/claude-plugins-official` → `/plugin install commit-commands@claude-plugins-official` → `/reload-plugins`, then browse the rest with `/plugin` (Discover tab).
 - Give `/specify` an `argument-hint` so it self-documents.
 
 ---

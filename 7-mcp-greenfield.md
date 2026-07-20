@@ -5,7 +5,7 @@
 **Track:** Greenfield · *Advanced / optional* · **Time:** ~30 min (guided)
 **Builds on:** your prototype's data needs. · **Adds to your build:** a read-only MCP server for a data source your app uses.
 
-> **Why it matters:** you've used MCP servers other people built. When a data source your prototype needs has no off-the-shelf server, `mcp-builder` scaffolds one — so Claude can query it directly as you build. This is where "connect Claude to everything" starts.
+> **Why it matters:** you've used MCP servers other people built. When a data source your prototype needs has no off-the-shelf server, the official `mcp-server-dev` plugin scaffolds one — so Claude can query it directly as you build. This is where "connect Claude to everything" starts.
 
 ---
 
@@ -22,10 +22,10 @@ Aspirational and guided. **Only do this if your prototype genuinely consumes an 
 
 ## Steps
 
-**1. Install `mcp-builder` and scaffold a read-only server.** Paste this to install the skill and scaffold a server for the external/public data source your prototype uses, with one or two read-only tools:
+**1. Install `mcp-server-dev` and scaffold a read-only server.** Paste this to install the plugin and scaffold a server for the external/public data source your prototype uses, with one or two read-only tools:
 
 ```text
-If my prototype needs data from an external or public API, install mcp-builder (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-builder@claude-plugins-official → /reload-plugins) and scaffold a read-only MCP server for that source — two tools to start, auth via an env var if needed. Generate the server, tool definitions, and .mcp.json. Then /mcp to confirm it connects, and ask one real question that forces a tool to fire.
+If my prototype needs data from an external or public API, install mcp-server-dev (/plugin marketplace add anthropics/claude-plugins-official → /plugin install mcp-server-dev@claude-plugins-official → /reload-plugins), then run /mcp-server-dev:build-mcp-server and scaffold a read-only MCP server for that source — two tools to start, auth via an env var if needed. Generate the server, tool definitions, and .mcp.json. Then /mcp to confirm it connects, and ask one real question that forces a tool to fire.
 ```
 
 **2. Connect it and ask a real question.** Run `/mcp` to confirm it connects, then ask a question that forces a tool to fire.
