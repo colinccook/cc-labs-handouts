@@ -1,17 +1,17 @@
-`Greenfield track · Exercise 4 of 8` — [Welcome](./README.md)
+`Greenfield track · Exercise 4 of 5` — [Welcome](./README.md)
 
 # Exercise 4 — Review the diff in a fresh context (greenfield)
 
-**Track:** Greenfield · **Time:** ~30 min
-**Builds on:** the spec from Exercise 1 and the tested feature from Exercise 3. · **Adds to your build:** a reusable, read-only reviewer subagent tuned to your project.
+**Track:** Greenfield · **Time:** ~25 min
+**Builds on:** the spec from Exercise 1 and the tested feature from Exercise 3. · **Adds to your build:** a reviewed, committed change — and the fresh-context review habit.
 
-> **Why it matters:** when Claude builds in minutes, *review* becomes the bottleneck — as AI velocity rises, review time and change size balloon and AI-authored code carries more defects per change. And the worst judge of the code is the model that just wrote it: it's anchored on its own reasoning and tends to defend it. The fix is a reviewer with a **fresh context** that sees only the diff and your spec — not the conversation that produced it. *(Anthropic's own guidance: "a fresh context improves code review since Claude won't be biased toward code it just wrote.")*
+> **Why it matters:** when Claude builds in minutes, *review* becomes the bottleneck — as AI velocity rises, review time and change size balloon and AI-authored code carries more defects per change. And the worst judge of the code is the model that just wrote it: it's anchored on its own reasoning and tends to defend it. The fix is to review with a **fresh context** that sees only the diff and your spec — not the conversation that produced it. *(Anthropic's own guidance: "a fresh context improves code review since Claude won't be biased toward code it just wrote.")*
 
 ---
 
 ## Why this exercise
 
-You'll feel the problem by hand first — review with the build transcript still loaded (biased), then `/clear` and review again (honest) — and then **capture that as a reusable reviewer subagent** so you get the fresh-context review on demand *without* throwing away your working session. The reviewer checks the diff against your spec's acceptance criteria (and the intent in `docs/brief.md`) and reports gaps. It does **not** fix.
+You'll close a loop pass properly for the first time — reviewing the change **by hand**, and feeling why *where* you review matters. Review it in the same session that built it (biased), then `/clear` and review again (honest). Fix what's real, then commit and open a PR. Next exercise you'll capture this into a one-command agent — but first, feel it.
 
 ## Before you start
 
@@ -36,48 +36,38 @@ Notice the tone: it tends to justify the choices it just made. That's the anchor
 Review the diff on this branch against specs/<feature>.md's acceptance criteria (and docs/brief.md for the product intent). Run git diff to see the change, and map each acceptance criterion to it. Report: unmet criteria, correctness/security risks (with evidence), and anything changed outside the task's scope. Don't fix and don't nitpick style — just report, then give a verdict: ship / needs-changes / discuss.
 ```
 
-Same code, sharper read — the fresh context is the whole point. Clearing between tasks is a good habit in its own right: it sheds context you no longer need, which keeps you fast and your token use down. The one catch is doing it *mid-build* — you lose the working session you were in.
+Same code, sharper read — the fresh context is the whole point.
 
-**4. Capture it as a reviewer agent.** A subagent runs in its *own* isolated context — so it gives you that same fresh-context review *as a step inside your flow*, without clearing your main session: it gathers the diff and spec itself, and its findings come straight back for you to act on. Paste this to build a cheap, read-only one:
+**4. Fix what it flags.** Apply the real gaps and risks it found — ignore style noise — and re-run the fresh review if the change was substantial. The review only counts if it changes what you ship.
 
-```text
-Create a subagent at .claude/agents/reviewer.md that reviews my current change against its spec, without fixing. Frontmatter: name: reviewer; a description listing trigger phrases ("review the diff", "review against the spec"); model: haiku (keep it cheap); and tools: Read, Bash, Glob, Grep (no Write or Edit — it must review, not change code). Body — the steps to run: (1) run git diff against the base branch; (2) read the relevant specs/<feature>.md, docs/brief.md, and my .claude/rules/conventions.md for conventions; (3) map every acceptance criterion to the diff; (4) report unmet criteria, correctness/security risks with evidence, and any out-of-scope changes; (5) do NOT fix — report only, ending with a verdict: ship / needs-changes / discuss. Show me the file and stop.
-```
-
-**5. Run it, and keep working.** Trigger the reviewer — by name, or just *"review this diff against the spec."* Read its report. It ran in its own context on Haiku, read-only and diff-scoped, so it cost a fraction of a full review — and your main session is untouched.
-
-**6. Close the loop — commit, push, open a PR.** A pass isn't done until the reviewed change is a clean, single-purpose commit with a PR open for the next reviewer — a teammate, or Claude itself. (Small diffs are cheaper to review and easy to roll back.)
+**5. Close the loop — commit, push, open a PR.** A pass isn't done until the reviewed change is a clean, single-purpose commit with a PR open for the next reviewer — a teammate, or Claude itself.
 
 ```text
 Commit this reviewed change with a clear, focused message (what changed and why; keep the diff to this one change). Then push and open a PR summarising the change, how to test it, and any risks the review flagged.
 ```
 
-That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean. *(The `commit-commands` plugin from Exercise 2 or `gh pr create` writes the PR; `/install-github-app` lets Claude review it right there — Exercise 8.)*
+That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean. *(The `commit-commands` plugin from Exercise 2 or `gh pr create` writes the PR; you can hook Claude up to review PRs on GitHub too — `/install-github-app`.)*
 
 ## What good looks like
 
-- **A committed diff** and the spec to check it against.
-- **`.claude/agents/reviewer.md`** — read-only (no Write/Edit), Haiku, single-purpose.
-- **A review that maps to your acceptance criteria** and names real gaps and risks — not style nits — with a verdict.
-- The realisation: **fresh context = honest review** — `/clear` gives it to you by hand, and the agent gives it on demand with findings in hand, without ending your working session.
+- **A committed, reviewed diff with a PR open.**
+- You saw the *same* change reviewed two ways — biased in-session, honest after `/clear` — and felt the difference.
+- The gaps it found were real (unmet criteria, actual risks), and you fixed them before the PR.
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** the reviewer runs on Haiku, diff-scoped and read-only — a few hundred tokens — and hands back a summary instead of dumping a whole review transcript into your session. `/clear` between tasks is the same instinct: shed context you no longer need.
+> **💰 Token-smart:** `/clear` between tasks is a cost habit too — it sheds context you no longer need. And a small, focused diff is cheaper *and* sharper to review than a sprawling one, so commit often.
 
-- **Report gaps, not style.** A reviewer told to "find problems" over-reports and nudges you toward over-engineering. Scope it to unmet criteria + real risks.
-- **Don't let AI-written tests be the only gate.** A model can write tests that match its own code rather than the spec — the independent reviewer is a second, differently-biased check (that's why TDD *and* review both earn their place).
-- **Read-only, always.** Leaving Write/Edit out of `tools:` is what stops it "helpfully" rewriting your code mid-review. (`Bash` is there for `git diff`.)
-- **Cheap by design.** Haiku + diff-scoped + read-only ≈ a few hundred tokens — the opposite of firing off a big multi-agent review.
-- **The heavy end exists, but not for here:** `pr-review-toolkit` (6 agents in parallel) and the cloud PR-review service are powerful but overkill and costly for a live room.
+- **Report gaps, not style.** A reviewer told to "find problems" over-reports and nudges you toward over-engineering. Keep it on unmet criteria + real risks.
+- **Don't let AI-written tests be the only gate.** A model can write tests that match its own code rather than the spec — a fresh-context review is a second, differently-biased check.
+- **Keep it anchored to the spec.** "Review against the acceptance criteria," not "does this look okay" — that's what makes the review objective.
 
 ## 🎁 Bonus — go further
 
-- **Compare with the built-in.** Run `/code-review low` — Claude's bundled reviewer, zero setup; low effort keeps it fast and high-confidence. Compare its findings to your agent's. Rule of thumb: the built-in for a quick pass, *your* agent when you want it spec-aware and tuned to your project's conventions.
-- **Add the security lens for free.** Run the built-in `/security-review` on the same change — a ready-made security pass that complements your correctness reviewer, nothing to build.
-- **Wire it into "done."** Foreshadowing Exercise 5: a `Stop` hook that reminds you to run the reviewer before a task is called finished, or have your main session auto-delegate to it.
-- **Run the whole loop end to end.** On a second task: spec (1) → build test-first (3) → **commit** → reviewer agent (4) → fix what it flags → **commit** → **open a PR**. That spec → build → review → commit → PR rhythm *is* the loop — feel how much faster the second pass goes.
+- **Compare with the built-in.** Run `/code-review low` — Claude's bundled reviewer, zero setup; low effort keeps it fast and high-confidence. See how its findings compare to your by-hand pass.
+- **Add the security lens for free.** Run the built-in `/security-review` on the same change — a ready-made security pass, nothing to build.
+- **Coming next:** you'll turn this exact review into a one-command reviewer **agent** (Exercise 5), so you get the fresh-context read *without* `/clear`-ing your session.
 
 ---
 
-← Previous: [Exercise 3 — TDD](./3-tdd-greenfield.md)  ·  Next: [Exercise 5 — Hooks →](./5-hooks-greenfield.md)
+← Previous: [Exercise 3 — TDD](./3-tdd-greenfield.md)  ·  Next: [Exercise 5 — Agents →](./5-agents-greenfield.md)

@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 0 of 8` — [Welcome](./README.md)
+`Brownfield track · Exercise 0 of 5` — [Welcome](./README.md)
 
 # Exercise 0 — Set up your repo's context (brownfield)
 
