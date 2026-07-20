@@ -1,9 +1,9 @@
-`Brownfield track · Exercise 3 of 6` — [Welcome](./README.md)
+`Brownfield track · Exercise 4 of 7` — [Welcome](./README.md)
 
-# Exercise 3 — Build it test-first (brownfield)
+# Exercise 4 — Build it test-first (brownfield)
 
 **Track:** Brownfield · **Time:** ~30 min
-**Builds on:** the testable acceptance criteria you wrote in Exercise 1. · **Adds to your build:** a RED-GREEN rule, and code change locked behind real tests.
+**Builds on:** the testable acceptance criteria you wrote in Exercise 2. · **Adds to your build:** a RED-GREEN rule, and code change locked behind real tests.
 
 > **Why it matters:** left alone, Claude writes the test and the implementation together — so the test can't actually catch a broken implementation. Forcing **RED → GREEN → REFACTOR** turns tests into a real safety net *and* gives the agent an objective "am I done" signal. Especially powerful on existing code you're scared to break.
 
@@ -52,4 +52,4 @@ Now pick one small, testable unit in my task. If I'm changing existing behaviour
 
 ---
 
-← Previous: [Exercise 2 — Skills](./2-skills-brownfield.md)  ·  Next: [Exercise 4 — Review →](./4-review-brownfield.md)
+← Previous: [Exercise 3 — Skills](./3-skills-brownfield.md)  ·  Next: [Exercise 5 — Review →](./5-review-brownfield.md)

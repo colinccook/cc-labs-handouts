@@ -1,9 +1,9 @@
-`Greenfield track · Exercise 4 of 6` — [Welcome](./README.md)
+`Greenfield track · Exercise 5 of 7` — [Welcome](./README.md)
 
-# Exercise 4 — Review the diff in a fresh context (greenfield)
+# Exercise 5 — Review the diff in a fresh context (greenfield)
 
 **Track:** Greenfield · **Time:** ~25 min
-**Builds on:** the spec from Exercise 1 and the tested feature from Exercise 3. · **Adds to your build:** a reviewed, committed change — and the fresh-context review habit.
+**Builds on:** the spec from Exercise 2 and the tested feature from Exercise 4. · **Adds to your build:** a reviewed, committed change — and the fresh-context review habit.
 
 > **Why it matters:** when Claude builds in minutes, *review* becomes the bottleneck — as AI velocity rises, review time and change size balloon and AI-authored code carries more defects per change. And the worst judge of the code is the model that just wrote it: it's anchored on its own reasoning and tends to defend it. The fix is to review with a **fresh context** that sees only the diff and your spec — not the conversation that produced it. *(Anthropic's own guidance: "a fresh context improves code review since Claude won't be biased toward code it just wrote.")*
 
@@ -15,7 +15,7 @@ You'll close a loop pass properly for the first time — reviewing the change **
 
 ## Before you start
 
-- A **committed** feature built on your skeleton — the one from Exercise 1, hardened test-first in Exercise 3. Commit it first; you need a clean diff.
+- A **committed** feature built on your skeleton — the one from Exercise 2, hardened test-first in Exercise 4. Commit it first; you need a clean diff.
 - Its spec (`specs/<feature>.md`) with acceptance criteria, plus your `docs/brief.md`.
 
 ## Steps
@@ -46,7 +46,7 @@ Same code, sharper read — the fresh context is the whole point.
 Commit this reviewed change with a clear, focused message (what changed and why; keep the diff to this one change). Then push and open a PR summarising the change, how to test it, and any risks the review flagged.
 ```
 
-That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean. *(The `commit-commands` plugin from Exercise 2 or `gh pr create` writes the PR; you can hook Claude up to review PRs on GitHub too — `/install-github-app`.)*
+That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean. *(The `commit-commands` plugin from Exercise 3 or `gh pr create` writes the PR; you can hook Claude up to review PRs on GitHub too — `/install-github-app`.)*
 
 ## What good looks like
 
@@ -66,8 +66,8 @@ That's the terminus of every pass: **spec → build → test → review → comm
 
 - **Compare with the built-in.** Run `/code-review low` — Claude's bundled reviewer, zero setup; low effort keeps it fast and high-confidence. See how its findings compare to your by-hand pass.
 - **Add the security lens for free.** Run the built-in `/security-review` on the same change — a ready-made security pass, nothing to build.
-- **Coming next:** you'll turn this exact review into a one-command reviewer **agent** (Exercise 5), so you get the fresh-context read *without* `/clear`-ing your session.
+- **Coming next:** you'll turn this exact review into a one-command reviewer **agent** (Exercise 6), so you get the fresh-context read *without* `/clear`-ing your session.
 
 ---
 
-← Previous: [Exercise 3 — TDD](./3-tdd-greenfield.md)  ·  Next: [Exercise 5 — Agents →](./5-agents-greenfield.md)
+← Previous: [Exercise 4 — TDD](./4-tdd-greenfield.md)  ·  Next: [Exercise 6 — Agents →](./6-agents-greenfield.md)

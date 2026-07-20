@@ -1,6 +1,6 @@
-`Greenfield track · Exercise 0 of 6` — [Welcome](./README.md)
+`Greenfield track · Exercise 1 of 7` — [Welcome](./README.md)
 
-# Exercise 0 — Set up your project and its context (greenfield)
+# Exercise 1 — Set up your project and its context (greenfield)
 
 **Track:** Greenfield — you're starting something new from an empty folder.
 **Time:** ~30 min · **You'll leave with:** a running skeleton, a short product brief, and a CLAUDE.md that keeps Claude on the rails from here on.
@@ -87,4 +87,4 @@ Done early, or want to push it? Try any of these:
 
 ---
 
-← Previous: [Welcome](./README.md)  ·  Next: [Exercise 1 — Spec-driven development →](./1-spec-greenfield.md)
+← Previous: [Welcome](./README.md)  ·  Next: [Exercise 2 — Spec-driven development →](./2-spec-greenfield.md)

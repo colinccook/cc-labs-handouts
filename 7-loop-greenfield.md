@@ -1,9 +1,9 @@
-`Brownfield track · Exercise 6 of 6` — [Welcome](./README.md)
+`Greenfield track · Exercise 7 of 7` — [Welcome](./README.md)
 
-# Exercise 6 — Run the loop, then make it yours (brownfield)
+# Exercise 7 — Run the loop, then make it yours (greenfield)
 
-**Track:** Brownfield · **Time:** ~45–60 min (and beyond)
-**Builds on:** everything — Exercises 0–5. · **Adds to your build:** another real, shipped change — and *your* version of the loop, written down.
+**Track:** Greenfield · **Time:** ~45–60 min (and beyond)
+**Builds on:** everything — Exercises 1–6. · **Adds to your build:** another real feature on your prototype — and *your* version of the loop, written down.
 
 > **Why it matters:** you've assembled the whole loop one piece at a time. This is where it stops being six exercises and becomes *one motion you own*. Nothing new to learn — just run the full loop yourself, notice where it helps and where it fights you, and tune it to how you actually work. That tuning is what makes it stick on Monday.
 
@@ -13,17 +13,17 @@
 
 Everything you've built connects into a single repeatable cycle:
 
-1. **Thin context** — CLAUDE.md + rules point Claude at your docs/ADRs *(Ex 0)*.
-2. **Spec** — `/specify` drafts it; you edit until the acceptance criteria are right *(Ex 1–2)*.
-3. **Build test-first** — RED → GREEN, so "done" is proven *(Ex 3)*.
-4. **Review** — the `reviewer` agent checks the diff against the spec in a fresh context *(Ex 4–5)*.
+1. **Thin context** — CLAUDE.md + rules point Claude at your `docs/brief.md` and ADRs *(Ex 1)*.
+2. **Spec** — `/specify` drafts it; you edit until the acceptance criteria are right *(Ex 2–3)*.
+3. **Build test-first** — RED → GREEN, so "done" is proven *(Ex 4)*.
+4. **Review** — the `reviewer` agent checks the diff against the spec in a fresh context *(Ex 5–6)*.
 5. **Commit / PR** — a clean, reviewed diff, ready for a human.
 
 Then `/clear` and go again. Each pass should feel faster and cleaner than the last.
 
 ## Do a full pass, solo
 
-Pick a fresh task — a feature, a bug, a refactor — and take it through the **entire** loop yourself, no hand-holding: `/specify` it, edit the spec, build it test-first, run your `reviewer` agent, fix what it flags, commit and open a PR. Complete at least one full pass; keep going if you're flowing.
+Pick the next slice of your brief — a feature you haven't built yet — and take it through the **entire** loop yourself, no hand-holding: `/specify` it, edit the spec, build it test-first, run your `reviewer` agent, fix what it flags, commit and open a PR. Complete at least one full pass; keep going if you're flowing.
 
 ## Observe as you go
 
@@ -45,7 +45,7 @@ Tune the loop to *your* needs — small changes, right now:
 
 ## What good looks like
 
-- **A second real change shipped** through the full loop, solo.
+- **A second real feature shipped** through the full loop, solo.
 - **An honest read** on what worked and what didn't for *you*.
 - **At least one deliberate tweak** to your context, skill, or agent — the loop is now yours, not the workshop's.
 
@@ -65,4 +65,4 @@ Tune the loop to *your* needs — small changes, right now:
 
 ---
 
-← Previous: [Exercise 5 — Agents](./5-agents-brownfield.md)  ·  [You built it — back to Welcome →](./README.md)
+← Previous: [Exercise 6 — Agents](./6-agents-greenfield.md)  ·  [You built it — back to Welcome →](./README.md)

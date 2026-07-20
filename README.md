@@ -46,11 +46,11 @@ The exercises come in two tracks. **Choose one and stay on it.**
 2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
 3. Finished early? Every exercise has a **🎁 Bonus** to push further.
 
-The exercises **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track.
+There are **seven exercises (1–7)**, and they **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track.
 
 > **The setup is the start, not the whole thing.** Each exercise gets Claude *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Claude produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
 
 ---
 
-**Ready?** Open your repo (or an empty folder), then start with **Exercise 0**:
-[Brownfield →](./0-context-brownfield.md)  ·  [Greenfield →](./0-context-greenfield.md)
+**Ready?** Open your repo (or an empty folder), then start with **Exercise 1**:
+[Brownfield →](./1-context-brownfield.md)  ·  [Greenfield →](./1-context-greenfield.md)

@@ -1,9 +1,9 @@
-`Greenfield track · Exercise 2 of 6` — [Welcome](./README.md)
+`Greenfield track · Exercise 3 of 7` — [Welcome](./README.md)
 
-# Exercise 2 — Turn your workflow into a skill (greenfield)
+# Exercise 3 — Turn your workflow into a skill (greenfield)
 
 **Track:** Greenfield · **Time:** ~30 min
-**Builds on:** the spec-drafting from Exercise 1. · **Adds to your build:** a `/specify` skill, plus a scaffold skill for your project.
+**Builds on:** the spec-drafting from Exercise 2. · **Adds to your build:** a `/specify` skill, plus a scaffold skill for your project.
 
 > **Why it matters:** a skill captures *the way you do X here* once, so it fires automatically whenever a matching task comes up. On a new project the two things you'll do over and over are **drafting specs** and **scaffolding new pieces** — so those are exactly what to capture.
 
@@ -11,12 +11,12 @@
 
 ## Why this exercise
 
-You'll build two skills. First `/specify` — last exercise's spec-drafting prompt as one keystroke. Then a **scaffold skill** that stamps out a new component/endpoint/module following the conventions you set in Exercise 0 — because you'll be doing that a lot as your MVP grows.
+You'll build two skills. First `/specify` — last exercise's spec-drafting prompt as one keystroke. Then a **scaffold skill** that stamps out a new component/endpoint/module following the conventions you set in Exercise 1 — because you'll be doing that a lot as your MVP grows.
 
 ## Before you start
 
-- Exercise 1 done — you've got a `specs/_template.md` and a spec-drafting flow fresh in mind.
-- `.claude/rules/conventions.md` from Exercise 0 (your scaffold skill will follow it).
+- Exercise 2 done — you've got a `specs/_template.md` and a spec-drafting flow fresh in mind.
+- `.claude/rules/conventions.md` from Exercise 1 (your scaffold skill will follow it).
 
 ## Steps
 
@@ -71,4 +71,4 @@ references/ file it reads on demand. Show me the file and stop.
 
 ---
 
-← Previous: [Exercise 1 — Spec-driven](./1-spec-greenfield.md)  ·  Next: [Exercise 3 — TDD →](./3-tdd-greenfield.md)
+← Previous: [Exercise 2 — Spec-driven](./2-spec-greenfield.md)  ·  Next: [Exercise 4 — TDD →](./4-tdd-greenfield.md)
