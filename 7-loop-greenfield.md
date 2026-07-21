@@ -64,6 +64,16 @@ Tune the loop to *your* needs — small changes, right now:
 - **Teach it to one person.** The fastest way to keep a workflow is to show a teammate.
 - **Where next:** as the loop matures you'll want to *automate* the checks, *parallelise* independent work, *connect* Claude to your systems, and *run it unattended*. Those are the next layers on this same loop.
 
+## 📚 Further reading — the sources behind Part 2
+
+The Part 2 talks lean on three Anthropic sources. Each goes deeper than any workshop can — worth a slow read once you're back at your desk.
+
+| Source | Why it's worth your time | Link |
+|---|---|---|
+| **Best practices for Claude Code** | The canonical loop — explore → plan → code → commit, verification-driven development, fresh-context review, and keeping CLAUDE.md thin. | https://code.claude.com/docs/en/best-practices |
+| **Effective context engineering for AI agents** | Context as a finite budget: the attention budget, diminishing returns, "context rot," and loading the smallest high-signal set. | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents |
+| **Building effective agents** | Workflows vs agents, the augmented-LLM building block, and choosing the *right* system rather than the most complex one. | https://www.anthropic.com/engineering/building-effective-agents |
+
 ---
 
 ← Previous: [Exercise 6 — Agents](./6-agents-greenfield.md)  ·  [You built it — back to Welcome →](./README.md)
