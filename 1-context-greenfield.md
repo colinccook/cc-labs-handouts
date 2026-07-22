@@ -7,6 +7,8 @@
 
 > **The bigger picture:** these exercises aren't about *trying out* Claude Code — they're a build. Each one leaves a real artifact in your project, and by the end of day 2 you'll have a running thing **you** built, faster than you'd have built it alone. This first exercise lays the foundation everything else stacks on.
 
+> **Default model & effort:** unless a step says otherwise, run on **Sonnet** at **`/effort high`** — that's the recommended default across these exercises. Try other models and effort levels as you go; the right choice depends on the task (Exercise 6's cheap Haiku reviewer is the one deliberate exception). We don't recommend using Fable at this point, for cost and speed purposes.
+
 ---
 
 ## Why this exercise

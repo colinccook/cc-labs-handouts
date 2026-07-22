@@ -16,7 +16,7 @@ You'll add a rule that makes Claude build **test-first against a spec's acceptan
 ## Before you start
 
 - The **spec you drafted at the end of Exercise 3** (`specs/<feature>.md`), with concrete acceptance criteria.
-- A working test command. **No test setup yet?** Add a line to the step-2 prompt asking Claude to set up your preferred test runner first (name it) — flag the extra time.
+- A working test command. **No test setup yet?** Add a line to the step-3 implement prompt asking Claude to set up your preferred test runner first (name it) — flag the extra time.
 
 ## Steps
 
@@ -26,13 +26,21 @@ You'll add a rule that makes Claude build **test-first against a spec's acceptan
 Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has a spec in specs/, work test-first against its acceptance criteria — (1) take the next acceptance criterion and write a test that captures it, no implementation yet; (2) run it and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass, then run that test and the full suite (GREEN, no regressions); (4) refactor if useful, keeping green, then move to the next criterion. NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file and stop.
 ```
 
-**2. Build your spec'd task, test-first.** Point Claude at the spec from Exercise 3:
+**2. Commit before you implement.** You're about to build a real change — commit the rule file (and anything else pending) now, so the diff you review in Exercise 5 is just this change, nothing else mixed in.
+
+**3. `/clear`, then hand Claude just the spec.** Clear so what happens next is the rule doing the work, not memory of the conversation that just wrote it:
 
 ```text
-Implement specs/<your-feature>.md test-first, following the RED-GREEN rule. Go one acceptance criterion at a time, and show me the RED — the failing test, for the right reason — before you write any implementation for it.
+/clear
 ```
 
-**3. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Claude jumps straight to green, make it back up.
+```text
+Implement specs/<your-feature>.md.
+```
+
+That's the whole prompt. You already made test-first-against-the-spec a `YOU MUST` rule in step 1 — restating RED-GREEN here would just be asking Claude to do what it's already required to do. If you want to confirm the rule is actually driving it, ask Claude which rule it's following before it starts.
+
+**4. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Claude jumps straight to green, make it back up.
 
 ## What good looks like
 

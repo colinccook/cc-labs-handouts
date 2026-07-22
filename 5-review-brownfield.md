@@ -18,6 +18,8 @@ You'll close a loop pass properly for the first time — reviewing the change **
 - The change from Exercise 4 in your working tree (uncommitted is fine — you'll review it *before* committing).
 - Its spec (`specs/<feature>.md`) with acceptance criteria.
 
+> **Working in the provided `cc-labs-exercise` solution?** It already ships a `code-reviewer` subagent at `.claude/agents/code-reviewer.md`. Its `description` is broad enough that Claude may reach for it whenever you say "review" — which would short-circuit the by-hand exercise below. Delete (or rename) it before you start; you'll bring it back at the end of Exercise 6's bonus to compare against the spec-aware `reviewer` agent you build there.
+
 ## Steps
 
 **1. Review it in the same session — and watch it defend itself.** As soon as the build is done, in the *same* session (which still has the whole build conversation loaded), ask it to review its own work:
