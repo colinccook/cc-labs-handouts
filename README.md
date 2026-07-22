@@ -8,6 +8,8 @@ Over the next day and a half you'll take the individual moves you learned and st
 
 > **This is a build, not a demo.** Each exercise leaves a real artifact in your project. Nothing here is throwaway — you're doing the actual work, just faster, and learning the technique by shipping with it.
 
+> **Default model & effort:** unless a step tells you otherwise, run on **Sonnet** at **`/effort high`** — the recommended default for the reasoning-heavy work these exercises ask for. Try other models and effort levels as you get comfortable — the right choice depends on the task (the cheap Haiku reviewer in Exercise 6 is the one deliberate exception you'll build). We don't recommend using Fable at this point, for cost and speed purposes.
+
 ---
 
 ## What you'll walk away with

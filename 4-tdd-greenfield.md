@@ -26,15 +26,27 @@ Two steps: first stand up a test framework (your skeleton has none yet — that 
 My project has no test framework yet. Before setting anything up, ask me what I want: the test runner (recommend the idiomatic one for my stack from ADR-0001, but let me choose), and whether I care about unit vs integration and frontend vs backend tests for this project. Then set up my chosen runner, add the command to CLAUDE.md, and write one trivial passing test to prove it runs. Keep it minimal.
 ```
 
-**2. Add the RED-GREEN rule and build your spec'd slice test-first.** Paste this:
+**2. Add the RED-GREEN rule.** Paste this on its own — it makes test-first-against-the-spec the default, enforced way to build:
 
 ```text
-Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has a spec in specs/, work test-first against its acceptance criteria — (1) take the next acceptance criterion and write a test that captures it, no implementation yet; (2) run it and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass, then run that test and the full suite (GREEN, no regressions); (4) refactor if useful, keeping green, then move to the next criterion. NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks wrong, STOP and ask me.
-
-Then implement specs/<slice>.md test-first, one acceptance criterion at a time. Show me the RED before any implementation.
+Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has a spec in specs/, work test-first against its acceptance criteria — (1) take the next acceptance criterion and write a test that captures it, no implementation yet; (2) run it and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass, then run that test and the full suite (GREEN, no regressions); (4) refactor if useful, keeping green, then move to the next criterion. NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file and stop.
 ```
 
-**3. Watch the RED before the GREEN.** The tests must fail for the right reason before any implementation. If Claude jumps straight to green, make it back up.
+**3. Commit before you implement.** Commit the harness and the rule file now, so the diff you review in Exercise 5 is just the slice you're about to build, nothing else mixed in.
+
+**4. `/clear`, then hand Claude just the spec.** Clear so what happens next is the rule doing the work, not memory of the conversation that just wrote it:
+
+```text
+/clear
+```
+
+```text
+Implement specs/<slice>.md.
+```
+
+That's the whole prompt. You already made test-first-against-the-spec a `YOU MUST` rule in step 2 — restating RED-GREEN here would just be asking Claude to do what it's already required to do. If you want to confirm the rule is actually driving it, ask Claude which rule it's following before it starts.
+
+**5. Watch the RED before the GREEN.** The tests must fail for the right reason before any implementation. If Claude jumps straight to green, make it back up.
 
 ## What good looks like
 
@@ -52,8 +64,6 @@ Then implement specs/<slice>.md test-first, one acceptance criterion at a time. 
 
 ## 🎁 Bonus — go further
 
-- **Backfill a test for a past bug.** Reproduce it as a failing test first, then confirm the fix keeps it green — that bug can never silently return.
-- **Machine-check "done."** Imagine a hook that runs this suite automatically so green isn't a matter of trust — the kind of automation you can layer on once the loop is solid.
 - **Add a coverage command** to `CLAUDE.md` so you can see what's protected as the MVP grows.
 
 ---

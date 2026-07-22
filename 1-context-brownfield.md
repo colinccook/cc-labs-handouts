@@ -7,6 +7,8 @@
 
 > **The bigger picture:** these exercises aren't about *trying out* Claude Code — they're about turning it into a permanent part of how you ship. Each one leaves a real improvement in your repo, and by the end of day 2 you'll have a repeatable spec → build → test → review loop running on your own code, making you measurably faster. This first exercise gives Claude the context to stop guessing about your project.
 
+> **Default model & effort:** unless a step says otherwise, run on **Sonnet** at **`/effort high`** — that's the recommended default across these exercises. Try other models and effort levels as you go; the right choice depends on the task (Exercise 6's cheap Haiku reviewer is the one deliberate exception). We don't recommend using Fable at this point, for cost and speed purposes.
+
 ---
 
 ## Why this exercise

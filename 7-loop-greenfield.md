@@ -62,7 +62,12 @@ Tune the loop to *your* needs — small changes, right now:
 
 - **Write down "my loop."** One index card: your steps, your commands (`/specify`, `reviewer`), your "done" checklist. That's your real takeaway.
 - **Teach it to one person.** The fastest way to keep a workflow is to show a teammate.
-- **Where next:** as the loop matures you'll want to *automate* the checks, *parallelise* independent work, *connect* Claude to your systems, and *run it unattended*. Those are the next layers on this same loop.
+- **Where next:** two of the next layers — automating a check and parallelising work — are below, ready to try now. Connecting Claude to your systems and running it unattended are further layers still to explore on your own.
+
+## 🧭 More features to try
+
+- **Automate a guardrail with a hook.** A `CLAUDE.md` rule is something Claude *may* follow — a hook always runs, a deterministic shell command fired on a lifecycle event (`PostToolUse`, `Stop`, and others). Try wiring one that lints automatically every time Claude edits a file. Skip the copy-paste prompt this time — ask Claude directly how to set up a `PostToolUse` hook for your linter, and let it walk you through `.claude/settings.json` and `/hooks`.
+- **Run a second Claude in parallel with worktrees.** `claude --worktree <name>` creates an isolated git worktree (`.claude/worktrees/<name>/`, its own branch) and starts a session there — a second Claude working alongside your main one with zero shared context. Before running two at once, be mindful of what each worktree needs independently: its own dependencies (`node_modules`/venv), its own `.env` (a `.worktreeinclude` file at your project root, in `.gitignore` syntax, tells Claude Code which gitignored files to copy into new worktrees automatically), and its own port if a dev server or test database is involved — two on `:3000` will collide. For full setup/teardown automation, look at the `WorktreeCreate` and `WorktreeRemove` hooks in the Claude Code docs — they let you run your own script whenever a worktree is created or removed. And clean up when you're done: `git worktree remove` rather than letting them pile up.
 
 ## 📚 Further reading — the sources behind Part 2
 
