@@ -44,7 +44,7 @@ if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the 
 and stop.
 ```
 
-**3. Commit before you implement.** Commit the harness and the rule file now, so the diff you review in Exercise 5 is just the slice you're about to build, nothing else mixed in.
+**3. Commit before you implement.** Commit the harness and the rule file now (ask Claude to commit, or run `git commit` yourself), so the diff you review in Exercise 5 is just the slice you're about to build, nothing else mixed in.
 
 **4. `/clear`, then hand Claude just the spec.** Clear so what happens next is the rule doing the work, not memory of the conversation that just wrote it:
 

@@ -44,7 +44,7 @@ if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the 
 and stop.
 ```
 
-**2. Commit before you implement.** You're about to build a real change — commit the rule file (and anything else pending) now, so the diff you review in Exercise 5 is just this change, nothing else mixed in.
+**2. Commit before you implement.** You're about to build a real change — commit the rule file (and anything else pending) now (ask Claude to commit, or run `git commit` yourself), so the diff you review in Exercise 5 is just this change, nothing else mixed in.
 
 **3. `/clear`, then hand Claude just the spec.** Clear so what happens next is the rule doing the work, not memory of the conversation that just wrote it:
 
