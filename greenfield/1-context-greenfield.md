@@ -40,11 +40,12 @@ or two; the rough MVP shape (what's in, what's explicitly out — keep it small,
 1.5-day build); the stack (language, framework, package manager, does it need storage);
 and any coding preferences, styles, or architecture conventions I want followed (these
 seed .claude/rules/conventions.md). Don't lead with a default — make me commit first,
-then tell me if you'd have chosen differently. When I don't know something, teach me the trade-off (2–3 options,
-what each costs for a build this size) and make me pick. Do not get into detailed
-features or acceptance criteria — we'll do that properly next.
+then tell me if you'd have chosen differently. When I don't know something, teach me
+the trade-off (2–3 options, what each costs for a build this size) and make me pick.
+Do not get into detailed features or acceptance criteria — we'll do that properly next.
 
-When you've got enough — and not before — propose, and STOP for approval before creating anything:
+When you've got enough — and not before — propose, and STOP for approval before creating
+anything:
 1. docs/brief.md — a short product brief: the idea in a paragraph, MVP bullets,
    out-of-scope. (The north star — not a feature spec.)
 2. A running skeleton for the stack we chose — hello-world that boots. No tests yet.

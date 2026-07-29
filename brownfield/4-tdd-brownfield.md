@@ -33,7 +33,15 @@ minimal.
 **1. Add the RED-GREEN rule to your context.** Paste this — it makes test-first-against-the-spec the default, enforced way to build:
 
 ```text
-Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has a spec in specs/, work test-first against its acceptance criteria — (1) take the next acceptance criterion and write a test that captures it, no implementation yet; (2) run it and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass, then run that test and the full suite (GREEN, no regressions); (4) refactor if useful, keeping green, then move to the next criterion. NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file and stop.
+Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN
+(YOU MUST)": when implementing a feature that has a spec in specs/, work test-first
+against its acceptance criteria — (1) take the next acceptance criterion and write a test
+that captures it, no implementation yet; (2) run it and SHOW me it fails for the right
+reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass,
+then run that test and the full suite (GREEN, no regressions); (4) refactor if useful,
+keeping green, then move to the next criterion. NEVER modify a test just to make it pass —
+if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file
+and stop.
 ```
 
 **2. Commit before you implement.** You're about to build a real change — commit the rule file (and anything else pending) now, so the diff you review in Exercise 5 is just this change, nothing else mixed in.

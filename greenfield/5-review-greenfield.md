@@ -23,7 +23,8 @@ You'll close a loop pass properly for the first time — reviewing the change **
 **1. Review it in the same session — and watch it defend itself.** As soon as the build is done, in the *same* session (which still has the whole build conversation loaded), ask it to review its own work:
 
 ```text
-Review your change against specs/<feature>.md's acceptance criteria. What doesn't meet them, and what are the risks?
+Review your change against specs/<feature>.md's acceptance criteria. What doesn't meet
+them, and what are the risks?
 ```
 
 Notice the tone: it tends to justify the choices it just made. That anchoring bias is the stale context talking — it can't see its own work fresh.
@@ -31,7 +32,11 @@ Notice the tone: it tends to justify the choices it just made. That anchoring bi
 **2. Now `/clear` and review again — fresh.** Clearing drops that build transcript, so the review starts from nothing but the diff and the spec. Paste:
 
 ```text
-Review my current changes against specs/<feature>.md's acceptance criteria (and docs/brief.md for the product intent). Run git diff to see them, and map each acceptance criterion to the change. Report: unmet criteria, correctness risks (with evidence), and anything changed outside the task's scope. Don't fix and don't nitpick style — just report, then give a verdict: ship / needs-changes / discuss.
+Review my current changes against specs/<feature>.md's acceptance criteria (and
+docs/brief.md for the product intent). Run git diff to see them, and map each acceptance
+criterion to the change. Report: unmet criteria, correctness risks (with evidence), and
+anything changed outside the task's scope. Don't fix and don't nitpick style — just
+report, then give a verdict: ship / needs-changes / discuss.
 ```
 
 Same code, sharper read — the fresh context is the whole point.
@@ -41,7 +46,9 @@ Same code, sharper read — the fresh context is the whole point.
 **4. Close the loop — commit and open a PR.** Now that it's reviewed and fixed, make it a clean, single-purpose commit and open a PR for the next reviewer — a teammate, or Claude itself:
 
 ```text
-Commit these reviewed changes with a clear, focused message (what changed and why; keep the diff to this one change). Then push and open a PR summarising the change, how to test it, and any risks the review flagged.
+Commit these reviewed changes with a clear, focused message (what changed and why; keep
+the diff to this one change). Then push and open a PR summarising the change, how to test
+it, and any risks the review flagged.
 ```
 
 That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean.

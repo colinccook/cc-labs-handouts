@@ -23,13 +23,25 @@ Two steps: first stand up a test framework (your skeleton has none yet — that 
 **1. Stand up the test harness — your choice of runner.** Your skeleton has none yet, on purpose. Paste this so Claude proposes but *you* decide:
 
 ```text
-My project has no test framework yet. Before setting anything up, ask me what I want: the test runner (recommend the idiomatic one for my stack from ADR-0001, but let me choose), and whether I care about unit vs integration and frontend vs backend tests for this project. Then set up my chosen runner, add the command to CLAUDE.md, and write one trivial passing test to prove it runs. Keep it minimal.
+My project has no test framework yet. Before setting anything up, ask me what I want: the
+test runner (recommend the idiomatic one for my stack from ADR-0001, but let me choose),
+and whether I care about unit vs integration and frontend vs backend tests for this
+project. Then set up my chosen runner, add the command to CLAUDE.md, and write one trivial
+passing test to prove it runs. Keep it minimal.
 ```
 
 **2. Add the RED-GREEN rule.** Paste this on its own — it makes test-first-against-the-spec the default, enforced way to build:
 
 ```text
-Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has a spec in specs/, work test-first against its acceptance criteria — (1) take the next acceptance criterion and write a test that captures it, no implementation yet; (2) run it and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass, then run that test and the full suite (GREEN, no regressions); (4) refactor if useful, keeping green, then move to the next criterion. NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file and stop.
+Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN
+(YOU MUST)": when implementing a feature that has a spec in specs/, work test-first
+against its acceptance criteria — (1) take the next acceptance criterion and write a test
+that captures it, no implementation yet; (2) run it and SHOW me it fails for the right
+reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass,
+then run that test and the full suite (GREEN, no regressions); (4) refactor if useful,
+keeping green, then move to the next criterion. NEVER modify a test just to make it pass —
+if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file
+and stop.
 ```
 
 **3. Commit before you implement.** Commit the harness and the rule file now, so the diff you review in Exercise 5 is just the slice you're about to build, nothing else mixed in.

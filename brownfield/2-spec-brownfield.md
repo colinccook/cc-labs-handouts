@@ -54,7 +54,10 @@ review — I'll edit it before any code.
 **5. Lock the spec-first workflow in as a rule.** So this isn't something you have to remember every time, capture it as an always-on rule:
 
 ```text
-Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial feature, propose a spec in specs/ and STOP for my approval before writing any implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable. Show me both files and stop.
+Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial
+feature, propose a spec in specs/ and STOP for my approval before writing any
+implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable.
+Show me both files and stop.
 ```
 
 Now every future feature starts spec-first by default — enforced, not remembered.
