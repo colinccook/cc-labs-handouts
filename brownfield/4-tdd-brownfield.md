@@ -16,9 +16,19 @@ You'll add a rule that makes Claude build **test-first against a spec's acceptan
 ## Before you start
 
 - The **spec you drafted at the end of Exercise 3** (`specs/<feature>.md`), with concrete acceptance criteria.
-- A working test command. **No test setup yet?** Add a line to the step-3 implement prompt asking Claude to set up your preferred test runner first (name it) — flag the extra time.
+- A working test command. **No test runner yet?** That's Step 0 below — budget extra time for it.
 
 ## Steps
+
+**0. No test command yet? Stand it up first.** Skip straight to step 1 if your repo already has a working test runner.
+
+```text
+This project has no test runner set up yet. Before setting anything up, ask me what I want:
+the test runner (recommend the idiomatic one for this stack, but let me choose), and whether
+I care about unit vs integration and frontend vs backend tests. Then set up my chosen runner,
+add the command to CLAUDE.md, and write one trivial passing test to prove it runs. Keep it
+minimal.
+```
 
 **1. Add the RED-GREEN rule to your context.** Paste this — it makes test-first-against-the-spec the default, enforced way to build:
 
@@ -52,6 +62,7 @@ That's the whole prompt. You already made test-first-against-the-spec a `YOU MUS
 
 > **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
 
+- **No test runner yet? Standing it up takes real time** — budget for it; that's expected on a repo that's never had tests.
 - **The classic cheat is Claude weakening the test to pass.** The "never modify the test" line in your rule is what prevents it — call it out if you see it happen.
 - **"Show me the RED"** is the whole discipline. If it jumps to green, make it back up.
 - **Anchor to the criteria, not vibes.** One test per acceptance criterion keeps "done" objective and traceable back to the spec.
