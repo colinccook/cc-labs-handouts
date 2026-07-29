@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 1 of 7` — [Welcome](./README.md)
+`Greenfield track · Exercise 1 of 7` — [Welcome](../README.md)
 
 # Exercise 1 — Set up your project and its context (greenfield)
 
@@ -92,4 +92,4 @@ Done early, or want to push it? Try any of these:
 
 ---
 
-← Previous: [Welcome](./README.md)  ·  Next: [Exercise 2 — Spec-driven development →](./2-spec-greenfield.md)
+← Previous: [Welcome](../README.md)  ·  Next: [Exercise 2 — Spec-driven development →](./2-spec-greenfield.md)

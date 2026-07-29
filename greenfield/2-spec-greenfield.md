@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 2 of 7` — [Welcome](./README.md)
+`Greenfield track · Exercise 2 of 7` — [Welcome](../README.md)
 
 # Exercise 2 — Write the spec before you build (greenfield)
 
