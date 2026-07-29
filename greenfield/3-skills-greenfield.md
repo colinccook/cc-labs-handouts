@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 3 of 7` — [Welcome](./README.md)
+`Greenfield track · Exercise 3 of 7` — [Welcome](../README.md)
 
 # Exercise 3 — Turn your workflow into a skill (greenfield)
 

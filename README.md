@@ -55,4 +55,4 @@ There are **seven exercises (1–7)**, and they **stack** — each builds on the
 ---
 
 **Ready?** Open your repo (or an empty folder), then start with **Exercise 1**:
-[Brownfield →](./1-context-brownfield.md)  ·  [Greenfield →](./1-context-greenfield.md)
+[Brownfield →](./brownfield/1-context-brownfield.md)  ·  [Greenfield →](./greenfield/1-context-greenfield.md)

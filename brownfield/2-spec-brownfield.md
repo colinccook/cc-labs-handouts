@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 2 of 7` — [Welcome](./README.md)
+`Brownfield track · Exercise 2 of 7` — [Welcome](../README.md)
 
 # Exercise 2 — Write the spec before you build (brownfield)
 
@@ -6,6 +6,8 @@
 **Builds on:** the context files from Exercise 1. · **Adds to your build:** a reusable spec template, your first written spec, and a real task implemented from it.
 
 > **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to keep Claude aimed at what you actually meant: it moves the thinking upstream, where changing your mind is still free. The spec is the contract; the code is just one implementation of it.
+
+> **⏱️ Keep the task small.** The ~30 min covers the template, the spec, your edit, *and* the build. Pick a task that's small but meaningful — a focused change you can actually land, not your biggest or gnarliest one. If you'd rather spec something bigger or more complex, that's fine — just expect to run past 30 min, and pick up the build in your own time while the room moves on to Exercise 3.
 
 > **Note — this isn't a spec-driven-development (SDD) lab.** We're not following a formal SDD framework here; the goal is just to *feel* the value of a spec agreed before code. If you want to go deeper, there are mature AI-native SDD toolkits — e.g. [spec-kit](https://github.com/github/spec-kit) and [specs.md](https://specs.md/) — that wrap this into a full framework of skills and agents, usually agnostic to the model or coding tool. We're keeping it simple on purpose.
 
@@ -18,7 +20,7 @@ You're going to resist the urge to say "build X" and instead pin the *what* down
 ## Before you start
 
 - Exercise 1 done (Claude has your context and can read your ADRs).
-- One of the real tasks you brought — a feature, a bug, or a focused change.
+- One of the real tasks you brought — a feature, a bug, or a focused change. **Keep it small but meaningful** — this is a 30-min slot for template + spec + build, so pick something you can actually finish in it.
 
 ## Steps
 
@@ -52,7 +54,10 @@ review — I'll edit it before any code.
 **5. Lock the spec-first workflow in as a rule.** So this isn't something you have to remember every time, capture it as an always-on rule:
 
 ```text
-Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial feature, propose a spec in specs/ and STOP for my approval before writing any implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable. Show me both files and stop.
+Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial
+feature, propose a spec in specs/ and STOP for my approval before writing any
+implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable.
+Show me both files and stop.
 ```
 
 Now every future feature starts spec-first by default — enforced, not remembered.

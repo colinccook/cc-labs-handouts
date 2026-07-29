@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 2 of 7` — [Welcome](./README.md)
+`Greenfield track · Exercise 2 of 7` — [Welcome](../README.md)
 
 # Exercise 2 — Write the spec before you build (greenfield)
 
@@ -6,6 +6,8 @@
 **Builds on:** your `docs/brief.md` and running skeleton from Exercise 1. · **Adds to your build:** a reusable spec template, your first feature spec, and the first real feature on top of the skeleton.
 
 > **Why it matters:** when Claude can build almost anything in minutes, the expensive mistake shifts — it's no longer slow code, it's *the wrong thing, built well.* A short spec, agreed **before** any code, is the cheapest way to stay aimed at what you meant. On day one you wrote a *brief* — the whole product at a glance. Now you'll **spec a single slice of it** properly and build that slice.
+
+> **⏱️ Keep the slice small.** The ~30 min covers the template, the spec, your edit, *and* the build. Pick a slice that's small but meaningful — genuinely useful on its own, not the most ambitious thing in your brief. If you'd rather spec something bigger or more complex, that's fine — just expect to run past 30 min, and pick up the build in your own time while the room moves on to Exercise 3.
 
 > **Note — this isn't a spec-driven-development (SDD) lab.** We're not following a formal SDD framework here; the goal is just to *feel* the value of a spec agreed before code. If you want to go deeper, there are mature AI-native SDD toolkits — e.g. [spec-kit](https://github.com/github/spec-kit) and [specs.md](https://specs.md/) — that wrap this into a full framework of skills and agents, usually agnostic to the model or coding tool. We're keeping it simple on purpose.
 
@@ -18,7 +20,7 @@ Your brief says *what the product is*. A spec says *how one feature behaves* —
 ## Before you start
 
 - Exercise 1 done: `docs/brief.md`, a running skeleton, and `docs/adr/0001-initial-stack.md` in place.
-- A rough sense of which slices of your MVP might be the first thing to build (Claude will help you choose).
+- A rough sense of which slices of your MVP might be the first thing to build (Claude will help you choose). **Keep it small but meaningful** — this is a 30-min slot for template + spec + build, so pick a slice you can actually finish in it.
 
 ## Steps
 
@@ -52,7 +54,10 @@ review — I'll edit it before any code.
 **5. Lock the spec-first workflow in as a rule.** So this isn't something you have to remember every time, capture it as an always-on rule:
 
 ```text
-Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial feature, propose a spec in specs/ and STOP for my approval before writing any implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable. Show me both files and stop.
+Create .claude/rules/workflow.md with an always-on rule: "IMPORTANT: for any non-trivial
+feature, propose a spec in specs/ and STOP for my approval before writing any
+implementation." Then add a one-line pointer to it from CLAUDE.md so it's discoverable.
+Show me both files and stop.
 ```
 
 Now every future feature starts spec-first by default — enforced, not remembered.

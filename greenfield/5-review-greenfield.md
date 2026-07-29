@@ -1,11 +1,11 @@
-`Brownfield track · Exercise 5 of 7` — [Welcome](./README.md)
+`Greenfield track · Exercise 5 of 7` — [Welcome](../README.md)
 
-# Exercise 5 — Review the diff in a fresh context (brownfield)
+# Exercise 5 — Review the diff in a fresh context (greenfield)
 
-**Track:** Brownfield · **Time:** ~25 min
-**Builds on:** the spec from Exercise 2 and the tested change from Exercise 4. · **Adds to your build:** a reviewed, committed change — and the fresh-context review habit.
+**Track:** Greenfield · **Time:** ~25 min
+**Builds on:** the spec from Exercise 2 and the tested feature from Exercise 4. · **Adds to your build:** a reviewed, committed change — and the fresh-context review habit.
 
-> **Why it matters:** when Claude builds in minutes, *review* becomes the bottleneck — as AI velocity rises, diffs get bigger and AI-authored code carries more defects per change. And the worst judge of the code is the very session that just wrote it: it still carries the whole build conversation, so it's anchored on its own reasoning and tends to defend it. The fix is to review with a **fresh context** that sees only the diff and your spec — not the conversation that produced it. *(Anthropic's own guidance: "a fresh context improves code review since Claude won't be biased toward code it just wrote.")*
+> **Why it matters:** when Claude builds in minutes, *review* becomes the bottleneck — as AI velocity rises, changes get bigger and AI-authored code carries more defects per change. And the worst judge of the code is the very session that just wrote it: it still carries the whole build conversation, so it's anchored on its own reasoning and tends to defend it. The fix is to review with a **fresh context** that sees only the diff and your spec — not the conversation that produced it. *(Anthropic's own guidance: "a fresh context improves code review since Claude won't be biased toward code it just wrote.")*
 
 ---
 
@@ -15,17 +15,16 @@ You'll close a loop pass properly for the first time — reviewing the change **
 
 ## Before you start
 
-- The change from Exercise 4 in your working tree (uncommitted is fine — you'll review it *before* committing).
-- Its spec (`specs/<feature>.md`) with acceptance criteria.
-
-> **Working in the provided `cc-labs-exercise` solution?** It already ships a `code-reviewer` subagent at `.claude/agents/code-reviewer.md`. Its `description` is broad enough that Claude may reach for it whenever you say "review" — which would short-circuit the by-hand exercise below. Delete (or rename) it before you start; you'll bring it back at the end of Exercise 6's bonus to compare against the spec-aware `reviewer` agent you build there.
+- The feature from Exercise 4 in your working tree (uncommitted is fine — you'll review it *before* committing).
+- Its spec (`specs/<feature>.md`) with acceptance criteria, plus your `docs/brief.md`.
 
 ## Steps
 
 **1. Review it in the same session — and watch it defend itself.** As soon as the build is done, in the *same* session (which still has the whole build conversation loaded), ask it to review its own work:
 
 ```text
-Review your change against specs/<feature>.md's acceptance criteria. What doesn't meet them, and what are the risks?
+Review your change against specs/<feature>.md's acceptance criteria. What doesn't meet
+them, and what are the risks?
 ```
 
 Notice the tone: it tends to justify the choices it just made. That anchoring bias is the stale context talking — it can't see its own work fresh.
@@ -33,7 +32,11 @@ Notice the tone: it tends to justify the choices it just made. That anchoring bi
 **2. Now `/clear` and review again — fresh.** Clearing drops that build transcript, so the review starts from nothing but the diff and the spec. Paste:
 
 ```text
-Review my current changes against specs/<feature>.md's acceptance criteria. Run git diff to see them, and map each acceptance criterion to the change. Report: unmet criteria, correctness risks (with evidence), and anything changed outside the task's scope. Don't fix and don't nitpick style — just report, then give a verdict: ship / needs-changes / discuss.
+Review my current changes against specs/<feature>.md's acceptance criteria (and
+docs/brief.md for the product intent). Run git diff to see them, and map each acceptance
+criterion to the change. Report: unmet criteria, correctness risks (with evidence), and
+anything changed outside the task's scope. Don't fix and don't nitpick style — just
+report, then give a verdict: ship / needs-changes / discuss.
 ```
 
 Same code, sharper read — the fresh context is the whole point.
@@ -43,7 +46,9 @@ Same code, sharper read — the fresh context is the whole point.
 **4. Close the loop — commit and open a PR.** Now that it's reviewed and fixed, make it a clean, single-purpose commit and open a PR for the next reviewer — a teammate, or Claude itself:
 
 ```text
-Commit these reviewed changes with a clear, focused message (what changed and why; keep the diff to this one change). Then push and open a PR summarising the change, how to test it, and any risks the review flagged.
+Commit these reviewed changes with a clear, focused message (what changed and why; keep
+the diff to this one change). Then push and open a PR summarising the change, how to test
+it, and any risks the review flagged.
 ```
 
 That's the terminus of every pass: **spec → build → test → review → commit → PR** — then `/clear` and start the next one clean.
@@ -70,4 +75,4 @@ That's the terminus of every pass: **spec → build → test → review → comm
 
 ---
 
-← Previous: [Exercise 4 — TDD](./4-tdd-brownfield.md)  ·  Next: [Exercise 6 — Agents →](./6-agents-brownfield.md)
+← Previous: [Exercise 4 — TDD](./4-tdd-greenfield.md)  ·  Next: [Exercise 6 — Agents →](./6-agents-greenfield.md)
