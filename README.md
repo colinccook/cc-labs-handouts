@@ -17,7 +17,7 @@ Over the next day and a half you'll take the individual moves you learned and st
 - **A running thing *you* built** — on the code you brought, or on a new idea you started here.
 - **A repeatable spec → build → test → review → PR loop** you can point at any feature, any repo.
 - **A loop that's *yours*** — tuned to how you work and written down, not a copied checklist you'll abandon.
-- **Guardrails that travel with the code** — context files, a spec skill, tests, and a reviewer agent that keep quality high without you babysitting every prompt.
+- **Guardrails that travel with the code** — context files, a spec skill, tests, a reviewer agent, and a hook that enforces the bar programmatically, all keeping quality high without you babysitting every prompt.
 - **Enough fluency to keep going alone** — the whole point of day 2 is that you leave *enabled*, not dependent on the room. Monday you open your repo and the flow is already there.
 
 ## The through-line: agentic engineering, not vibe coding
@@ -27,7 +27,7 @@ There are two ways to work with a model like this.
 - **Vibe coding** — prompt until something looks like it works and move on. It's fast, and it's genuinely great for a prototype or spike where you're exploring an idea. The catch is that the code tends to be hard to trust or maintain once you have to live with it.
 - **Agentic engineering** — you give Claude the *context, specs, tests, and guardrails* to do real work, then you review and steer. The output is production-grade: reviewable, tested, consistent with your conventions, safe to hand to the next person.
 
-Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. A fresh-context review so quality is checked, not assumed. And skills and agents so the loop gets faster every pass. That's the difference between *trying* Claude and *engineering* with it.
+Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. A fresh-context review so quality is checked, not assumed. Skills and agents so the loop gets faster every pass. And a hook so the last check is deterministic rather than merely requested. That's the difference between *trying* Claude and *engineering* with it.
 
 > **💰 Token-smart throughout.** Every message re-sends your context, so *how* you work is what drives what you spend. The structured loop is the cheapest habit of all: a spec stops Claude building the wrong thing and burning tokens on rework, and a runnable check ends the guess-and-retry churn. Keep an eye on `/context`, `/clear` between unrelated tasks, and watch for the **💰 Token-smart** notes in each exercise — small levers that add up.
 
@@ -48,7 +48,7 @@ The exercises come in two tracks. **Choose one and stay on it.**
 2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
 3. Finished early? Every exercise has a **🎁 Bonus** to push further.
 
-There are **seven exercises (1–7)**, and they **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track. The stated times are rough: a few exercises (2, 4, 6) fold in a real build step that can run long — that's *by design*. Exercise 7 is open-ended and soaks up whatever build time is left, so don't feel behind if the earlier ones overrun.
+There are **eight exercises (1–8)**, and they **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track. The stated times are rough: a few exercises (2, 4, 6) fold in a real build step that can run long — that's *by design*. Exercise 8 is open-ended and soaks up whatever build time is left, so don't feel behind if the earlier ones overrun.
 
 > **The setup is the start, not the whole thing.** Each exercise gets Claude *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Claude produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
 

@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 1 of 7` — [Welcome](../README.md)
+`Greenfield track · Exercise 1 of 8` — [Welcome](../README.md)
 
 # Exercise 1 — Set up your project and its context (greenfield)
 

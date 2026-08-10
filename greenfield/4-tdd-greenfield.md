@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 4 of 7` — [Welcome](../README.md)
+`Greenfield track · Exercise 4 of 8` — [Welcome](../README.md)
 
 # Exercise 4 — Build it test-first (greenfield)
 
@@ -76,7 +76,8 @@ That's the whole prompt. You already made test-first-against-the-spec a `YOU MUS
 
 ## 🎁 Bonus — go further
 
-- **Add a coverage command** to `CLAUDE.md` so you can see what's protected as the MVP grows.
+- **Backfill a test for something you built in Exercise 2**, before the harness existed — pick the riskiest bit of that slice.
+- **Coming next:** Exercise 5 reviews this change in a fresh context. Later, Exercise 7 adds coverage and puts a hook in front of `git commit` so this suite runs deterministically — "the tests pass" stops being a claim.
 
 ---
 

@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 4 of 7` — [Welcome](../README.md)
+`Brownfield track · Exercise 4 of 8` — [Welcome](../README.md)
 
 # Exercise 4 — Build it test-first (brownfield)
 
@@ -78,7 +78,7 @@ That's the whole prompt. You already made test-first-against-the-spec a `YOU MUS
 ## 🎁 Bonus — go further
 
 - **Backfill a test for a past bug.** Reproduce it as a failing test first, then confirm the fix keeps it green — that bug can never silently return.
-- **Machine-check "done."** Imagine a hook that runs this suite automatically so green isn't a matter of trust — the kind of automation you can layer on once the loop is solid.
+- **Coming next:** Exercise 5 reviews this change in a fresh context. Later, Exercise 7 puts a hook in front of `git commit` so this suite runs deterministically — "the tests pass" stops being a claim.
 
 ---
 

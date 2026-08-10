@@ -1,4 +1,4 @@
-`Brownfield track · Exercise 6 of 7` — [Welcome](../README.md)
+`Brownfield track · Exercise 6 of 8` — [Welcome](../README.md)
 
 # Exercise 6 — Capture your reviewer as an agent (brownfield)
 
@@ -63,4 +63,4 @@ verdict: ship / needs-changes / discuss. Show me the file and stop.
 
 ---
 
-← Previous: [Exercise 5 — Review](./5-review-brownfield.md)  ·  Next: [Exercise 7 — Make it yours →](./7-loop-brownfield.md)
+← Previous: [Exercise 5 — Review](./5-review-brownfield.md)  ·  Next: [Exercise 7 — Hooks →](./7-hooks-brownfield.md)

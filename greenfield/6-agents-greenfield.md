@@ -1,4 +1,4 @@
-`Greenfield track · Exercise 6 of 7` — [Welcome](../README.md)
+`Greenfield track · Exercise 6 of 8` — [Welcome](../README.md)
 
 # Exercise 6 — Capture your reviewer as an agent (greenfield)
 
@@ -62,4 +62,4 @@ with a verdict: ship / needs-changes / discuss. Show me the file and stop.
 
 ---
 
-← Previous: [Exercise 5 — Review](./5-review-greenfield.md)  ·  Next: [Exercise 7 — Make it yours →](./7-loop-greenfield.md)
+← Previous: [Exercise 5 — Review](./5-review-greenfield.md)  ·  Next: [Exercise 7 — Hooks →](./7-hooks-greenfield.md)
