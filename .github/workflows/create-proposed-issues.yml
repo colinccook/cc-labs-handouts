@@ -1,0 +1,30 @@
+name: Create proposed issues
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only list what would be created"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create issues from proposed-issues/
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            bash proposed-issues/create-issues.sh --dry-run
+          else
+            bash proposed-issues/create-issues.sh
+          fi
