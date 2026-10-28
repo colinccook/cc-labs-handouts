@@ -5,18 +5,19 @@
 **Track:** Brownfield · **Time:** ~20–25 min
 **Builds on:** the spec you drafted with `/specify` at the end of Exercise 3. · **Adds to your build:** a RED-GREEN rule tied to your acceptance criteria, and that task implemented test-first.
 
-> **Why it matters:** left to its own devices, Claude tends to write the implementation first and then tests shaped to fit the code it just wrote — so a test you never saw fail might already pass, or pass for the wrong reason, proving nothing about the new behaviour. Forcing **RED → GREEN** — watch the test fail against the acceptance criteria *before* any implementation exists — is what proves the test can actually catch a broken implementation instead of rubber-stamping whatever code happens to be there. It also gives the agent an objective "am I done" signal.
+> **Why it matters:** left to its own devices, a coding agent tends to write the implementation first and then tests shaped to fit the code it just wrote — so a test you never saw fail might already pass, or pass for the wrong reason, proving nothing about the new behaviour. Forcing **RED → GREEN** — watch the test fail against the acceptance criteria *before* any implementation exists — is what proves the test can actually catch a broken implementation instead of rubber-stamping whatever code happens to be there. It also gives the agent an objective "am I done" signal.
 
 ---
 
 ## Why this exercise
 
-You'll add a rule that makes Claude build **test-first against a spec's acceptance criteria**, then use it to implement the task you spec'd last exercise: a failing test that proves it fails for the right reason, *then* the minimum code to pass. This is how the spec you wrote becomes executable, not just prose.
+You'll add a rule that makes Copilot build **test-first against a spec's acceptance criteria**, then use it to implement the task you spec'd last exercise: a failing test that proves it fails for the right reason, *then* the minimum code to pass. This is how the spec you wrote becomes executable, not just prose.
 
 ## Before you start
 
 - The **spec you drafted at the end of Exercise 3** (`specs/<feature>.md`), with concrete acceptance criteria.
 - A working test command. **No test runner yet?** That's Step 0 below — budget extra time for it.
+- Back on your default model (Sonnet, high effort) if you switched up for spec drafting — check with `/model`.
 
 ## Steps
 
@@ -26,27 +27,29 @@ You'll add a rule that makes Claude build **test-first against a spec's acceptan
 This project has no test runner set up yet. Before setting anything up, ask me what I want:
 the test runner (recommend the idiomatic one for this stack, but let me choose), and whether
 I care about unit vs integration and frontend vs backend tests. Then set up my chosen runner,
-add the command to CLAUDE.md, and write one trivial passing test to prove it runs. Keep it
-minimal.
+add the command to .github/copilot-instructions.md, and write one trivial passing test to
+prove it runs. Keep it minimal.
 ```
 
 **1. Add the RED-GREEN rule to your context.** Paste this — it makes test-first-against-the-spec the default, enforced way to build:
 
 ```text
-Add an always-on rule to .claude/rules/testing.md titled "Building from a spec — RED-GREEN
-(YOU MUST)": when implementing a feature that has a spec in specs/, work test-first
-against its acceptance criteria — (1) take the next acceptance criterion and write a test
-that captures it, no implementation yet; (2) run it and SHOW me it fails for the right
-reason — the behaviour is missing, not a typo (RED); (3) write the minimum code to pass,
-then run that test and the full suite (GREEN, no regressions); (4) refactor if useful,
-keeping green, then move to the next criterion. NEVER modify a test just to make it pass —
-if a criterion is ambiguous or a test looks wrong, STOP and ask me. Show me the rule file
-and stop.
+Create .github/instructions/testing.instructions.md with applyTo: "**" and a section
+titled "Building from a spec — RED-GREEN (YOU MUST)": when implementing a feature that has
+a spec in specs/, work test-first against its acceptance criteria — (1) take the next
+acceptance criterion and write a test that captures it, no implementation yet; (2) run it
+and SHOW me it fails for the right reason — the behaviour is missing, not a typo (RED);
+(3) write the minimum code to pass, then run that test and the full suite (GREEN, no
+regressions); (4) refactor if useful, keeping green, then move to the next criterion.
+NEVER modify a test just to make it pass — if a criterion is ambiguous or a test looks
+wrong, STOP and ask me. Then add a one-line pointer to it in the Workflow section of
+.github/copilot-instructions.md ("Implementing a spec? Follow the RED-GREEN rule in
+.github/instructions/testing.instructions.md."). Show me both files and stop.
 ```
 
-**2. Commit before you implement.** You're about to build a real change — commit the rule file (and anything else pending) now (ask Claude to commit, or run `git commit` yourself), so the diff you review in Exercise 5 is just this change, nothing else mixed in.
+**2. Commit before you implement.** You're about to build a real change — commit the instruction files (and anything else pending) now (ask Copilot to commit, or run `!git add -A && git commit -m "..."` yourself — the `!` prefix runs it straight in the shell, no model call), so the diff you review in Exercise 5 is just this change, nothing else mixed in.
 
-**3. `/clear`, then hand Claude just the spec.** Clear so what happens next is the rule doing the work, not memory of the conversation that just wrote it:
+**3. `/clear`, then hand Copilot just the spec.** Clearing starts a fresh conversation — which also loads the instruction files you just wrote (they're read at session start, not mid-conversation) — so what happens next is the rule doing the work, not memory of the conversation that just wrote it:
 
 ```text
 /clear
@@ -56,24 +59,25 @@ and stop.
 Implement specs/<your-feature>.md.
 ```
 
-That's the whole prompt. You already made test-first-against-the-spec a `YOU MUST` rule in step 1 — restating RED-GREEN here would just be asking Claude to do what it's already required to do. If you want to confirm the rule is actually driving it, ask Claude which rule it's following before it starts.
+That's the whole prompt. You already made test-first-against-the-spec a `YOU MUST` rule in step 1 — restating RED-GREEN here would just be asking Copilot to do what it's already required to do. If you want to confirm the rule is actually driving it, run `/instructions` to see it's loaded, or ask Copilot which rule it's following before it starts.
 
-**4. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Claude jumps straight to green, make it back up.
+**4. Watch the RED before the GREEN.** The bit that makes it real is seeing the test fail for the right reason *before* any implementation. If Copilot jumps straight to green, press `Esc` to stop it and make it back up.
 
 ## What good looks like
 
-- **`.claude/rules/testing.md`** with the RED-GREEN-against-acceptance-criteria rule, always on.
+- **`.github/instructions/testing.instructions.md`** with the RED-GREEN-against-acceptance-criteria rule, pointed at from the root file.
 - **A test you saw fail first**, mapped to an acceptance criterion — then pass. Not one written alongside the code.
 - **The full suite green**, so you know the change didn't regress anything.
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Claude has no way to check itself.
+> **💰 Token-smart:** a runnable test is an objective "done" signal — it ends the guess → run → correct churn that quietly burns tokens when Copilot has no way to check itself.
 
 - **No test runner yet? Standing it up takes real time** — budget for it; that's expected on a repo that's never had tests.
-- **The classic cheat is Claude weakening the test to pass.** The "never modify the test" line in your rule is what prevents it — call it out if you see it happen.
+- **The classic cheat is the agent weakening the test to pass.** The "never modify the test" line in your rule is what prevents it — call it out if you see it happen.
 - **"Show me the RED"** is the whole discipline. If it jumps to green, make it back up.
 - **Anchor to the criteria, not vibes.** One test per acceptance criterion keeps "done" objective and traceable back to the spec.
+- **Long test output?** Copilot may hand test runs to its built-in `task` subagent, which returns a short summary on success and full output on failure — that keeps your main context lean. You'll build your own subagent in Exercise 6.
 
 ## 🎁 Bonus — go further
 
