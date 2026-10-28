@@ -2,18 +2,18 @@
 
 # Exercise 7 — Guarantee the bar with a hook (greenfield)
 
-**Track:** Greenfield · **Time:** ~20–25 min
+**Track:** Greenfield · **Time:** ~25–30 min
 **Builds on:** the whole loop — the test harness from Exercise 4 and the reviews from Exercises 5–6. · **Adds to your build:** a hook that runs your unit tests before every commit and blocks it below 90% line coverage.
 
-> **Why it matters:** everything you've built so far runs on instructions, and instructions are nondeterministic — Claude will follow them most of the time, but that isn't a guarantee. A **hook** is a shell command Claude Code runs programmatically on a lifecycle event, so it isn't a matter of following anything: it runs, identically, every time. You'll put one in front of `git commit`, so **every commit** has to clear your suite and your coverage bar before it's allowed to happen.
+> **Why it matters:** everything you've built so far runs on instructions, and instructions are nondeterministic — Copilot will follow them most of the time, but that isn't a guarantee. A **hook** is a command Copilot CLI runs programmatically on a lifecycle event, so it isn't a matter of following anything: it runs, identically, every time. You'll put one in front of `git commit`, so **every commit** has to clear your suite and your coverage bar before it's allowed to happen.
 
 ---
 
 ## Why this exercise
 
-You'll wire one hook that runs one command. The only fiddly part is that **the test and coverage commands vary with your tech stack and setup** — and you chose your own runner in Exercise 4, so let Claude work out the coverage command for it. Then you put the gate in front of `git commit` and watch it refuse one.
+You'll wire one hook that runs one script. There are two fiddly parts. First, **the test and coverage commands vary with your tech stack and setup** — and you chose your own runner in Exercise 4, so let Copilot work out the coverage command for it. Second, Copilot CLI hooks fire on a *tool* (the shell), not on a specific command, so your script reads the tool call from stdin and decides for itself whether it's a commit. Then you put the gate in front of `git commit` and watch it refuse one.
 
-> **⚠ Security:** hooks run arbitrary shell with *your* permissions, with no confirmation prompt. Read what Claude writes before you wire it.
+> **⚠ Security:** hooks run arbitrary shell with *your* permissions, with no confirmation prompt. Read what Copilot writes before you wire it.
 
 ## Before you start
 
@@ -26,12 +26,12 @@ You'll wire one hook that runs one command. The only fiddly part is that **the t
 
 ```text
 Add line-coverage reporting to the test runner already configured in this repo (the test
-command is in CLAUDE.md), using the idiomatic tool for my stack (see
+command is in .github/copilot-instructions.md), using the idiomatic tool for my stack (see
 docs/adr/0001-initial-stack.md). The coverage tool must fail the run by itself when line
 coverage is under 90% — use its native threshold (pytest-cov's --cov-fail-under, Jest/Vitest
 coverageThreshold, coverlet's /p:Threshold, JaCoCo's check rule) rather than a script grepping
-its output. Then tell me the exact command to run it and add that command to CLAUDE.md next to
-the test command. Don't wire a hook yet.
+its output. Then tell me the exact command to run it and add that command to
+.github/copilot-instructions.md next to the test command. Don't wire a hook yet.
 ```
 
 Recognise yours in here:
@@ -47,86 +47,105 @@ Recognise yours in here:
 
 > **Take the global 90% now.** This is greenfield's one real advantage here: your whole codebase is days old, so a global threshold is cheap to satisfy today and expensive to reach later. (On a legacy repo you'd usually have to settle for 90% on *changed* lines — worth knowing for when you take this back to your real codebase.)
 
-**2. Run it yourself and check the exit code.** Before it guards anything, prove it in a plain terminal:
+**2. Run it yourself and check the exit code.** Before it guards anything, prove it in a plain terminal (or inside Copilot with the `!` prefix, which skips the model):
 
 ```bash
 <your coverage command>; echo "exit: $?"
 ```
 
-You need to see **both** outcomes: `0` when the bar is met, non-zero when it isn't. Nudge the threshold a couple of points above your current number to watch it fail, then put it back to 90. (Already at 100%? Add a throwaway function with no test, watch it fail, then delete it.) **The exit code is the entire contract** — a check that prints "FAIL" and exits `0` guards nothing.
+You need to see **both** outcomes: `0` when the bar is met, non-zero when it isn't. Nudge the threshold a couple of points above your current number to watch it fail, then put it back to 90. (Already at 100%? Add a throwaway function with no test, watch it fail, then delete it.) **The exit code is the entire contract** between the coverage tool and your script — a check that prints "FAIL" and exits `0` guards nothing.
 
-**3. Put the gate in front of `git commit`.** Two pieces: a script that runs your check, and a `PreToolUse` hook that fires it whenever Claude is about to commit.
+**3. Write the gate script.** Copilot CLI hooks don't filter by command — a `preToolUse` hook can only be narrowed to a *tool* (the shell), so the script itself decides whether this particular shell call is a commit. Copilot pipes a JSON payload describing the tool call to the script's stdin, and reads one JSON decision back from its stdout.
 
 ```text
-Write .claude/hooks/test-gate.sh — a script for a PreToolUse hook that guards git commit. It
-should run <the coverage command you verified in step 2> from the project root, exit 0 silently
-if it passes, and if it fails print a SHORT message to stderr — which check failed, the actual
-coverage number, the names of failing tests, not the whole log — then exit 2. Exit 2 is what
-blocks the commit, and stderr is the only thing Claude gets to act on, so make it actionable.
-It doesn't need to read stdin. Keep it short and chmod +x it. Show me the script and stop.
+Write .github/hooks/scripts/test-gate.sh — a preToolUse hook script for GitHub Copilot CLI
+that guards git commit. Copilot runs it before every shell tool call and pipes JSON on
+stdin with toolName and toolArgs; toolArgs may be a JSON string or an object, and the
+shell command is in its "command" field. The script must: (1) read stdin and extract the
+command with jq; (2) if the command is not a git commit, exit 0 immediately with no
+output — this path runs on every shell call, so keep it fast; (3) otherwise run
+<the command you verified in step 2> from the project root, sending all of its
+output to stderr or a temp file, never stdout; (4) if it passes, exit 0 with no output;
+(5) if it fails, print exactly ONE line of JSON to stdout —
+{"permissionDecision":"deny","permissionDecisionReason":"..."} — where the reason is
+SHORT and actionable (which check failed, the actual coverage number, the names of failing
+tests, not the whole log), then exit 0. The reason is the only thing the agent gets to act
+on. Don't use set -e: any crash or unexpected non-zero exit makes Copilot deny EVERY shell
+command. chmod +x it. Show me the script and stop.
 ```
 
-Then wire it in `.claude/settings.json` (committed, so the gate ships with the project from day one):
+> **No `jq`?** Install it, or ask for the same script in Python or Node — whatever your stack already has. On Windows, ask for a PowerShell twin (`test-gate.ps1`) as well.
+
+**4. Prove the script before you wire it.** Hooks are just programs reading stdin — so feed it a fake payload in a plain terminal and check both paths:
+
+```bash
+echo '{"toolName":"bash","toolArgs":"{\"command\":\"ls\"}"}' | .github/hooks/scripts/test-gate.sh; echo "exit: $?"
+echo '{"toolName":"bash","toolArgs":"{\"command\":\"git commit -m test\"}"}' | .github/hooks/scripts/test-gate.sh; echo "exit: $?"
+```
+
+The first must return instantly with no output and `exit: 0`. The second must run your suite and — with the threshold nudged above your current number — print a single `deny` JSON line, still with `exit: 0`. Pipe it through `jq .` to check it's valid JSON.
+
+**5. Put the gate in front of `git commit`.** Wire it in `.github/hooks/test-gate.json` (committed, so the gate ships with the project from day one):
 
 ```json
 {
+  "version": 1,
   "hooks": {
-    "PreToolUse": [
+    "preToolUse": [
       {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "if": "Bash(git commit*)",
-            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/test-gate.sh",
-            "timeout": 300
-          }
-        ]
+        "type": "command",
+        "matcher": "bash",
+        "bash": "./.github/hooks/scripts/test-gate.sh",
+        "cwd": ".",
+        "timeoutSec": 300
       }
     ]
   }
 }
 ```
 
-`matcher` narrows the group to `Bash` calls; **`if` narrows it further to `git commit`**, so nothing runs on any other command — the hook process isn't even spawned. That one line is why this needs no guard logic of its own. `timeout` is in seconds (the default for command hooks is 10 minutes — cap it lower so a hung suite can't hold your session). Config changes are normally picked up by a file watcher, so there's nothing to restart; run **`/hooks`** to confirm it registered.
+`matcher` is a regex on the tool name, so the hook only fires for shell calls (`bash`; use `"bash|powershell"` plus a `"powershell"` key if anyone on the team is on Windows). Everything finer — *is this a commit?* — is the script's job. **`timeoutSec` matters more than it looks:** the default is 30 seconds, and **a timed-out hook fails *open*** — the commit just goes through. Set it comfortably above your suite's runtime. Hook files are read when the CLI starts, so run **`/restart`**, then **`/env`** to confirm the hook is loaded.
 
-**4. Prove it blocks.** Raise your threshold a couple of points above where you actually are, so the gate fails but is still clearable. Then ask Claude to commit:
+**6. Prove it blocks.** Raise your threshold a couple of points above where you actually are, so the gate fails but is still clearable. Then ask Copilot to commit:
 
 ```text
 Commit my current changes with a clear message.
 ```
 
-Watch the commit get **blocked before it runs**, your stderr message come back as Claude's feedback, and Claude write the missing tests to get through. Nobody had to remember — that's the difference from a rule. Put your threshold back to 90 when you're done.
+Watch the commit get **denied before it runs**, your reason come back to Copilot as the explanation, and Copilot write the missing tests to get through. Nobody had to remember — that's the difference from a rule. Put your threshold back when you're done.
 
 ## What good looks like
 
-- **A coverage command that fails on its own** below 90%, with the command in `CLAUDE.md`.
-- **`.claude/hooks/test-gate.sh`** — short, executable, exits `2` with a message worth acting on.
-- **A `PreToolUse` hook scoped with `if`**, visible in `/hooks`, committed from day one.
-- **You watched a commit get blocked** and watched Claude clear it.
+- **A coverage command that fails on its own** below 90%, with the command in `.github/copilot-instructions.md`.
+- **`.github/hooks/scripts/test-gate.sh`** — short, executable, silent on non-commits, and a single `deny` JSON line with a reason worth acting on when the bar isn't met.
+- **`.github/hooks/test-gate.json`** — a `preToolUse` hook matched to the shell, with a timeout sized to your suite, visible in `/env`, committed from day one.
+- **You watched a commit get blocked** and watched Copilot clear it.
 - **90% enforced while it's still cheap** to enforce.
 
 ## Tips & watch-outs
 
-> **💰 Token-smart:** gating the commit rather than every turn is the cheap shape — the suite runs once per commit, not once per message, and Claude only pays for a fix when the gate actually fails. Keep it to unit tests, never e2e: a slow gate is one you'll end up removing.
+> **💰 Token-smart:** gating the commit rather than every turn is the cheap shape — the suite runs once per commit, not once per message, and Copilot only pays for a fix when the gate actually fails. The script *starts* on every shell call, so keep the not-a-commit path instant. Keep it to unit tests, never e2e: a slow gate is one you'll end up removing.
 
 - **⚠ Hooks run arbitrary shell with your permissions**, with no confirmation prompt. Only wire commands you'd happily type yourself.
-- **Exit codes are the contract.** `0` = proceed, `2` = block the tool call and send stderr to Claude, **anything else** = a non-blocking error: the command runs anyway, you get a hook-error notice, and Claude never hears about it. A failing check that exits `1` is a gate that isn't guarding anything.
-- **Don't mix exit 2 with JSON output** — Claude Code ignores the JSON when you exit `2`. Pick one mechanism.
-- **`if` is best-effort, not security.** It checks subcommands and `$( )` too, and deliberately *fails open* when it can't parse the command — so the gate occasionally runs on a `git` call that isn't a commit. Harmless (an extra check, never a missed one), but don't lean on `if` for a hard deny; that's what the permission system is for.
-- **This guards commits made through Claude Code.** Your own `git commit` in a terminal isn't touched, so CI is still what holds the bar once other people are working on this — same command, same number, in both places.
+- **Know how a `preToolUse` hook can answer.** Exit `0` with no output = carry on through the normal permission flow. Exit `0` with `{"permissionDecision":"deny","permissionDecisionReason":"…"}` = blocked, and the reason goes to the agent — that's the clean, actionable path. Exit `2` = denied too. A crash or any other non-zero exit = *also* denied (**fail-closed**), with a generic "hook errored" message instead of your reason — so a buggy script blocks *every* shell command, not just commits. Test it with piped input first.
+- **Timeouts fail *open*.** If the hook doesn't finish within `timeoutSec` (default 30s), Copilot logs a warning and lets the command run. A slow suite with the default timeout is a gate that silently isn't guarding — size the timeout to the suite.
+- **One JSON object on stdout, nothing else.** Copilot parses the whole of stdout as a single JSON document; stray test output or two `echo`s mean "no decision" and the commit goes through. Send everything else to stderr.
+- **The command check is best-effort, not security.** Matching `git commit` in a string can be sidestepped (`git -C . commit`, an alias, `sh -c "…"`). It catches the normal case, which is the point; for a hard "never" use permission rules (e.g. `--deny-tool 'shell(git push)'`), and let CI hold the line.
+- **This guards commits made through Copilot CLI** — and, because `.github/hooks/` is also read by Copilot cloud agent, commits made by tasks you `/delegate` too. Your own `git commit` in a terminal isn't touched, so CI is still what holds the bar once other people are working on this — same command, same number, in both places.
 - **Don't let the gate drive the design.** If you catch yourself writing a test purely to move the number, that's coverage theatre — the bar exists to stop untested code slipping in, not to be satisfied.
 - **A hook is a floor, not a ceiling.** 90% line coverage says the lines *ran*, not that they're *right*. It stops your prototype quietly rotting as it grows; it doesn't replace the review you built in Exercises 5–6.
 
 ## 🎁 Bonus — go further
 
-- **Move the threshold out of the command.** Right now `90` lives in whatever command your hook runs. Put it in committed config instead — `fail_under = 90` under `[tool.coverage.report]` in `pyproject.toml`, `coverageThreshold` in your Jest config, `<Threshold>90</Threshold>` in the test `.csproj` — so it's one versioned number rather than a string in a hook.
-- **Gate the push as well, or instead.** Same script, `if: "Bash(git push*)"`. Later and coarser than per-commit, but a good fit once your suite is too slow to run on every commit.
-- **Add a formatter hook.** A `PostToolUse` hook with `"matcher": "Edit|Write"` that runs your formatter on the file Claude just touched — the cheapest useful hook there is, and formatting never drifts in the first place.
-- **Protect a path.** A `PreToolUse` hook that exits `2` when Claude tries to edit `.env`, a lockfile, or generated code — it gets told why and picks another route.
-- **Let a model make the judgement call.** For checks that aren't a clean pass/fail, a hook can be `"type": "prompt"` or `"type": "agent"` instead of `"command"` — Claude (Haiku by default) evaluates the condition and returns `{"ok": false, "reason": "..."}`. Nothing to enable, they work as-is, though the docs flag agent hooks as experimental and may change them. Slower, costs tokens, and not deterministic, so keep them for genuinely fuzzy rules — a coverage gate should stay a shell command.
+- **Move the threshold out of the command.** Right now `90` lives in whatever command your hook runs. Put it in committed config instead — `fail_under = 90` under `[tool.coverage.report]` in `pyproject.toml`, `coverageThreshold` in your Jest config, `<Threshold>90</Threshold>` in the test `.csproj` — so it's one versioned number rather than a string in a script.
+- **Gate the push as well, or instead.** Same script, matching `git push` instead of (or as well as) `git commit`. Later and coarser than per-commit, but a good fit once your suite is too slow to run on every commit.
+- **Add a formatter hook.** A `postToolUse` hook with `"matcher": "edit|create"` whose script reads the edited file's path from `toolArgs` on stdin and runs your formatter on it — the cheapest useful hook there is, and formatting never drifts in the first place.
+- **Protect a path.** A `preToolUse` hook with `"matcher": "edit|create"` that returns a `deny` decision when Copilot tries to touch `.env`, a lockfile, or generated code — it gets told why and picks another route.
+- **"Don't stop until it's green."** An `agentStop` hook fires when Copilot finishes a turn; if it prints `{"decision":"block","reason":"…"}`, Copilot takes another turn with your reason as the prompt. Pair it with a fast check (lint, unit tests) and Copilot can't declare victory on a red build. Use the `stop_hook_active` input field to avoid looping — the CLI gives up after 8 consecutive blocks anyway.
+- **Want a model to make the judgement call?** Copilot CLI has no built-in "ask a model" hook type — hooks are commands or HTTP calls. For genuinely fuzzy rules, the best home is usually your reviewer agent or instructions, not a hook. If you really need it in a hook, the script can call `copilot -p "…" --model <cheap model>` non-interactively and turn the answer into a decision — but it's slow, costs tokens, isn't deterministic, and the nested session loads the same repo hooks, so guard against it re-triggering itself. A coverage gate should stay a plain command.
 - **Record the decision.** A short ADR (`docs/adr/0002-test-coverage-bar.md`) saying *90% line coverage, enforced by a hook, because …* — future-you will want the reasoning before removing the gate.
-- **Browse the rest.** Run `/hooks` to see every event you could hang something off — `SessionStart`, `UserPromptSubmit`, `Stop`, `SubagentStop`, `PreCompact` and plenty more.
+- **Browse the rest.** The [hooks reference](https://docs.github.com/en/copilot/reference/hooks-reference) lists every event you could hang something off — `sessionStart`, `userPromptSubmitted`, `postToolUseFailure`, `agentStop`, `subagentStop`, `preCompact` and more. Run `/env` any time to see what's loaded.
+- **Migrating from Claude Code?** Copilot CLI will also run Claude-format `PreToolUse` hooks found in `.claude/settings.json`. Handy as a bridge — but move them into `.github/hooks/` so cloud agent and your teammates' Copilot sessions pick them up too.
 - **Coming next:** Exercise 8 runs the whole loop solo — and every commit you make in it now has to clear this bar.
 
 ---
