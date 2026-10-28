@@ -1,14 +1,14 @@
-`Hands-on with Claude Code · Part 2`
+`Hands-on with GitHub Copilot CLI · Part 2`
 
 # Welcome to Part 2 — put it all together on *your* code
 
-**Part 1** gave you the pieces: what Claude Code is, how to prompt it, the tools it can reach, where it fits in your day. **Part 2 is where those pieces become a workflow** — and where you stop practising on toy examples and start applying everything to a real solution you care about.
+**Part 1** gave you the pieces: what GitHub Copilot CLI is, how to prompt it, the tools it can reach, where it fits in your day. **Part 2 is where those pieces become a workflow** — and where you stop practising on toy examples and start applying everything to a real solution you care about.
 
 Over the next day and a half you'll take the individual moves you learned and stack them into one repeatable loop: **thin context → spec → build → test → review → commit/PR.** By the time you leave, that loop won't be a slide — it'll be running in your own repo, and you'll know how to keep using it on Monday.
 
 > **This is a build, not a demo.** Each exercise leaves a real artifact in your project. Nothing here is throwaway — you're doing the actual work, just faster, and learning the technique by shipping with it.
 
-> **Default model & effort:** unless a step tells you otherwise, run on **Sonnet** at **`/effort high`** — the recommended default for the reasoning-heavy work these exercises ask for. Try other models and effort levels as you get comfortable — the right choice depends on the task (the cheap Haiku reviewer in Exercise 6 is the one deliberate exception you'll build). We don't recommend using Fable at this point, for cost and speed purposes.
+> **Default model & effort:** unless a step tells you otherwise, run on **Claude Sonnet** (Copilot CLI's default model) at **high reasoning effort** — pick both in **`/model`**, or launch with `copilot --effort high`. That's the recommended default for the reasoning-heavy work these exercises ask for. Try other models and effort levels as you get comfortable — the right choice depends on the task (the cheap Haiku reviewer in Exercise 6 is the one deliberate exception you'll build). Save the top-tier, highest-multiplier models (Opus-class) for the one step that asks for them — check the cost shown next to each model in `/model`, and your running spend in `/usage`.
 
 ---
 
@@ -17,7 +17,7 @@ Over the next day and a half you'll take the individual moves you learned and st
 - **A running thing *you* built** — on the code you brought, or on a new idea you started here.
 - **A repeatable spec → build → test → review → PR loop** you can point at any feature, any repo.
 - **A loop that's *yours*** — tuned to how you work and written down, not a copied checklist you'll abandon.
-- **Guardrails that travel with the code** — context files, a spec skill, tests, a reviewer agent, and a hook that enforces the bar programmatically, all keeping quality high without you babysitting every prompt.
+- **Guardrails that travel with the code** — custom instructions, a spec skill, tests, a reviewer agent, and a hook that enforces the bar programmatically, all keeping quality high without you babysitting every prompt.
 - **Enough fluency to keep going alone** — the whole point of day 2 is that you leave *enabled*, not dependent on the room. Monday you open your repo and the flow is already there.
 
 ## The through-line: agentic engineering, not vibe coding
@@ -25,32 +25,59 @@ Over the next day and a half you'll take the individual moves you learned and st
 There are two ways to work with a model like this.
 
 - **Vibe coding** — prompt until something looks like it works and move on. It's fast, and it's genuinely great for a prototype or spike where you're exploring an idea. The catch is that the code tends to be hard to trust or maintain once you have to live with it.
-- **Agentic engineering** — you give Claude the *context, specs, tests, and guardrails* to do real work, then you review and steer. The output is production-grade: reviewable, tested, consistent with your conventions, safe to hand to the next person.
+- **Agentic engineering** — you give Copilot the *context, specs, tests, and guardrails* to do real work, then you review and steer. The output is production-grade: reviewable, tested, consistent with your conventions, safe to hand to the next person.
 
-Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.md so Claude knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. A fresh-context review so quality is checked, not assumed. Skills and agents so the loop gets faster every pass. And a hook so the last check is deterministic rather than merely requested. That's the difference between *trying* Claude and *engineering* with it.
+Every exercise in Part 2 is one more piece of that second discipline. A `copilot-instructions.md` so Copilot knows your rules. A spec so it builds the right thing. Tests so "done" means *proven*. A fresh-context review so quality is checked, not assumed. Skills and agents so the loop gets faster every pass. And a hook so the last check is deterministic rather than merely requested. That's the difference between *trying* Copilot and *engineering* with it.
 
-> **💰 Token-smart throughout.** Every message re-sends your context, so *how* you work is what drives what you spend. The structured loop is the cheapest habit of all: a spec stops Claude building the wrong thing and burning tokens on rework, and a runnable check ends the guess-and-retry churn. Keep an eye on `/context`, `/clear` between unrelated tasks, and watch for the **💰 Token-smart** notes in each exercise — small levers that add up.
+> **💰 Token-smart throughout.** Every message re-sends your context, so *how* you work is what drives what you spend. The structured loop is the cheapest habit of all: a spec stops Copilot building the wrong thing and burning tokens on rework, and a runnable check ends the guess-and-retry churn. Keep an eye on `/context` (what's in the window) and `/usage` (what the session has cost), `/clear` between unrelated tasks, and watch for the **💰 Token-smart** notes in each exercise — small levers that add up.
 
 ## Pick your starting point — and switch to it now
 
 The exercises come in two tracks. **Choose one and stay on it.**
 
-- **Brownfield — bring your own repo.** Work in a solution you already have. *This is where Claude Code earns its keep* — real constraints, real legacy, real conventions. If you brought code, this is your track. **Open that repo now.**
+- **Brownfield — bring your own repo.** Work in a solution you already have. *This is where Copilot CLI earns its keep* — real constraints, real legacy, real conventions. If you brought code, this is your track. **Open that repo now.**
 - **Greenfield — start something new.** No repo, or want a clean slate? You'll stand up a fresh project from an idea and grow it. **Open an empty folder now.**
 
 **No code of your own on the day?** Use the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — every technique works there too.
 
-> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. **Set up source control *with a remote*:** initialise git if you haven't, and make sure you have a remote you can push to — if your work repo isn't suitable, **create a personal repo (GitHub/GitLab) for the day**. Commit regularly as you go (you can ask Claude to commit for you) so you can always see what changed and roll back a step you don't like — and so you can push and open a PR, because the loop ends in one.
+> **Before you start:** install Copilot CLI if you haven't (`npm install -g @github/copilot`, `brew install --cask copilot-cli`, or `winget install GitHub.Copilot`), open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `copilot` there. Trust the folder when asked, and run `/login` if prompted. **Set up source control *with a remote*:** initialise git if you haven't, and make sure you have a remote you can push to — if your work repo isn't suitable, **create a personal GitHub repo for the day**. Commit regularly as you go (you can ask Copilot to commit for you, or run `!git commit …` — the `!` prefix runs a shell command directly without calling the model) so you can always see what changed and roll back a step you don't like — and so you can push and open a PR, because the loop ends in one.
 
 ## How the day flows
 
 1. A short talk (~5–10 min) introduces each technique.
-2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Claude proposes, and make it yours.**
+2. You run the matching exercise (~30–45 min) on your own code — read the intro, paste the prompt, **review what Copilot proposes, and make it yours.**
 3. Finished early? Every exercise has a **🎁 Bonus** to push further.
 
 There are **eight exercises (1–8)**, and they **stack** — each builds on the artifact the last one left behind — so do them in order and stay on your track. The stated times are rough: a few exercises (2, 4, 6) fold in a real build step that can run long — that's *by design*. Exercise 8 is open-ended and soaks up whatever build time is left, so don't feel behind if the earlier ones overrun.
 
-> **The setup is the start, not the whole thing.** Each exercise gets Claude *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Claude produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
+> **The setup is the start, not the whole thing.** Each exercise gets Copilot *configured* to work well — but once that part's done, keep going: use the rest of the slot to do **real implementation work** on your project. You can build throughout the day. In fact, watch how the *quality of what Copilot produces climbs* as your setup matures — thin context and no tests early on, versus specs, guardrails, and a subagent later. That improving output is the whole point of Part 2.
+
+---
+
+## Coming from Claude Code? The translation guide
+
+The *concepts* in this workshop are tool-agnostic — thin context, spec-first, RED→GREEN, fresh-context review, deterministic gates. Only the file names and commands change. If you've seen these exercises (or blog posts) written for Claude Code, here's how each piece maps:
+
+| Concept | Claude Code | GitHub Copilot CLI |
+|---|---|---|
+| Launch | `claude` | `copilot` |
+| Project context file | `CLAUDE.md` | `.github/copilot-instructions.md` (also reads `AGENTS.md`) |
+| Modular / path-scoped rules | `.claude/rules/*.md` with `paths:` | `.github/instructions/*.instructions.md` with `applyTo:` |
+| Personal (all-repos) context | `~/.claude/CLAUDE.md` | `~/.copilot/copilot-instructions.md` |
+| Generate starter context | `/init` | `/init` (writes `.github/copilot-instructions.md`) |
+| Model & effort | `/model`, `/effort`, `ultrathink` | `/model` (model **and** reasoning effort), `copilot --effort <level>` — no `ultrathink` keyword |
+| Plan before building | Plan Mode (`Shift`+`Tab`) | Plan mode (`Shift`+`Tab`) or `/plan <prompt>` |
+| Fresh conversation | `/clear` | `/clear` (aliases `/new`, `/reset`) |
+| Context & cost | `/context` | `/context`, `/usage`, `/compact` |
+| Skills | `.claude/skills/<name>/SKILL.md` | `.github/skills/<name>/SKILL.md`, managed with `/skills` |
+| Subagents | `.claude/agents/<name>.md`, `@name` | `.github/agents/<name>.agent.md`, "use the *name* agent", `/agent`, `copilot --agent` |
+| Hooks | `PreToolUse` in `.claude/settings.json` | `preToolUse` in `.github/hooks/*.json` |
+| See what's loaded | `/hooks`, `/context` | `/env`, `/instructions`, `/skills list`, `/agent` |
+| Built-in reviewers | `/code-review`, `/security-review` | `/review`, `/security-review`, `/rubber-duck` |
+| Parallel sessions | `claude --worktree` | `copilot --worktree`, `/worktree`, `/fleet` |
+| Talk to GitHub | `gh` CLI | Built-in GitHub MCP server, `/pr`, `/delegate` (plus `gh` if you like) |
+
+> **Heads-up — Copilot CLI also reads Claude Code's files.** It will load `CLAUDE.md`, `.claude/rules/`, `.claude/skills/`, `.claude/agents/` and hooks in `.claude/settings.json` if they exist. That's handy for migrating, but it means a repo with *both* a `CLAUDE.md` and a `.github/copilot-instructions.md` loads its context twice. These exercises use the native `.github/` locations; if your repo already has Claude files, consolidate rather than duplicate.
 
 ---
 
