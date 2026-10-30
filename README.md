@@ -33,14 +33,15 @@ Every exercise in Part 2 is one more piece of that second discipline. A CLAUDE.m
 
 ## Pick your starting point — and switch to it now
 
-The exercises come in two tracks. **Choose one and stay on it.**
+The exercises come in three tracks. **Choose one and stay on it.**
 
 - **Brownfield — bring your own repo.** Work in a solution you already have. *This is where Claude Code earns its keep* — real constraints, real legacy, real conventions. If you brought code, this is your track. **Open that repo now.**
 - **Greenfield — start something new.** No repo, or want a clean slate? You'll stand up a fresh project from an idea and grow it. **Open an empty folder now.**
+- **Multirepo — your team owns a *journey* across many microservices.** Brownfield, but the hard knowledge lives *between* repos: events, contracts, consumers, and a test project that only runs against a dev environment. You'll build a **journey workspace** with the service repos side by side and run the loop from there. **Clone the services for one journey into a single parent folder now.**
 
 **No code of your own on the day?** Use the sample app (`cc-labs-exercise`) from the prerequisites and follow the **brownfield** track — every technique works there too.
 
-> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield — and launch `claude` there. **Set up source control *with a remote*:** initialise git if you haven't, and make sure you have a remote you can push to — if your work repo isn't suitable, **create a personal repo (GitHub/GitLab) for the day**. Commit regularly as you go (you can ask Claude to commit for you) so you can always see what changed and roll back a step you don't like — and so you can push and open a PR, because the loop ends in one.
+> **Before you start:** open a terminal (or the integrated terminal in VS Code) inside your chosen folder — the empty one for greenfield, your existing solution for brownfield, the parent folder holding your service clones for multirepo — and launch `claude` there. **Set up source control *with a remote*:** initialise git if you haven't, and make sure you have a remote you can push to — if your work repo isn't suitable, **create a personal repo (GitHub/GitLab) for the day**. Commit regularly as you go (you can ask Claude to commit for you) so you can always see what changed and roll back a step you don't like — and so you can push and open a PR, because the loop ends in one.
 
 ## How the day flows
 
@@ -55,4 +56,4 @@ There are **eight exercises (1–8)**, and they **stack** — each builds on the
 ---
 
 **Ready?** Open your repo (or an empty folder), then start with **Exercise 1**:
-[Brownfield →](./brownfield/1-context-brownfield.md)  ·  [Greenfield →](./greenfield/1-context-greenfield.md)
+[Brownfield →](./brownfield/1-context-brownfield.md)  ·  [Greenfield →](./greenfield/1-context-greenfield.md)  ·  [Multirepo →](./multirepo/1-context-multirepo.md)
